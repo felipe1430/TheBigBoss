@@ -10,6 +10,9 @@ Route::get('/blogsimple','Admin\AdminController@blogsimple')->name('blogsimple')
 Route::get('/about','Admin\AdminController@about')->name('about');
 
 
+Route::get('/prueba1','Publico\PublicoController@index');
+
+
 //------------------------Fin Rutas Publicas--------------------------------//
 
 

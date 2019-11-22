@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('theme','thebigboss');
+        View::share('theme2','lte');
     }
 }
