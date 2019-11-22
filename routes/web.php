@@ -16,6 +16,12 @@ Route::get('/blogsimple','Publico\PublicoController@blogsimple')->name('blogsimp
 
 
 
+Route::get('/prueba1','Publico\PublicoController@index');
+Route::get('/ListarEmpleados','Admin\AdminController@ListarEmpleados')->name('ListarEmpleados');
+
+
+
+
 //------------------------Fin Rutas Publicas--------------------------------//
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
