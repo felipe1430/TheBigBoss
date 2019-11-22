@@ -7,7 +7,10 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:500,600,700&display=swap" rel="stylesheet">
-
+    
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/fontawesome-free/css/all.min.css")}}">
+ 
     <link rel="stylesheet" href="{{asset("assets/$theme/css/open-iconic-bootstrap.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/$theme/css/animate.css")}}">
     
@@ -31,6 +34,7 @@
 	<!-- inicio nav -->
 	@include("theme/$theme/nav")
     <!-- END nav -->
+    
     @yield('contenido')
 	{{-- <section class="ftco-section ftco-no-pt ftco-no-pb">
 		<div class="container-fluid p-0">

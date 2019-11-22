@@ -14,7 +14,7 @@
         <div class="text text-center">
           <span class="subheading">bienvenidos</span>
           <h1 class="mb-4">The Big Boss Barber Shop</h1>
-          <p><a href="{{route('inicio')}}" class="btn btn-primary btn-outline-primary px-4 py-2">Reservar ahora</a></p>
+          <p><a href="{{route('ReservasCliente')}}" class="btn btn-primary btn-outline-primary px-4 py-2">Reservar ahora</a></p>
           </div>
         </div>
       </div>
