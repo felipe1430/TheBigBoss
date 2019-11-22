@@ -12,7 +12,8 @@
             <li class="nav-item"><a href="{{route('galeria')}}" class="nav-link">Galeria</a></li>
             <li class="nav-item"><a href="{{route('about')}}" class="nav-link">Acerca de</a></li>
             <li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="{{route('blogsimple')}}" class="nav-link">Blog simple</a></li>
+            <li class="nav-item"><a href="{{route('blogsimple')}}" class="nav-link">Blog simple</a></li>
+            <li class="nav-item"><a href="{{route('login')}}" class="nav-link"><i class="fas fa-users"></i></a></li>
         </ul>
       </div>
     </div>
