@@ -11,6 +11,8 @@ Route::get('/about','Admin\AdminController@about')->name('about');
 
 
 Route::get('/prueba1','Publico\PublicoController@index');
+Route::get('/ListarEmpleados','Admin\AdminController@ListarEmpleados')->name('ListarEmpleados');
+
 
 
 //------------------------Fin Rutas Publicas--------------------------------//

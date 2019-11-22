@@ -92,39 +92,35 @@
 
 
 
-
-<script> $('#mimodalejemplo').on('show.bs.modal', function (event) {
+<!-- Modal edit empleado -->
+<script> $('#mimodal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) 
-        var id = button.data('id')
-        var name = button.data('nombre') 
-        var email = button.data('correo') 
-        var tipo = button.data('tipo') 
-        var estado = button.data('estado') 
+        var id_empleado = button.data('id_empleado')
+        var nombre_empleado = button.data('nombre_empleado') 
+        var apellido_empleado = button.data('apellido_empleado') 
+        var rut_empleado = button.data('rut_empleado') 
+        var correo_empleado = button.data('correo_empleado') 
+        var telefono_empleado = button.data('telefono_empleado') 
+        var comision_empleado = button.data('comision_empleado') 
+        var direccion_empleado = button.data('direccion_empleado')
+        var estado_empleado = button.data('estado_empleado')
+        
+        
         var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name').val(name);
-        modal.find('.modal-body #email').val(email);
-        modal.find('.modal-body #tipo').val(tipo);
-        modal.find('.modal-body #Estado').val(estado);
+        modal.find('.modal-body #id_empleado').val(id_empleado);
+        modal.find('.modal-body #nombre_empleado').val(nombre_empleado);
+        modal.find('.modal-body #apellido_empleado').val(apellido_empleado);
+        modal.find('.modal-body #rut_empleado').val(rut_empleado);
+        modal.find('.modal-body #correo_empleado').val(correo_empleado);
+        modal.find('.modal-body #telefono_empleado').val(telefono_empleado);
+        modal.find('.modal-body #comision_empleado').val(comision_empleado);
+        modal.find('.modal-body #direccion_empleado').val(direccion_empleado);
+        modal.find('.modal-body #estado_empleado').val(estado_empleado);
+
+        
+        
   })</script>
-
-
-<script> $('#mimodalejemplo5').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) 
-        var id = button.data('id')
-        var body = button.data('body') 
-        var name = button.data('name') 
-        var created_at = button.data('created_at') 
-        var estado = button.data('estado') 
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #body').val(body);
-        modal.find('.modal-body #name').val(name);
-        modal.find('.modal-body #created_at').val(created_at);
-        modal.find('.modal-body #estado').val(estado);
-
-
-  })</script>
+<!-- Fin Modal edit empleado -->
 
 
 
