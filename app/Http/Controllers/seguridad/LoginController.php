@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-   // protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
    use AuthenticatesUsers;
 
