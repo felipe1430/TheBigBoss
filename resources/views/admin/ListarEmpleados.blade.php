@@ -39,7 +39,11 @@ Lista De Trabajadores
                       <td>{{$item->apellido_empleado}}</td>
                       <td>{{$item->correo_empleado}}</td>
                       <td>{{$item->comision_empleado}}%</td>
-                      <td>{{$item->descripcion_tipo_user}}</td>
+                      @if ($item->fk_empleado_tipo_user =='1')
+                      <td>Barbero</td>
+                      @else
+                      <td>Administrador</td>
+                      @endif
                       @if ($item->estado_empleado =='1')
                       <td>Activo</td>
                       @else
@@ -69,7 +73,7 @@ Lista De Trabajadores
          </div>
          <div class="modal-body">
             <div class="card-body">
-                <form method="POST" action="{{route('inicio')}}">
+                <form method="POST" action="{{route('actualizarempleados')}}">
                   {{method_field('post')}}
       	          	{{csrf_field()}}
                     @csrf
@@ -88,7 +92,7 @@ Lista De Trabajadores
                             @enderror
                         </div>
                     </div>
-                    <!-- Fin nombre -->
+                    <!-- Fin. nombre -->
                     <!-- Apellido -->
                     <div class="form-group row">
                             <label for="Apellido" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
@@ -185,10 +189,9 @@ Lista De Trabajadores
 
                         <div class="col-md-6">
                             <select id="tipo" list="tipo" class="form-control" name="tipo" value="" required >
-                                <option value="admin">Administrador</option> 
-                                <option value="sala">Sala</option> 
-                                <option value="bodega">Bodega</option>
-                                <option value="ventas">ventas</option>
+                                 @foreach ($tipouser as $tip)
+                                <option value="{{$tip->id_tipo_user}}">{{$tip->descripcion_tipo_user}}</option>                                      
+                                 @endforeach
                              </select>
                         </div>
                     </div>

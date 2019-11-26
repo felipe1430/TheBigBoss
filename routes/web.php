@@ -13,16 +13,15 @@ Route::get('/galeria','Publico\PublicoController@galeria')->name('galeria');
 Route::get('/blog','Publico\PublicoController@blog')->name('blog');
 Route::get('/about','Publico\PublicoController@about')->name('about');
 Route::get('/blogsimple','Publico\PublicoController@blogsimple')->name('blogsimple');
-
-
-
 Route::get('/prueba1','Publico\PublicoController@index');
+
+
 Route::get('/ListarEmpleados','Admin\AdminController@ListarEmpleados')->name('ListarEmpleados');
-
-
+Route::post('/actualizarempleados', 'Admin\AdminController@actualizarempleados')->name('actualizarempleados');
 
 
 //------------------------Fin Rutas Publicas--------------------------------//
+
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
