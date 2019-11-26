@@ -26,20 +26,30 @@ Route::get('/ListarEmpleados','Admin\AdminController@ListarEmpleados')->name('Li
 // Auth::routes();
  Route::get('/home', 'HomeController@index')->name('home');
 
-//-----------------------------------RUTAS ADMINISTRADOR----------------------------------------//
-Route::prefix('Reservas')->namespace('Publico')->middleware('auth')->group(function(){
+//-----------------------------------RUTAS PUBLICAS----------------------------------------//
+Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCliente')->group(function(){
 
     Route::get('/','PublicoReservas@index')->name('ReservasCliente');
 
 });
 
-
-Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
+//-----------------------------------RUTAS ADMINISTRADOR----------------------------------------//
+Route::prefix('admin')->namespace('Admin')->middleware('auth','LoginRutas')->group(function(){
 
 
 Route::get('/','AdminController@index');
 
 
-
-
 });
+
+//-----------------------------------RUTAS Barbero----------------------------------------//
+Route::prefix('barberos')->namespace('Barberos')->middleware('auth','SeguridadBarberos')->group(function(){
+
+
+    Route::get('/','BarberosController@index');
+    
+    
+    });
+
+
+
