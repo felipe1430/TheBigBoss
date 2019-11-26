@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Session;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','surname','rut','email', 'password','edad','fecha_nacimiento','estado','fk_tipo_user',
     ];
 
     /**
@@ -36,4 +37,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setSession(){
+        Session::put(
+            [
+                //'id' => $this->id,
+                'nombre' => $this->name,
+                'email' => $this->email,
+                'tipo_usuario' => $this->fk_tipo_user,
+
+            ]
+    );
+
+
+    }
+
+
+
+
 }
