@@ -16,9 +16,6 @@ Route::get('/blogsimple','Publico\PublicoController@blogsimple')->name('blogsimp
 Route::get('/prueba1','Publico\PublicoController@index');
 
 
-Route::get('/ListarEmpleados','Admin\AdminController@ListarEmpleados')->name('ListarEmpleados');
-Route::post('/actualizarempleados', 'Admin\AdminController@actualizarempleados')->name('actualizarempleados');
-
 
 //------------------------Fin Rutas Publicas--------------------------------//
 
@@ -37,6 +34,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth','LoginRutas')->gro
 
 
 Route::get('/','AdminController@index');
+Route::get('/ListarEmpleados','AdminController@ListarEmpleados')->name('ListarEmpleados');
+Route::post('/actualizarempleados', 'AdminController@actualizarempleados')->name('actualizarempleados');
 
 
 });
