@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-    Administrador
+ Publico
 @endsection
 
 @section('contenido')

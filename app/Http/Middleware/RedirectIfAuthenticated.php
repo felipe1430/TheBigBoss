@@ -17,8 +17,23 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        //dd(Auth::guard($guard)->check());
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            //dd(Auth::user()->fk_tipo_user);
+
+            if(Auth::user()->fk_tipo_user==1){
+                return redirect('/admin');
+
+            }elseif(Auth::user()->fk_tipo_user==2){
+                return redirect('/barberos');
+
+            }elseif(Auth::user()->fk_tipo_user==3){
+                return redirect('/Reservas');
+
+            }else{
+                return redirect('/');
+            }
+           
         }
 
         return $next($request);

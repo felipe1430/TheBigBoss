@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    protected $redirectTo = '/admin';
+    //protected $redirectTo = '/Admin';
 
    use AuthenticatesUsers;
 
@@ -28,5 +28,52 @@ class LoginController extends Controller
     }
 
 
+    protected function authenticated(Request $request, $user)
+    {
+       // dd($user);
+        
+        if ($user->fk_tipo_user == null || $user->estado== 0) {
+            $this->guard()->logout();
+            $request->session()->invalidate();
+            return redirect('/Login')->withErrors(['error'=>'Este usuario no tiene cargo asignado o esta deshabilitado ']);
+        }else{
+            $user->setSession();
+            
+       
 
+        }
+  
+    }
+
+
+    public function redirectPath()
+    {
+        
+        
+        
+        if( session()->get('tipo_usuario') == 1){
+
+            return '/admin';
+
+
+        }elseif(session()->get('tipo_usuario') == 2){
+
+            return '/barberos';
+        }elseif(session()->get('tipo_usuario') == 3){
+
+            return '/Reservas';
+        }
+
+        
+    
+        /*
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+        */
+    }
+
+    
 }
