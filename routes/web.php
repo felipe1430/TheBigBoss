@@ -24,7 +24,7 @@ Route::get('/ListarEmpleados','Admin\AdminController@ListarEmpleados')->name('Li
 
 //------------------------Fin Rutas Publicas--------------------------------//
 // Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+ Route::get('/home', 'HomeController@index')->name('home');
 
 //-----------------------------------RUTAS ADMINISTRADOR----------------------------------------//
 Route::prefix('Reservas')->namespace('Publico')->middleware('auth')->group(function(){
