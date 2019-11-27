@@ -40,9 +40,11 @@ Lista De Trabajadores
                       <td>{{$item->correo_empleado}}</td>
                       <td>{{$item->comision_empleado}}%</td>
                       @if ($item->fk_empleado_tipo_user =='1')
-                      <td>Barbero</td>
-                      @else
                       <td>Administrador</td>
+                      @elseif ($item->fk_empleado_tipo_user =='2')
+                      <td>barbero</td>
+                      @else
+                      <td>cliente</td>
                       @endif
                       @if ($item->estado_empleado =='1')
                       <td>Activo</td>

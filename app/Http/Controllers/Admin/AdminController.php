@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
- use App\empleados;
+use App\empleados;
+use App\servicios;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -58,17 +59,40 @@ class AdminController extends Controller
       return view('Admin.ListarServicios',compact('Servicio'));
     }
 
+    public function agregarservicios()
+    {
+      
+      return view('Admin.AgregarServicios');
+    }
+
     public function actualizarservicios(Request $request)
     {
       // dd($request->all());
-      $servicio = empleados::findOrfail($request->id_servicios);
+      $servicio = servicios::findOrfail($request->id_servicios);
       $servicio->id_servicios=$request->get('id_servicios');
       $servicio->nombre_servicio=$request->get('nombre_servicio');
       $servicio->descripcion_servicio=$request->get('descripcion_servicio');
       $servicio->valor_servicio=$request->get('valor_servicio');
       $servicio->estado_servicios=$request->get('estado_servicios');
-      $empleado->update();
+      $servicio->update();
       return back();
+    }
+
+
+    public function servicios(Request $request)
+    {
+        servicios::create([
+
+            
+            'nombre_servicio' => $request->nombre_servicio,
+            'descripcion_servicio' => $request->descripcion_servicio,
+            'valor_servicio' => $request->valor_servicio,
+
+
+        ]);
+
+        return back();
+
     }
 
 

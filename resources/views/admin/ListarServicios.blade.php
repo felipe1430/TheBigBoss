@@ -12,7 +12,7 @@ Lista De Servicios
       <h1 class="display-4">Lista De Servicios
       </h1>
       <hr>
-      <a href="{{route('inicio')}}" type="button" class="btn btn-success">Agregar Servicio</a>
+      <a href="{{route('agregarservicios')}}" type="button" class="btn btn-success">Agregar Servicio</a>
       <hr>
       <section class="content">
             <div class="card">
@@ -66,7 +66,7 @@ Lista De Servicios
          </div>
          <div class="modal-body">
             <div class="card-body">
-                <form method="POST" action="{{route('actualizarempleados')}}">
+                <form method="POST" action="{{route('actualizarservicios')}}">
                   {{method_field('post')}}
       	          	{{csrf_field()}}
                     @csrf
