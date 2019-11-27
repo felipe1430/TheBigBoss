@@ -10,6 +10,9 @@
     
  <!-- Font Awesome -->
  <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/fontawesome-free/css/all.min.css")}}">
+
+ 
+   <script src="{{asset("assets/$theme/js/jqueryCalendar.js")}}"></script> 
  
     <link rel="stylesheet" href="{{asset("assets/$theme/css/open-iconic-bootstrap.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/$theme/css/animate.css")}}">
@@ -29,6 +32,7 @@
     <link rel="stylesheet" href="{{asset("assets/$theme/css/flaticon.css")}}">
     <link rel="stylesheet" href="{{asset("assets/$theme/css/icomoon.css")}}">
     <link rel="stylesheet" href="{{asset("assets/$theme/css/style.css")}}">
+    @yield('style')
   </head>
   <body>
 	<!-- inicio nav -->
@@ -56,7 +60,6 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="{{asset("assets/$theme/js/jquery.min.js")}}"></script>
   <script src="{{asset("assets/$theme/js/jquery-migrate-3.0.1.min.js")}}"></script>
   <script src="{{asset("assets/$theme/js/popper.min.js")}}"></script>
   <script src="{{asset("assets/$theme/js/bootstrap.min.js")}}"></script>
