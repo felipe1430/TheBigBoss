@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
-use App\Http\Controllers\Admin\empleados;
+ use App\empleados;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -32,10 +32,12 @@ class AdminController extends Controller
 
     public function actualizarempleados(Request $request)
     {
-      // dd($request);
-      $empleado=empleados::findOrfail($request->id_empleado);
+    //dd($request->all());
+      $empleado = empleados::findOrfail($request->id_empleado);
       $empleado->id_empleado=$request->get('id_empleado');
       $empleado->nombre_empleado=$request->get('nombre_empleado');
+
+
       $empleado->update();
       return back();
     }
