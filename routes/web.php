@@ -36,7 +36,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth','LoginRutas')->gro
 Route::get('/','AdminController@index');
 Route::get('/ListarEmpleados','AdminController@ListarEmpleados')->name('ListarEmpleados');
 Route::post('/actualizarempleados', 'AdminController@actualizarempleados')->name('actualizarempleados');
-
+Route::get('/ListarServicios','AdminController@ListarServicios')->name('ListarServicios');
+Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
 
 });
 

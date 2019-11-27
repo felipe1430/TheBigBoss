@@ -189,9 +189,9 @@ Lista De Trabajadores
 
                         <div class="col-md-6">
                             <select id="tipo" list="tipo" class="form-control" name="tipo" value="" required >
-                                 @foreach ($tipouser as $tip)
-                                <option value="{{$tip->id_tipo_user}}">{{$tip->descripcion_tipo_user}}</option>                                      
-                                 @endforeach
+                                <option value="1">Administrador</option> 
+                                <option value="2">Barbero</option>
+                                <option value="3">Cliente</option> 
                              </select>
                         </div>
                     </div>

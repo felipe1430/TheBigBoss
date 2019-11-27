@@ -104,9 +104,7 @@
         var comision_empleado = button.data('comision_empleado') 
         var direccion_empleado = button.data('direccion_empleado')
         var estado_empleado = button.data('estado_empleado')
-
-        
-        
+      
         var modal = $(this)
         modal.find('.modal-body #id_empleado').val(id_empleado);
         modal.find('.modal-body #nombre_empleado').val(nombre_empleado);
@@ -118,13 +116,28 @@
         modal.find('.modal-body #direccion_empleado').val(direccion_empleado);
         modal.find('.modal-body #estado_empleado').val(estado_empleado);
 
-
-        
-
-        
         
   })</script>
 <!-- Fin Modal edit empleado -->
+
+<!-- Modal edit servicios -->
+<script> $('#mimodalservicios').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  var id_servicios = button.data('id_servicios')
+  var nombre_servicio = button.data('nombre_servicio') 
+  var descripcion_servicio = button.data('descripcion_servicio') 
+  var valor_servicio = button.data('valor_servicio') 
+  var estado_servicios = button.data('estado_servicios') 
+
+  var modal = $(this)
+  modal.find('.modal-body #id_servicios').val(id_servicios);
+  modal.find('.modal-body #nombre_servicio').val(nombre_servicio);
+  modal.find('.modal-body #descripcion_servicio').val(descripcion_servicio);
+  modal.find('.modal-body #valor_servicio').val(valor_servicio);
+  modal.find('.modal-body #estado_servicios').val(estado_servicios);
+
+})</script>
+<!-- Fin Modal edit servicios -->
 
 
 

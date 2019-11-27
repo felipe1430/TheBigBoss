@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Menu Principal</a>
+        <a href="{{route('home')}}" class="nav-link">Menu Principal</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="" class="nav-link">Información</a>
@@ -125,15 +125,15 @@
                 <ul class="nav nav-treeview">
                 
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('ListarEmpleados')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Control De Usuarios </p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('ListarServicios')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Producto Por Marca</p>
+                      <p>Servicios</p>
                     </a>
                   </li>
                   <li class="nav-item">
