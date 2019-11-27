@@ -12,7 +12,7 @@ Lista De Trabajadores
       <h1 class="display-4">Lista De Trabajadores
       </h1>
       <hr>
-      <a href="{{route('inicio')}}" type="button" class="btn btn-success">Agregar Usuarios</a>
+      <a href="{{route('agregarempleado')}}" type="button" class="btn btn-success">Agregar Usuarios</a>
       <hr>
       <section class="content">
             <div class="card">
@@ -52,7 +52,7 @@ Lista De Trabajadores
                       <td>No Activo</td>
                       @endif
                       <td><a href="" data-toggle="modal" data-target="#mimodal"
-                        data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' class="btn btn-primary btm-sm">Editar</a></td>
+                        data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' data-fk_empleado_tipo_user='{{$item->fk_empleado_tipo_user}}' class="btn btn-primary btm-sm">Editar</a></td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -190,7 +190,7 @@ Lista De Trabajadores
                         <label for="Tipo" class="col-md-4 col-form-label text-md-right">Tipo Usuario</label>
 
                         <div class="col-md-6">
-                            <select id="tipo" list="tipo" class="form-control" name="tipo" value="" required >
+                            <select id="fk_empleado_tipo_user" list="fk_empleado_tipo_user" class="form-control" name="fk_empleado_tipo_user" value="" required >
                                 <option value="1">Administrador</option> 
                                 <option value="2">Barbero</option>
                                 <option value="3">Cliente</option> 

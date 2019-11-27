@@ -7,16 +7,18 @@ Agregar Servicios
 
 @endsection
 @section('contenido')
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('servicios') }}</div>
+                <div class="card-header">{{ __('Servicios') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('servicios') }}">
                         @csrf
-
+                        <!-- nombre servicio -->
                         <div class="form-group row">
                             <label for="nombre_servicio" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Servicio') }}</label>
 
@@ -30,9 +32,9 @@ Agregar Servicios
                                 @enderror
                             </div>
                         </div>
+                        <!-- fin nombre servicio -->
 
-
-
+                        <!-- descripcion servicio -->
                         <div class="form-group row">
                             <label for="descripcion_servicio" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion Servicio') }}</label>
 
@@ -46,13 +48,13 @@ Agregar Servicios
                                 @enderror
                             </div>
                         </div>
-
-
+                        <!-- fin descpripcion servicio -->
+                        <!-- valor servicio -->
                         <div class="form-group row">
                             <label for="valor_servicio" class="col-md-4 col-form-label text-md-right">{{ __('Valor Servicio') }}</label>
 
                             <div class="col-md-6">
-                                <input id="valor_servicio" type="text" class="form-control @error('valor_servicio') is-invalid @enderror" name="valor_servicio" value="{{ old('valor_servicio') }}" required autocomplete="valor_servicio" autofocus>
+                                <input id="valor_servicio" type="number" class="form-control @error('valor_servicio') is-invalid @enderror" name="valor_servicio" value="{{ old('valor_servicio') }}" required autocomplete="valor_servicio" autofocus>
 
                                 @error('valor_servicio')
                                     <span class="invalid-feedback" role="alert">
@@ -62,19 +64,13 @@ Agregar Servicios
                             </div>
                         </div>
 
-
+                        <!-- fin valor servicio -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Agregar') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>

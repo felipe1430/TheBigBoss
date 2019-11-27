@@ -16,19 +16,48 @@ class AdminController extends Controller
       return view('admin.index');
   }  
 
+  //----------------------------------- CRUD EMPLEADOS ----------------------------------------//
+
     public function ListarEmpleados(Request $request)
     {
       
       $empleados=DB::table('empleados')
-      ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.id_empleado')
+      ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.fk_empleado_tipo_user')
       ->get();
 
-      $tipouser=DB::table('tipo_user')
-      ->get();
-     
       
     
-      return view('Admin.ListarEmpleados',compact('empleados','tipouser'));
+      return view('Admin.ListarEmpleados',compact('empleados'));
+    }
+
+    public function agregarempleado()
+    {
+      
+      return view('Admin.AgregarEmpleados');
+    }
+
+    public function empleados(Request $request)
+    {
+
+      empleados::create([
+
+            
+            'nombre_empleado' => $request->nombre_empleado,
+            'apellido_empleado' => $request->apellido_empleado,
+            'rut_empleado' => $request->rut_empleado,
+            'correo_empleado' => $request->correo_empleado,
+            'telefono_empleado' => $request->telefono_empleado,
+            'comision_empleado' => $request->comision_empleado,
+            'direccion_empleado' => $request->direccion_empleado,
+            'fk_empleado_tipo_user' => $request->tipo,
+
+        ]);
+        $empleados=DB::table('empleados')
+      ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.fk_empleado_tipo_user')
+      ->get();
+
+        return view('Admin.ListarEmpleados',compact('empleados'));
+
     }
 
     public function actualizarempleados(Request $request)
@@ -43,13 +72,16 @@ class AdminController extends Controller
       $empleado->telefono_empleado=$request->get('telefono');
       $empleado->comision_empleado=$request->get('comision');
       $empleado->direccion_empleado=$request->get('Direccion');
+      $empleado->fk_empleado_tipo_user=$request->get('fk_empleado_tipo_user');
       $empleado->estado_empleado=$request->get('Estado');
       $empleado->update();
       return back();
     }
 
+//----------------------------------- FIN CRUD EMPLEADOS ------------------------------------//
 
 
+//----------------------------------- CRUD SERVICIOS ----------------------------------------//
     public function ListarServicios(Request $request)
     {
       
@@ -91,9 +123,13 @@ class AdminController extends Controller
 
         ]);
 
-        return back();
+        $Servicio=DB::table('servicios')->get();
+
+        return view('Admin.ListarServicios',compact('Servicio'));
 
     }
+
+    //----------------------------------- FIN CRUD SERVICIOS ----------------------------------------//
 
 
     

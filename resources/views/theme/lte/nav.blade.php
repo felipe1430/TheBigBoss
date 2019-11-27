@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('home')}}" class="nav-link">Menu Principal</a>
+        <a href="{{route('indexadmin')}}" class="nav-link">Menu Principal</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="" class="nav-link">Información</a>
@@ -88,11 +88,11 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="{{asset("assets/$theme2/dist/img/AdminLTELogo.png")}}"
+      <img src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Bluemix</span>
+      <span class="brand-text font-weight-light">The Big BOSS</span>
     </a>
 
     <!-- Sidebar -->
@@ -118,7 +118,7 @@
                 <a href="" class="nav-link">
                   <i class="nav-icon fas fa-user-lock"></i>
                   <p>
-                    Administrador
+                    Administracion
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -127,7 +127,7 @@
                   <li class="nav-item">
                     <a href="{{route('ListarEmpleados')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Control De Usuarios </p>
+                      <p>Control De Trabajadores </p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -136,70 +136,7 @@
                       <p>Servicios</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Ordenes De Compra</p>
-                    </a>
-                  </li>
-                 
-                   <li class="nav-item">
-                   <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-chart-pie"></i>
-                      <p>Ingresos Por Año
-                      </p>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                       <p>Desviacion
-                       </p>
-                     </a>
-                   </li>
-
-                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                       <p>Productos
-                       </p>
-                     </a>
-                   </li>
-
-                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                       <p>Cargar Orden De Compra</p>
-                    </a>
-                   </li>
-
-                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                       <p>Venta Productos
-                       
-                       </p>
-                     </a>
-                   </li>
-                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                       <p>Compra Productos
-                       
-                       </p>
-                     </a>
-                   </li>
-
-                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                       <p>Ventas Por Hora
-                       
-                       </p>
-                     </a>
-                   </li>
-                  
+    
                 </ul>
               </li>
       
@@ -207,7 +144,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Publico
+                Reportes
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
@@ -231,7 +168,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-search-dollar"></i>
               <p>
-                Sala
+                Ventas
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -273,42 +210,6 @@
               </li>
               <li class="nav-item">
                 <a href="../UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consulta</p>
                 </a>

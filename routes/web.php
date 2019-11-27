@@ -33,13 +33,16 @@ Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCli
 //-----------------------------------RUTAS ADMINISTRADOR----------------------------------------//
 Route::prefix('admin')->namespace('Admin')->middleware('auth','LoginRutas')->group(function(){
 
+Route::get('/','AdminController@index')->name('indexadmin');
 
-Route::get('/','AdminController@index');
+
 Route::get('/ListarEmpleados','AdminController@ListarEmpleados')->name('ListarEmpleados');
+Route::post('/ListarEmpleados','AdminController@empleados')->name('empleados');
+Route::get('/agregarempleado','AdminController@agregarempleado')->name('agregarempleado');
 Route::post('/actualizarempleados', 'AdminController@actualizarempleados')->name('actualizarempleados');
-Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');
-Route::post('/servicios','AdminController@servicios')->name('servicios');
 Route::get('/ListarServicios','AdminController@ListarServicios')->name('ListarServicios');
+Route::post('/ListarServicios','AdminController@servicios')->name('servicios');
+Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');
 Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
 
 });

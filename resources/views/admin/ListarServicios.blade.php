@@ -23,10 +23,10 @@ Lista De Servicios
                     <tr>
                       <th scope="col">id</th>
                       <th scope="col">Nombre</th>
-                      <th scope="col">Comision</th>
-                      <th scope="col">Tipo</th>
+                      <th scope="col">Descripcion</th>
+                      <th scope="col">Valor</th>
                       <th scope="col">Estado</th>
-                      <th scope="col">Acciones</th>
+                      <th scope="col">Aciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -35,7 +35,7 @@ Lista De Servicios
                       <th scope="row">{{$item->id_servicios}}</th>
                       <td>{{$item->nombre_servicio}}</td>
                       <td>{{$item->descripcion_servicio}}</td>
-                      <td>{{$item->valor_servicio}}</td>
+                      <td style="text-align:center">{{number_format($item->valor_servicio,0,',','.')}}</td>
                       @if ($item->estado_servicios =='1')
                       <td>Activo</td>
                       @else
@@ -106,7 +106,7 @@ Lista De Servicios
                             <label for="valor_servicio" class="col-md-4 col-form-label text-md-right">{{ __('valor') }}</label>
     
                             <div class="col-md-6">
-                                <input id="valor_servicio" type="text" class="form-control @error('Valor') is-invalid @enderror" name="valor_servicio" value="{{ old('valor_servicio') }}" required autocomplete="valor_servicio" autofocus>
+                                <input id="valor_servicio" type="number" class="form-control @error('Valor') is-invalid @enderror" name="valor_servicio" value="{{ old('valor_servicio') }}" required autocomplete="valor_servicio" autofocus>
     
                                 @error('valor_servicio')
                                     <span class="invalid-feedback" role="alert">
