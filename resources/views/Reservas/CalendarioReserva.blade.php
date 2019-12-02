@@ -29,15 +29,25 @@
         box-sizing: border-box;
         transition: all 500ms ease;
         }
+
+       .scroll{ 
+                height: 700px;
+                border: 1px solid #ddd;
+                overflow-y: scroll;
+       }
+       tr > td > span{
+        color: black;
+       }
+
         </style>
 
 <link rel="stylesheet" href="{{asset("assets/$theme/css/style2.css")}}">
 @endsection
 
 @section('contenido')
-<div class="container">
-        
 
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <a href="" class="btn btn-success">Agregar evento </a>
@@ -49,14 +59,14 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-8 ">
-            <div class="panel panel-default">
+        <div class="col-md-6  ">
+            <div class="panel panel-default scroll" >
 
                 <div class="panel-heading" >
                     full calendar
 
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" >
                     {!!$calendar->calendar() !!}
                     {!!$calendar->script() !!}
                 </div>
@@ -64,25 +74,110 @@
             </div>
 
         </div> 
-        <div class="col-md-4">
-            <div class="container">
-        <form action="" method="POST" class="form-group">
-            @csrf
-                <label for="">Nombre Del Evento</label>
-                <input type="text" name="title" class="form-control" placeholder="Nombre..." >
-                <label for="">color</label>
-                <input type="color" name="color" class="form-control" placeholder="Selecciona un color ">
-                <label for="">Fecha comienso</label>
-                <input type="datetime-local" name="start_date" class="date form-control">
-                <label for="">Fecha Fin</label>
-                <input type="datetime-local" class="date form-control" name="end_date">
-                <br>
-                <input type="submit" class="btn btn-success">
-            </form>
-        </div>   
+        <div class="col-md-6 " >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                            <h3>Rerserva Tus Servicios</h3>
+                              <form action="{{route('addEvento')}}" method="POST" class="form-group">
+                                @csrf
+                                <label style="font-size: 10px" for="">Escriba su nombre</label>
+                                <input type="text" name="nameUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->name}}">
+                                <input type="hidden" name="idUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->id}}">
+                                <input type="hidden" name="idBarbero" class="form-control" placeholder="Nombre..."  value="{{$barberos->id_empleado}}">
+                                <label for="">Fecha comienso</label>
+                                <input type="datetime-local" name="start_date" class="date form-control">
+                                <label for="">Fecha Fin</label>
+                                <input type="datetime-local" class="date form-control" name="end_date">
+                                <br>
+                                <input type="submit" class="btn btn-primary">
+                            </form>
+                    </div>
+                    <div class="col-md-6">
+                            
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-md-6">
+                            <h3>Elige Tus Servicios</h3>
+                            <ul class="list-group">
+                                @foreach ($servicios as $item)
+                                <li class="list-group-item d-flex justify-content-between align-items-center form-control" >
+                                    {{$item->nombre_servicio.' $'.$item->valor_servicio}}
+                                    <span>
+                                    <button value="{{$item->id_servicios}}" class="btn btn-success add" ><i class="fas fa-check"></i></button>
+                                    {{-- <button class="btn btn-danger"> <i class="fas fa-times"></i></button> --}}
+                                    </span>
+                                </li>
+                            <template id="{{$item->id_servicios}}">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center form-control" >
+                                                {{$item->nombre_servicio.' $'.$item->valor_servicio}}
+                                                <span>
+                                                {{-- <button class="btn btn-success" ><i class="fas fa-check"></i></button> --}}
+                                                <button class="btn btn-danger"> <i class="fas fa-times"></i></button>
+                                                </span>
+                                        </li>
+                                </template>
+                                
+                              
+                                @endforeach
+                                
+                            </ul>
+                           
+                           
+                     </div>
+                     <div class="col-md-6">
+                            <h3>Servicios add</h3>
+                            <ul class="list-group" id="EventosSeleccionados">
+
+                            </ul>
+                           
+                     </div>
+                </div>
+                      
+            </div>   
     </div>
     </div>  
      
-
 </div>
+</section>
 @endsection
+
+@section('script')
+
+<script>
+
+    var id=1;
+     $(".add").click(function(){
+
+        id= $(this).val();
+
+      //  alert(id);
+
+    
+     
+    });
+
+
+    $(function(){
+      
+        $('.add').on('click',AddServicio)
+
+    });
+
+   
+
+    function AddServicio(){
+
+        var servicio = $('#'+id).html();
+        $('#EventosSeleccionados').append(servicio);
+
+    }
+
+
+</script>
+
+
+
+@endsection
+

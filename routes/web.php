@@ -25,8 +25,9 @@ Route::get('/prueba1','Publico\PublicoController@index');
 //-----------------------------------RUTAS PUBLICAS----------------------------------------//
 Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCliente')->group(function(){
 
-    Route::get('/','PublicoReservas@index')->name('ReservasCliente');
-    Route::get('/CalendarioReservas{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
+    Route::get('/CalendarioReservas','PublicoReservas@index')->name('ReservasCliente');
+    Route::get('/CalendarioReservas/{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
+    Route::post('/CalendarioReservas','PublicoReservas@crearEvento')->name('addEvento');
 
 });
 
