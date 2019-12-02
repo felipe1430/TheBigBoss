@@ -13,8 +13,7 @@
       
     </ul>
 
-   
-
+  
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -174,9 +173,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('ventas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cambio de Precios</p>
+                  <p>Post</p>
                 </a>
               </li>
               <li class="nav-item">

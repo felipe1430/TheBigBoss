@@ -132,5 +132,28 @@ class AdminController extends Controller
     //----------------------------------- FIN CRUD SERVICIOS ----------------------------------------//
 
 
+    public function ventas(Request $request)
+    {
+
+      $Servicio=DB::table('servicios')->get();
+
+      $empleado=DB::table('empleados')->get();
+      
+    
+      return view('Admin.ventas',compact('Servicio','empleado'));
+
+    }
+
+
+    public function enviarpago(Request $request)
+    {
+
+      dd($request);
+
+    }
+
+
+    
+
     
 }

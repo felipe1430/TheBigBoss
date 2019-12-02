@@ -44,6 +44,9 @@ Route::get('/ListarServicios','AdminController@ListarServicios')->name('ListarSe
 Route::post('/ListarServicios','AdminController@servicios')->name('servicios');
 Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');
 Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
+Route::get('/ventas','AdminController@ventas')->name('ventas');
+Route::post('/enviarpago','AdminController@enviarpago')->name('enviarpago');
+
 
 });
 

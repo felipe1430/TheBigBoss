@@ -142,6 +142,19 @@
 <!-- Fin Modal edit servicios -->
 
 
+<script> $('#mimodalventa').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id_servicios = button.data('id_servicios')
+    var nombre_servicio = button.data('nombre_servicio') 
+
+  
+    var modal = $(this)
+    modal.find('.modal-body #id_servicios').val(id_servicios);
+    modal.find('.modal-body #nombre_servicio').val(nombre_servicio);
+
+  
+  })</script>
+
 
 
 @yield('script')
