@@ -114,7 +114,7 @@
                                                 {{$item->nombre_servicio.' $'.$item->valor_servicio}}
                                                 <span>
                                                 {{-- <button class="btn btn-success" ><i class="fas fa-check"></i></button> --}}
-                                                <button class="btn btn-danger"> <i class="fas fa-times"></i></button>
+                                                <button class="btn btn-danger remove"> <i class="fas fa-times"></i></button>
                                                 </span>
                                         </li>
                                 </template>
@@ -161,11 +161,16 @@
 
     $(function(){
       
-        $('.add').on('click',AddServicio)
+        $('.add').on('click',AddServicio);
+        $(document).on('click','.remove',RemoveElement);
 
     });
 
-   
+   function RemoveElement(){
+
+       $(this).offsetParent().remove();
+
+   }
 
     function AddServicio(){
 
