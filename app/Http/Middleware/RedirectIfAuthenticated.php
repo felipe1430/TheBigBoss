@@ -28,7 +28,7 @@ class RedirectIfAuthenticated
                 return redirect('/barberos');
 
             }elseif(Auth::user()->fk_tipo_user==3){
-                return redirect('/Reservas');
+                return redirect('/Reservas/CalendarioReservas');
 
             }else{
                 return redirect('/');
