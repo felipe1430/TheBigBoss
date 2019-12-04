@@ -14,6 +14,7 @@ Route::get('/blog','Publico\PublicoController@blog')->name('blog');
 Route::get('/about','Publico\PublicoController@about')->name('about');
 Route::get('/blogsimple','Publico\PublicoController@blogsimple')->name('blogsimple');
 Route::get('/prueba1','Publico\PublicoController@index');
+Route::get('/se','Publico\PublicoController@se');
 
 
 
@@ -46,6 +47,7 @@ Route::post('/ListarServicios','AdminController@servicios')->name('servicios');
 Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');
 Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
 Route::get('/ventas','AdminController@ventas')->name('ventas');
+Route::get('/Reservas','AdminController@Reservas')->name('Reservas');
 Route::post('/enviarpago','AdminController@enviarpago')->name('enviarpago');
 
 

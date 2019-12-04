@@ -179,9 +179,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/flot.html" class="nav-link">
+                <a href="{{route('Reservas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
+                  <p>Reservas</p>
                 </a>
               </li>
               <li class="nav-item">

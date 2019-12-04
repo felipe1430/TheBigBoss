@@ -135,9 +135,13 @@ class AdminController extends Controller
     public function ventas(Request $request)
     {
 
-      $Servicio=DB::table('servicios')->get();
+      $Servicio=DB::table('servicios')->get()
+      ->where('estado_servicios',1);
 
-      $empleado=DB::table('empleados')->get();
+      // ->orderBy('desv', 'desc')
+
+      $empleado=DB::table('empleados')->get()
+      ->where('estado_empleado',1);
       
     
       return view('Admin.ventas',compact('Servicio','empleado'));
@@ -149,6 +153,18 @@ class AdminController extends Controller
     {
 
       dd($request);
+
+    }
+
+
+    public function Reservas(Request $request)
+    {
+
+      $Reserva=DB::table('reservas')
+      ->orderBy('id_reserva', 'desc')->get();
+      
+    
+      return view('Admin.Reservas',compact('Reserva'));
 
     }
 

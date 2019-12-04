@@ -14,6 +14,13 @@ class PublicoController extends Controller
 
     }
 
+    public function se()
+    {
+
+    return view('seguridad.se');
+
+    }
+
     public function servicios()
     {
 
