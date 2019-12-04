@@ -53,6 +53,9 @@ class PublicoReservas extends Controller
 
     public function crearEvento(Request $request){
        //dd( $request->all());
+       if ($request->ajax()) {
+           
+           dd($request->all());
 
         $reserva = new reservas;
         $reserva->title = $request->nameUser;
@@ -65,6 +68,8 @@ class PublicoReservas extends Controller
         $reserva->estado_reserva = 1;
         $reserva->save();
 
+        
+       }
 
     }
 }

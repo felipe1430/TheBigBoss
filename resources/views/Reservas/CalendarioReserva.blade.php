@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css"/>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/lang/es.js"></script>
+  
     <style type="text/css">
         .fc-title {
           color: white;
@@ -40,6 +41,7 @@
        }
 
         </style>
+
 
 <link rel="stylesheet" href="{{asset("assets/$theme/css/style2.css")}}">
 @endsection
@@ -79,42 +81,51 @@
                 <div class="row">
                     <div class="col-md-6">
                             <h3>Rerserva Tus Servicios</h3>
-                              <form action="{{route('addEvento')}}" method="POST" class="form-group">
+                            <form action="{{route('addEvento')}}" method="POST" id="form1" >
                                 @csrf
                                 <label style="font-size: 10px" for="">Escriba su nombre</label>
                                 <input type="text" name="nameUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->name}}">
                                 <input type="hidden" name="idUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->id}}">
                                 <input type="hidden" name="idBarbero" class="form-control" placeholder="Nombre..."  value="{{$barberos->id_empleado}}">
                                 <label for="">Fecha comienso</label>
-                                <input type="datetime-local" name="start_date" class="date form-control">
+                                <input type="datetime-local" name="start_date" class="date form-control" required>
                                 <label for="">Fecha Fin</label>
-                                <input type="datetime-local" class="date form-control" name="end_date">
+                                <input type="datetime-local" class="date form-control" name="end_date" required>
                                 <br>
-                                <input type="submit" class="btn btn-primary">
-                            </form>
+                                {{-- <input type="submit" class="btn btn-primary"> --}}
+                            </form> 
+                              
                     </div>
                     <div class="col-md-6">
+                            <div id="notificacion" class="alert alert-success alert-dismissable "  role="alert">
+                                    Reserva Realizada Con Exito!!
+                            </div>      
+
+                            
+                            
+                               
                             
                     </div>
+              
                 </div>
                 <div class="row">
                      <div class="col-md-6">
                             <h3>Elige Tus Servicios</h3>
-                            <ul class="list-group">
+                            <ul class="list-group" id="serviciosOriginales">
                                 @foreach ($servicios as $item)
                                 <li class="list-group-item d-flex justify-content-between align-items-center form-control" >
                                     {{$item->nombre_servicio.' $'.$item->valor_servicio}}
                                     <span>
-                                    <button value="{{$item->id_servicios}}" class="btn btn-success add" ><i class="fas fa-check"></i></button>
+                                    <button value="{{$item->id_servicios}}" class="btn btn-success add remove2click{{$item->id_servicios}}" ><i class="fas fa-check"></i></button>
                                     {{-- <button class="btn btn-danger"> <i class="fas fa-times"></i></button> --}}
                                     </span>
                                 </li>
                             <template id="{{$item->id_servicios}}">
                                         <li class="list-group-item d-flex justify-content-between align-items-center form-control" >
-                                                {{$item->nombre_servicio.' $'.$item->valor_servicio}}
+                                        <input value="{{$item->nombre_servicio.' $'.$item->valor_servicio}}" class="servicio{{$item->id_servicios}}" name="servicio{{$item->id_servicios}}" type="text" >
                                                 <span>
                                                 {{-- <button class="btn btn-success" ><i class="fas fa-check"></i></button> --}}
-                                                <button class="btn btn-danger remove"> <i class="fas fa-times"></i></button>
+                                                <button value="{{$item->id_servicios}}" class="btn btn-danger remove abilitar"> <i class="fas fa-times"></i></button>
                                                 </span>
                                         </li>
                                 </template>
@@ -123,15 +134,19 @@
                                 @endforeach
                                 
                             </ul>
-                           
-                           
+                            <br>
+                        
+                            <button value="1" class="btn btn-success" onclick="getFormData();" >Enviar</button>
                      </div>
+                     
                      <div class="col-md-6">
                             <h3>Servicios add</h3>
+                            <form action="{{route('addEvento')}}" method="POST" id="form2">
+                             @csrf
                             <ul class="list-group" id="EventosSeleccionados">
 
                             </ul>
-                           
+                           </form>
                      </div>
                 </div>
                       
@@ -146,17 +161,21 @@
 @section('script')
 
 <script>
-
+   $('#notificacion').fadeOut();
     var id=1;
-     $(".add").click(function(){
-
-        id= $(this).val();
-
-      //  alert(id);
-
     
-     
+  
+
+/*capturar id del template para argar el servicio*/
+     $(".add").click(function(e){
+        e.preventDefault();
+        id= $(this).val();
+       
+
+      // alert(id);   
     });
+
+
 
 
     $(function(){
@@ -165,17 +184,44 @@
         $(document).on('click','.remove',RemoveElement);
 
     });
+/*              Enviar Informacion al controlador     */
+    function getFormData(){
+        console.log( $(this).val);
+        var config = {};
+            $('input').each(function () {
+                 config[this.name] = this.value;
+                // console.log(config[this.name]+' '+this.value);
+                 console.log(config);
+            });
+              // AJAX
+              $.ajax({
+                type: "POST",
+                url: "{{ url('Reservas/CalendarioReservas') }}",
+                data: config,
+                success: function(data) {
+                      
+                    //console.log(config);
+                    $('#notificacion').fadeIn(); // mostrar notificacion
+                    setTimeout(function(){ $('#notificacion').fadeOut(); }, 1000); // ocultar mensaje 1s
 
+                }
+            });        
+    }
+
+    /*Eliminar Servicios*/
    function RemoveElement(){
-
+    var idAbili=  $(this).val();
        $(this).offsetParent().remove();
-
+       $('.remove2click'+idAbili).fadeIn();
    }
-
+/*Agregar servicios*/
     function AddServicio(){
 
         var servicio = $('#'+id).html();
+        //console.log(servicio);
+    
         $('#EventosSeleccionados').append(servicio);
+        $('.remove2click'+id).fadeOut();
 
     }
 
