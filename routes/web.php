@@ -8,13 +8,12 @@ Route::post('register', 'Auth\RegisterController@register');
 //------------------------Rutas Publicas------------------------------------//
 
 Route::get('/','Publico\PublicoController@index')->name('inicio');
-Route::get('/servicios','Publico\PublicoController@servicios')->name('servicios');
+Route::get('/servicios','Publico\PublicoController@servicios')->name('serviciosweb');
 Route::get('/galeria','Publico\PublicoController@galeria')->name('galeria');
 Route::get('/blog','Publico\PublicoController@blog')->name('blog');
 Route::get('/about','Publico\PublicoController@about')->name('about');
 Route::get('/blogsimple','Publico\PublicoController@blogsimple')->name('blogsimple');
 Route::get('/prueba1','Publico\PublicoController@index');
-Route::get('/se','Publico\PublicoController@se');
 
 
 
@@ -46,9 +45,17 @@ Route::get('/ListarServicios','AdminController@ListarServicios')->name('ListarSe
 Route::post('/ListarServicios','AdminController@servicios')->name('servicios');
 Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');
 Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
+Route::get('/ListarUsuarios','AdminController@ListarUsuarios')->name('ListarUsuarios');
+Route::post('/actualizarusuarios', 'AdminController@actualizarusuarios')->name('actualizarusuarios');
 Route::get('/ventas','AdminController@ventas')->name('ventas');
 Route::get('/Reservas','AdminController@Reservas')->name('Reservas');
 Route::post('/enviarpago','AdminController@enviarpago')->name('enviarpago');
+Route::get('/reporteventas','AdminController@reporteventas')->name('reporteventas');
+Route::post('/reporteventas','AdminController@filtrarventas')->name('filtrarventas');
+Route::get('/reporteservicios','AdminController@reporteservicios')->name('reporteservicios');
+Route::post('/reporteservicios','AdminController@filtrarservicios')->name('filtrarservicios');
+Route::get('/reportecomosiones','AdminController@reportecomosiones')->name('reportecomosiones');
+Route::post('/reportecomosiones','AdminController@filtrarcomisiones')->name('filtrarcomisiones');
 
 
 });

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use App\empleados;
+use App\User;
 use App\servicios;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,7 +15,21 @@ class AdminController extends Controller
     
 
   public function index(){
-      return view('admin.index');
+
+        $date = Carbon::now();
+        $date = $date->format('d-m-Y');
+
+        $compras=DB::table('ventas')
+        ->count('id_ventas');
+
+        $registros=DB::table('users')
+        ->count('id');
+        
+
+
+      return view('admin.index',compact('date','compras','registros'));
+
+
   }  
 
   //----------------------------------- CRUD EMPLEADOS ----------------------------------------//
@@ -129,7 +145,36 @@ class AdminController extends Controller
 
     }
 
-    //----------------------------------- FIN CRUD SERVICIOS ----------------------------------------//
+    //-----------------------------------  CRUD Usuarios ----------------------------------------//
+
+
+    public function ListarUsuarios(Request $request)
+    {
+      
+      $usuarios=DB::table('users')->get();
+
+    
+      return view('Admin.ListarUsuarios',compact('usuarios'));
+    }
+
+
+    public function actualizarusuarios(Request $request)
+    {
+
+      $usuario = User::findOrfail($request->id);
+      $usuario->id=$request->get('id');
+      $usuario->name=$request->get('name');
+      $usuario->surname=$request->get('surname');
+      $usuario->rut=$request->get('rut');
+      $usuario->email=$request->get('email');
+      $usuario->fecha_nacimiento=$request->get('fecha_nacimiento');
+      $usuario->telefono=$request->get('telefono');
+      $usuario->update();
+      return back();
+    }
+
+
+    //----------------------------------- CRUD Usuarios ----------------------------------------//
 
 
     public function ventas(Request $request)
@@ -152,8 +197,60 @@ class AdminController extends Controller
     public function enviarpago(Request $request)
     {
 
-      dd($request);
+      
 
+       $cantidad=$request->cantidad;
+       $servicios=$request->servicios;
+
+       
+        $pago = DB::table('servicios')
+        ->wherein('id_servicios',$request->servicios)
+        ->get();
+
+      
+       $serv=count($servicios);
+       $serv = $serv-1;
+
+       //  dd($serv);
+       DB::table('tabla_paso')->delete();
+
+
+       for ($i = 0; $i <= $serv; $i++){
+
+
+        DB::table('tabla_paso')->insert([
+          'id_servicio_paso' => $pago[$i]->id_servicios,
+          'nombre_servicio_paso'=>$pago[$i]->nombre_servicio,
+          'valor_servicio_paso'=>$pago[$i]->valor_servicio,
+          'cantidad_servicio_paso'=>$cantidad[$i],
+          'total_paso'=>$pago[$i]->valor_servicio*$cantidad[$i],
+          'id_trabajador_paso'=>$request->trabajador
+          
+
+          ]);
+
+          
+       }
+
+       $Serviciopaso=DB::table('tabla_paso')->get();
+
+
+        $empleado=$Serviciopaso[0]->id_trabajador_paso;
+
+        $trabajador=DB::table('empleados')
+        ->where('id_empleado',$empleado)
+        ->get();
+
+         $date = Carbon::now();
+
+
+        
+
+
+       return view('Admin.confirmarpago',compact('Serviciopaso','trabajador','date'));
+
+       
+        
     }
 
 
@@ -166,6 +263,72 @@ class AdminController extends Controller
     
       return view('Admin.Reservas',compact('Reserva'));
 
+    }
+
+
+    public function reporteventas (){
+      
+      return view('Admin.ReportesVentas');
+    }
+    
+    
+    
+    public function filtrarventas (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $porcentaje=DB::table('reporte_ventas')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->get();
+  
+
+
+      return view('Admin.ReportesVentas',compact('porcentaje','fecha1','fecha2'));
+    }
+
+
+
+
+    public function reportecomosiones (){
+      
+      return view('Admin.Reportescomisiones');
+    }
+    
+    
+    
+    public function filtrarcomisiones (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $porcentaje=DB::table('reporte_comisiones')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->get();
+  
+
+
+      return view('Admin.Reportescomisiones',compact('porcentaje','fecha1','fecha2'));
+    }
+
+
+
+    public function reporteservicios (){
+      
+      return view('Admin.ReporteServicios');
+    }
+    
+    
+    
+    public function filtrarservicios (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $porcentaje=DB::table('reporte_servicios')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->get();
+  
+
+
+      return view('Admin.ReporteServicios',compact('porcentaje','fecha1','fecha2'));
     }
 
 

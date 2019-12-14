@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'rut' =>'19.796.665-3',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'fk_tipo_user' => 3,
         ]);
     }
 }

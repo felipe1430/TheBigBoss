@@ -10,7 +10,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="" class="nav-link">Información</a>
       </li>
-      
     </ul>
 
   
@@ -22,31 +21,6 @@
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">0</span>
         </a>
-        {{-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <!-- Message Start -->      
-            @foreach ($mensaje as $item)
-          <a href="" class="dropdown-item" data-toggle="modal" data-target="#mimodalejemplo5"  data-id='{{$item->id}}' data-estado='{{$item->estado}}' data-created_at='{{$item->created_at}}' data-name='{{$item->name}}' data-body='{{$item->body}}'>    
-            <div class="media">
-              <img src="{{asset("assets/$theme2/dist/img/images.png")}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                    {{$item->name}}
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">
-                    {{$item->body}}</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 
-                  Fecha: {{$item->created_at}}</p>
-              </div>
-            </div>
-            @endforeach
-            <!-- Message End -->
-            @endif
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">
-            Ver todos los mensajes</a>
-        </div> --}}
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -86,7 +60,7 @@
   </nav>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="{{route('indexadmin')}}" class="brand-link">
       <img src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -102,16 +76,15 @@
           <img src="{{asset("assets/$theme2/dist/img/user2-160x160.png")}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"> hola, </a>
+          <a href="#" class="d-block"> hola, {{session()->get('nombre')}}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library
-              Agregar items de administrador -->
+
+              <!--Agregar items de administrador -->
            
                <li class="nav-item has-treeview">
                 <a href="" class="nav-link">
@@ -122,6 +95,13 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  
+                    <li class="nav-item">
+                        <a href="{{route('ListarServicios')}}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Servicios</p>
+                        </a>
+                      </li>
                 
                   <li class="nav-item">
                     <a href="{{route('ListarEmpleados')}}" class="nav-link">
@@ -130,22 +110,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('ListarServicios')}}" class="nav-link">
+                    <a href="{{route('ListarUsuarios')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Servicios</p>
+                      <p>Control De Usuarios </p>
                     </a>
                   </li>
+                  
     
                 </ul>
               </li>
       
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-users"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book-open"></i>
               <p>
                 Reportes
                 <i class="fas fa-angle-left right"></i>
-                
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -156,11 +136,23 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('reporteventas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Productos Negativos</p>
+                  <p>Reportes Ventas</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('reportecomosiones')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Reportes Comisiones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a href="{{route('reporteservicios')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reportes servicios</p>
+                  </a>
+                </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -175,7 +167,7 @@
               <li class="nav-item">
                 <a href="{{route('ventas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Post</p>
+                  <p>Post De Venta</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -217,37 +209,5 @@
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
-  <div class="modal fade" id="mimodalejemplo5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-              <form method="POST" action="#">
-                    @csrf
-          <div class="modal-body">
-              <div class="card-body">
-                  <h3>Envía</h3>
-                  <input type="text" disabled name="name" id="name">
-                </div>
-             <div class="card-body">
-                <h6>Mensaje</h6>
-               <textarea name="body" id="body" disabled cols="57" rows="5"></textarea>
-             </div>
-             <div class="card-body">
-               <h6>Fecha</h6>
-                <input type="text" disabled name="created_at" id="created_at">
-              </div>
-                  <input type="hidden" name='estado' id='estado'>     
-                    <input type="hidden" name='id' id='id'>     
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-warning">Eliminar Mensaje</button>
-            <button type="button" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
-         </div>
-        </form>
-        </div>
-      </div>
-    </div>
-     <!-- FIN Modal -->
