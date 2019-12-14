@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> @yield('titulo','Reportes Bluemix')</title>
+    <title> @yield('titulo','Gestiones The Big Boss')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/toastr/toastr.min.css")}}">
@@ -141,6 +141,28 @@
 })</script>
 <!-- Fin Modal edit servicios -->
 
+<!-- Modal edit Usuarios -->
+<script> $('#mimodalusuarios').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('id')
+    var name = button.data('name') 
+    var surname = button.data('surname') 
+    var rut = button.data('rut') 
+    var email = button.data('email') 
+    var fecha_nacimiento = button.data('fecha_nacimiento') 
+    var telefono = button.data('telefono') 
+  
+    var modal = $(this)
+    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #name').val(name);
+    modal.find('.modal-body #surname').val(surname);
+    modal.find('.modal-body #rut').val(rut);
+    modal.find('.modal-body #email').val(email);
+    modal.find('.modal-body #fecha_nacimiento').val(fecha_nacimiento);
+    modal.find('.modal-body #telefono').val(telefono);
+  
+  })</script>
+  <!-- Fin Modal edit Usuarios -->
 
 <script> $('#mimodalventa').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 

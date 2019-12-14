@@ -15,34 +15,35 @@
       <div class="row justify-content-center">
         <div class="col-md-10 ftco-animate">
           <form  method="POST" action="{{route('enviarpago')}}"class="appointment-form" >
+            @csrf
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="appointment_name" placeholder="Nombre Cliente">
+                  <input type="text" class="form-control" id="appointment_name" name="nombrecliente" id="nombrecliente" placeholder="Nombre Cliente">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="appointment_email" placeholder="Fecha Reserva">
+                  <input type="text" class="form-control" id="appointment_email" name="fechareserva" id="fechareserva" placeholder="Fecha Reserva">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control appointment_date" placeholder="Apellido Cliente">
+                  <input type="text" class="form-control appointment_date" name="apellidocliente" id="apellidocliente" placeholder="Apellido Cliente">
                 </div>    
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control appointment_time" placeholder="Hora Inicio">
+                  <input type="text" class="form-control appointment_time" name="horainicio" id="horainicio" placeholder="Hora Inicio">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <div class="select-wrap">
-                    <select name="" id="" class="form-control">
+                    <select name="trabajador" id="trabajador" required class="form-control">
                         <option value="">Trabajador</option>
                         @foreach($empleado as $itemEmpleado)
-                      <option value="{{$itemEmpleado->id_empleado}}">{{$itemEmpleado->nombre_empleado}} {{$itemEmpleado->apellido_empleado}}</option>
+                      <option  value="{{$itemEmpleado->id_empleado}}">{{$itemEmpleado->nombre_empleado}} {{$itemEmpleado->apellido_empleado}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -50,16 +51,18 @@
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="phone" placeholder="Hora Termino">
+                  <input type="text" class="form-control" id="phone" name="horatermino" id="horatermino" placeholder="Hora Termino">
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-12">
                 <div class="form-group">
                       <table id="users" class="table table-sm table-hover">
                           <thead>
-                            <tr>
+                            <tr class="table-primary">
                               <th scope="col">Nombre</th>
                               <th scope="col">valor</th>
+                              <th scope="col">Cantidad</th>
+                              <th scope="col"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -67,16 +70,18 @@
                             <tr>
                               <td>{{$itemServicio->nombre_servicio}}</td>
                               <td>${{number_format($itemServicio->valor_servicio,0,',','.')}}</td>
-                              <td><input type="checkbox"></td>
+                              <td><input type="number" name="cantidad[]" id="cantidad" value=""  style="width : 36px; heigth : 36px"></td>
+                              <td><input type="checkbox" name="servicios[]" id="servicios" value="{{$itemServicio->id_servicios}}" ></td>
                             </tr>
                             @endforeach
                           </tbody>
                         </table>
                 </div>
+                
               </div>
             </div>
             <div class="form-group">
-               <a href="" data-toggle="modal" data-target="#mimodalventa" class="btn btn-primary btm-sm" >PAGAR</a>
+                <button type="submit" class="btn btn-primary">Pagar</button>
             </div>
           </form>
         </div>
@@ -104,6 +109,7 @@
                     <th scope="col">valor</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Total</th>
+                    <th scope="col">accion</th>
                   </tr>
                 </thead>
                 <tbody>

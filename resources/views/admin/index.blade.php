@@ -10,13 +10,13 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                       <div class="inner">
-                          <h3>151</h3>
+                          <h3>{{$compras}}</h3>
                         <p>Compras en el dia</p>
                       </div>
                       <div class="icon">
                         <i class="ion ion-bag"></i>
                       </div>
-                      <a href="#" class="small-box-footer">FECHA</a>
+                      <a href="#" class="small-box-footer">{{$date}}</a>
                     </div>
                   </div>
                   <!-- ./col -->
@@ -39,14 +39,14 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                       <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{$registros}}</h3>
           
-                        <p>Usuarios Activos</p>
+                        <p>Usuarios Registrados</p>
                       </div>
                       <div class="icon">
                         <i class="ion ion-person-add"></i>
                       </div>
-                      <a href="#" class="small-box-footer">FECHA<i class=""></i></a>
+                      <a href="{{route('ListarUsuarios')}}" class="small-box-footer">Ver Todos<i class=""></i></a>
                     </div>
                   </div>
                   <!-- ./col -->
@@ -67,6 +67,52 @@
                 </div>
           
               </div>
+              <div class="row justify-content-right">
+                <div class="col-md-6">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-widget widget-user">
+                      <!-- Add the bg color to the header using any of the bg-* classes -->
+                      <div class="widget-user-header bg-secondary">
+                        <h3 class="widget-user-username">Consulta de Saldo</h3>
+                        <h5 class="widget-user-desc">Tarjeta Gift Card  </h5>
+                      </div>
+                      <div class="widget-user-image">
+                        <img class="img-circle elevation-2" src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}"  alt="User Avatar">
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="col-sm-12 border-right">
+                            <div class="description-block">
+                              <a href="" type="btn btn-success">Venta Normal</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-widget widget-user">
+                      <!-- Add the bg color to the header using any of the bg-* classes -->
+                      <div class="widget-user-header bg-secondary">
+                        <h3 class="widget-user-username">Consulta de Saldo</h3>
+                        <h5 class="widget-user-desc">Tarjeta Gift Card  </h5>
+                      </div>
+                      <div class="widget-user-image">
+                        <img class="img-circle elevation-2" src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}"  alt="User Avatar">
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="col-sm-12 border-right">
+                            <div class="description-block">
+                              <a href="" type="btn btn-success">Venta Con Reserva</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
 
 </section>
 

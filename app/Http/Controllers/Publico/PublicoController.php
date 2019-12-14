@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Publico;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,17 +10,15 @@ class PublicoController extends Controller
 {
     public function index()
     {
+    
+    $servicios=DB::table('servicios')->get()
+    ->where('estado_servicios',1);
 
-    return view('Publico.index');
-
-    }
-
-    public function se()
-    {
-
-    return view('seguridad.se');
+    return view('Publico.index',compact('servicios'));
 
     }
+
+
 
     public function servicios()
     {
