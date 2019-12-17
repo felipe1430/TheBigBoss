@@ -56,6 +56,9 @@ Route::get('/reporteservicios','AdminController@reporteservicios')->name('report
 Route::post('/reporteservicios','AdminController@filtrarservicios')->name('filtrarservicios');
 Route::get('/reportecomosiones','AdminController@reportecomosiones')->name('reportecomosiones');
 Route::post('/reportecomosiones','AdminController@filtrarcomisiones')->name('filtrarcomisiones');
+Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
+
+
 
 
 });
