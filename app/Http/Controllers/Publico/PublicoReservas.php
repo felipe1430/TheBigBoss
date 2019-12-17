@@ -54,8 +54,8 @@ class PublicoReservas extends Controller
 
 
     public function crearEvento(Request $request){
-       //dd( $request->all());
-       if ($request->ajax()) {
+      // dd( $request->all());
+      // if ($request->ajax()) {
            
 
         $params_array   =$request->all();
@@ -106,7 +106,7 @@ class PublicoReservas extends Controller
             throw $e;
         }
 
-        //dd($id);
+        //dd($id); si llega el id hasta aca XDD
        
 
             
@@ -121,20 +121,25 @@ class PublicoReservas extends Controller
         unset($params_array['end_date']);
         unset($params_array['_token']);
 
-        $cantidadServicios=count($params_array);
-        dd($params_array,$cantidadServicios);
+      //  dd($params_array);
+       
+        $servicios= $params_array['servicios'];
+        $CountServicios=count($servicios);
+        $CountServicios = $CountServicios -1;
+        $cantidadDeServ = $params_array['cantidad'];
+        //dd($servicios,$cantidadDeServ ,$CountServicios);
         if(!($id==0)){
-
+          //  dd('si entro ');
                 try{
 
                     DB::beginTransaction();
 
-                    for ($i = 1; $i <=$cantidadServicios ; $i++) {
+                    for ($i = 0; $i <=$CountServicios ; $i++) {
 
                         DB::table('detalle_reserva')->insert([
                             'fk_reserva'=>$id,
-                            'fk_servicio'=>$params_array['servicio'],
-                            'cantidad_serv_det_reserva'=>1,
+                            'fk_servicio'=>$servicios[$i],
+                            'cantidad_serv_det_reserva'=>$cantidadDeServ[$i],
                             ]);
 
                     }
@@ -143,13 +148,23 @@ class PublicoReservas extends Controller
 
                     DB::commit();
                 }catch(Exception $e){
-
-
+                    DB::rollback();
+                    dd($e,'1');
+                } catch (\Throwable $e) {
+                    DB::rollback();
+                    dd($e,'2');
+                    throw $e;
                 }
 
 
-        }else{
 
+
+                return redirect('Reservas/CalendarioReservas');
+
+
+
+        }else{
+            return redirect('Reservas/CalendarioReservas');
 
         }
         
@@ -160,7 +175,7 @@ class PublicoReservas extends Controller
         
 
         
-       }// if ajax fin 
+      // }// if ajax fin 
 
     }
 }

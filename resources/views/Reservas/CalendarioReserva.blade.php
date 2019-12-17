@@ -36,8 +36,17 @@
                 border: 1px solid #ddd;
                 overflow-y: scroll;
        }
+       .scroll2{ 
+                height: 500px;
+                border: 1px solid #ddd;
+                overflow-y: scroll;
+       }
        tr > td > span{
         color: black;
+       }
+       .cant{
+        width : 50px; 
+        heigth : 50px;
        }
 
         </style>
@@ -79,7 +88,7 @@
         <div class="col-md-6 " >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                             <h3>Rerserva Tus Servicios</h3>
                             <form action="{{route('addEvento')}}" method="POST" id="form1" >
                                 @csrf
@@ -93,34 +102,48 @@
                                 <input type="datetime-local" class="date form-control" name="end_date" required>
                                 <br>
                                 {{-- <input type="submit" class="btn btn-primary"> --}}
+                                <div class="scroll2">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">servicio</th>
+                                                <th scope="col">valor</th>
+                                                <th scope="col">Selecciona</th>
+                                                <th scope="col">Cantidad</th>
+                                                       
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                    
+                                                @foreach ($servicios as $item)
+
+                                                <tr>
+                                                
+                                                    <td> <label class="form-check-label" for="{{$item->id_servicios}}">{{$item->nombre_servicio}}</label></td>
+                                                    <td>{{' $'.$item->valor_servicio}}</td>
+                                                    <td >  <input type="checkbox"  name="servicios[]" value="{{$item->id_servicios}}"   onChange="comprobar(this);">  </td>
+                                                <td><input type="number" class="cant" name="cantidad[]" id="{{$item->id_servicios}}" min="1"  style="display:none" required disabled></td>
+                                                </tr>
+                                                @endforeach
+                                           
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                            <div class="form-group col-md-12 btn-group btn-group-block">
+                                                <button type="submit" class="btn btn-success" >Reservar</button>
+                                            </div>
+
                             </form> 
                               
                     </div>
-                    <div class="col-md-6">
-                                fff
-                    </div>      
-
-                            
-                            
-                               
-                            
+     
                     </div>
               
                 </div>
-                <div class="row">
-                     <div class="col-md-6">
-                            <h3>Elige Tus Servicios</h3>
-                           
-                           
-                     </div>
-                     
-                     <div class="col-md-6">
-                
-                     </div>
-                </div>
-                      
-            </div>   
-    </div>
+
+</div>   
+</div>
 </div>  
      
 
@@ -129,7 +152,28 @@
 
 @section('script')
 
+<script src="{{asset("js/ValidaCheck.js")}}"></script>
 
+<script>
+function comprobar(obj)
+
+{ 
+      id= obj.value;
+    if (obj.checked){
+      //console.log(obj.value);
+id= obj.value;
+ document.getElementById(''+id+'').style.display = "";
+ document.getElementById(''+id+'').disabled =false;
+   } else{
+      
+document.getElementById(''+id+'').style.display = "none";
+document.getElementById(''+id+'').value = "";
+document.getElementById(''+id+'').disabled =true;
+   }     
+}
+
+
+</script>
 
 
 @endsection
