@@ -72,18 +72,18 @@
                     <!-- Widget: user widget style 1 -->
                     <div class="card card-widget widget-user">
                       <!-- Add the bg color to the header using any of the bg-* classes -->
-                      <div class="widget-user-header bg-secondary">
-                        <h3 class="widget-user-username">Consulta de Saldo</h3>
-                        <h5 class="widget-user-desc">Tarjeta Gift Card  </h5>
+                      <div class="widget-user-header bg-dark">
+                        <h3 class="widget-user-username">Venta Normal</h3>
+                        <h5 class="widget-user-desc">Registra Tus Ventas</h5>
                       </div>
                       <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}"  alt="User Avatar">
+                        <img class="img-circle elevation-2" src="{{asset("assets/$theme2/dist/img/venta.png")}}"  alt="User Avatar">
                       </div>
                       <div class="card-footer">
                         <div class="row">
                           <div class="col-sm-12 border-right">
                             <div class="description-block">
-                              <a href="" type="btn btn-success">Venta Normal</a>
+                              <a href="{{route('ventas')}}" type="btn btn-success">Seleccione Aquí</a>
                             </div>
                           </div>
                         </div>
@@ -95,17 +95,17 @@
                     <div class="card card-widget widget-user">
                       <!-- Add the bg color to the header using any of the bg-* classes -->
                       <div class="widget-user-header bg-secondary">
-                        <h3 class="widget-user-username">Consulta de Saldo</h3>
-                        <h5 class="widget-user-desc">Tarjeta Gift Card  </h5>
+                        <h3 class="widget-user-username">Venta Con Reserva</h3>
+                        <h5 class="widget-user-desc">Vende Desde Una Reserva</h5>
                       </div>
                       <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}"  alt="User Avatar">
+                        <img class="img-circle elevation-2" src="{{asset("assets/$theme2/dist/img/logobarber1.png")}}"  alt="User Avatar">
                       </div>
                       <div class="card-footer">
                         <div class="row">
                           <div class="col-sm-12 border-right">
                             <div class="description-block">
-                              <a href="" type="btn btn-success">Venta Con Reserva</a>
+                              <a href="" type="btn btn-success">Seleccione Aquí</a>
                             </div>
                           </div>
                         </div>

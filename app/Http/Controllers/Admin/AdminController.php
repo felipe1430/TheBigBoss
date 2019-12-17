@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use App\empleados;
 use App\User;
+use Session;
 use App\servicios;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -235,6 +236,8 @@ class AdminController extends Controller
        $Serviciopaso=DB::table('tabla_paso')->get();
 
 
+
+
         $empleado=$Serviciopaso[0]->id_trabajador_paso;
 
         $trabajador=DB::table('empleados')
@@ -243,14 +246,66 @@ class AdminController extends Controller
 
          $date = Carbon::now();
 
+       return view('Admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
+ 
+    }
+
+
+    public function confirmar(Request $request)
+    {
+
+      
+
+      DB::table('ventas')->insert([
+        'fk_usuario_venta' => null,
+        'fk_empleado_venta'=>$request->idempleado,
+        'fk_reserva_venta'=>null,
+        'fecha_venta'=>$request->fechaservicio,
+        'total_venta'=>$request->total
 
         
+        ]);
 
 
-       return view('Admin.confirmarpago',compact('Serviciopaso','trabajador','date'));
+        $ventas=DB::table('ventas')->max('id_ventas');
+        $tbpaso=DB::table('tabla_paso')->get();
+        $conteo=DB::table('tabla_paso')->count('id_servicio_paso');
+        $conteo = $conteo-1;
 
-       
         
+        
+
+        for ($i = 0; $i <= $conteo; $i++){
+
+
+          DB::table('detalle_ventas')->insert([
+            'cantidad_detalle_venta' => $tbpaso[$i]->cantidad_servicio_paso,
+            'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicio_paso,
+            'fk_venta_detall_venta'=> $ventas
+            
+  
+            ]);
+  
+            
+         }
+
+
+
+
+
+      $Servicio=DB::table('servicios')->get()
+      ->where('estado_servicios',1);
+
+
+      $empleado=DB::table('empleados')->get()
+      ->where('estado_empleado',1);
+
+      
+      // Session::flash('success','Venta Realizada');
+
+    
+      return view('Admin.ventas',compact('Servicio','empleado'));
+
     }
 
 

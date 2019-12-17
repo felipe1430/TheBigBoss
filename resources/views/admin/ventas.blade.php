@@ -19,27 +19,8 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="appointment_name" name="nombrecliente" id="nombrecliente" placeholder="Nombre Cliente">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="appointment_email" name="fechareserva" id="fechareserva" placeholder="Fecha Reserva">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control appointment_date" name="apellidocliente" id="apellidocliente" placeholder="Apellido Cliente">
-                </div>    
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control appointment_time" name="horainicio" id="horainicio" placeholder="Hora Inicio">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
                   <div class="select-wrap">
+                    <label for="validationTooltip01">Nombre Trabajador</label>
                     <select name="trabajador" id="trabajador" required class="form-control">
                         <option value="">Trabajador</option>
                         @foreach($empleado as $itemEmpleado)
@@ -47,11 +28,6 @@
                       @endforeach
                     </select>
                   </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="phone" name="horatermino" id="horatermino" placeholder="Hora Termino">
                 </div>
               </div>
               <div class="col-sm-12">
@@ -70,7 +46,7 @@
                             <tr>
                               <td>{{$itemServicio->nombre_servicio}}</td>
                               <td>${{number_format($itemServicio->valor_servicio,0,',','.')}}</td>
-                              <td><input type="number" name="cantidad[]" id="cantidad" value=""  style="width : 36px; heigth : 36px"></td>
+                              <td><input type="number" name="cantidad[]" min="1" id="cantidad" value=""  style="width : 36px; heigth : 36px"></td>
                               <td><input type="checkbox" name="servicios[]" id="servicios" value="{{$itemServicio->id_servicios}}" ></td>
                             </tr>
                             @endforeach
@@ -81,67 +57,13 @@
               </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Pagar</button>
+                <button type="submit" class="btn btn-primary">Realizar Pago</button>
             </div>
           </form>
         </div>
       </div>
     </div>
   </section>
-    <!-- Modal -->
-    <div class="modal fade" id="mimodalventa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Finalizar Pago
-              </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <table class="table table-image">
-                <thead>
-                  <tr>
-                    <th scope="col">The Big Boss</th>
-                    <th scope="col">Servicio</th>
-                    <th scope="col">valor</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">accion</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="w-25">
-                        <img width="150" height="150" class="img-circle elevation-3"
-                        src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}">
-                    </td>
-                    <td>Corte de cabello</td>
-                    <td>$14.000</td>
-                    <td>2</td>
-                    <td>$28.000</td>
-                    <td>
-                      <a href="#" class="btn btn-danger btn-sm">
-                        <i class="fa fa-times"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table> 
-              <div class="d-flex justify-content-end">
-                <h5>Total: <span class="price text-success">$ 28.000</span></h5>
-              </div>
-            </div>
-            <div class="modal-footer border-top-0 d-flex justify-content-between">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success">Pagar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-       <!-- FIN Modal -->
 
         
 @endsection

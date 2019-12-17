@@ -13,7 +13,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10 ftco-animate">
-          <form  method="POST" action="{{route('enviarpago')}}"class="appointment-form" >
+          <form  method="POST" action="{{route('confirmar')}}"class="appointment-form" >
             @csrf
             <div class="row">
               <div class="col-sm-6">
@@ -80,13 +80,15 @@
                 <div class="d-flex justify-content-start">´</div>
                 <div class="d-flex justify-content-end">´</div>
                 <div class="d-flex justify-content-center"><h3>Total: <span class="price text-success">${{number_format($total,0,',','.')}}</span></h3></div>
-                <div class="d-flex justify-content-around">Confierme la Venta</div>
+                <div class="d-flex justify-content-around">Confirme La Venta</div>
               </div>
               <hr>
             <hr>
             <div class="col-sm-6">
                 <div>
-                    <a href="" data-toggle="modal" data-target="#mimodalventa" class="btn btn-success btm-sm" >Confirmar Venta</a>
+                  <input type="hidden" value="{{$empleado}}" name="idempleado">
+                  <input type="hidden" value="{{$total}}" name="total">
+                    <button type="submit" class="btn btn-success">Realizar Pago</button>
                     <a href="{{route('ventas')}}"  class="btn btn-warning btm-sm" >Revertir</a>
                 </div>
               </div>
