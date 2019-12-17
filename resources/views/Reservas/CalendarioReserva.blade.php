@@ -36,8 +36,17 @@
                 border: 1px solid #ddd;
                 overflow-y: scroll;
        }
+       .scroll2{ 
+                height: 500px;
+                border: 1px solid #ddd;
+                overflow-y: scroll;
+       }
        tr > td > span{
         color: black;
+       }
+       .cant{
+        width : 50px; 
+        heigth : 50px;
        }
 
         </style>
@@ -79,7 +88,7 @@
         <div class="col-md-6 " >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                             <h3>Rerserva Tus Servicios</h3>
                             <form action="{{route('addEvento')}}" method="POST" id="form1" >
                                 @csrf
@@ -93,141 +102,78 @@
                                 <input type="datetime-local" class="date form-control" name="end_date" required>
                                 <br>
                                 {{-- <input type="submit" class="btn btn-primary"> --}}
+                                <div class="scroll2">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">servicio</th>
+                                                <th scope="col">valor</th>
+                                                <th scope="col">Selecciona</th>
+                                                <th scope="col">Cantidad</th>
+                                                       
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                    
+                                                @foreach ($servicios as $item)
+
+                                                <tr>
+                                                
+                                                    <td> <label class="form-check-label" for="{{$item->id_servicios}}">{{$item->nombre_servicio}}</label></td>
+                                                    <td>{{' $'.$item->valor_servicio}}</td>
+                                                    <td >  <input type="checkbox"  name="servicios[]" value="{{$item->id_servicios}}"   onChange="comprobar(this);">  </td>
+                                                <td><input type="number" class="cant" name="cantidad[]" id="{{$item->id_servicios}}" min="1"  style="display:none" required disabled></td>
+                                                </tr>
+                                                @endforeach
+                                           
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                            <div class="form-group col-md-12 btn-group btn-group-block">
+                                                <button type="submit" class="btn btn-success" >Reservar</button>
+                                            </div>
+
                             </form> 
                               
                     </div>
-                    <div class="col-md-6">
-                            <div id="notificacion" class="alert alert-success alert-dismissable "  role="alert">
-                                    Reserva Realizada Con Exito!!
-                            </div>      
-
-                            
-                            
-                               
-                            
+     
                     </div>
               
                 </div>
-                <div class="row">
-                     <div class="col-md-6">
-                            <h3>Elige Tus Servicios</h3>
-                            <ul class="list-group" id="serviciosOriginales">
-                                @foreach ($servicios as $item)
-                                <li class="list-group-item d-flex justify-content-between align-items-center form-control" >
-                                    {{$item->nombre_servicio.' $'.$item->valor_servicio}}
-                                    <span>
-                                    <button value="{{$item->id_servicios}}" class="btn btn-success add remove2click{{$item->id_servicios}}" ><i class="fas fa-check"></i></button>
-                                    {{-- <button class="btn btn-danger"> <i class="fas fa-times"></i></button> --}}
-                                    </span>
-                                </li>
-                            <template id="{{$item->id_servicios}}">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center form-control" >
-                                        <input value="{{$item->nombre_servicio.' $'.$item->valor_servicio}}" class="servicio{{$item->id_servicios}}" name="servicio{{$item->id_servicios}}" type="text" >
-                                                <span>
-                                                {{-- <button class="btn btn-success" ><i class="fas fa-check"></i></button> --}}
-                                                <button value="{{$item->id_servicios}}" class="btn btn-danger remove abilitar"> <i class="fas fa-times"></i></button>
-                                                </span>
-                                        </li>
-                                </template>
-                                
-                              
-                                @endforeach
-                                
-                            </ul>
-                            <br>
-                        
-                            <button value="1" class="btn btn-success" onclick="getFormData();" >Enviar</button>
-                     </div>
-                     
-                     <div class="col-md-6">
-                            <h3>Servicios add</h3>
-                            <form action="{{route('addEvento')}}" method="POST" id="form2">
-                             @csrf
-                            <ul class="list-group" id="EventosSeleccionados">
 
-                            </ul>
-                           </form>
-                     </div>
-                </div>
-                      
-            </div>   
-    </div>
-    </div>  
-     
+</div>   
 </div>
+</div>  
+     
+
 </section>
 @endsection
 
 @section('script')
 
+<script src="{{asset("js/ValidaCheck.js")}}"></script>
+
 <script>
-   $('#notificacion').fadeOut();
-    var id=1;
-    
-  
+function comprobar(obj)
 
-/*capturar id del template para argar el servicio*/
-     $(".add").click(function(e){
-        e.preventDefault();
-        id= $(this).val();
-       
-
-      // alert(id);   
-    });
-
-
-
-
-    $(function(){
+{ 
+      id= obj.value;
+    if (obj.checked){
+      //console.log(obj.value);
+id= obj.value;
+ document.getElementById(''+id+'').style.display = "";
+ document.getElementById(''+id+'').disabled =false;
+   } else{
       
-        $('.add').on('click',AddServicio);
-        $(document).on('click','.remove',RemoveElement);
-
-    });
-/*              Enviar Informacion al controlador     */
-    function getFormData(){
-        console.log( $(this).val);
-        var config = {};
-            $('input').each(function () {
-                 config[this.name] = this.value;
-                // console.log(config[this.name]+' '+this.value);
-                 console.log(config);
-            });
-              // AJAX
-              $.ajax({
-                type: "POST",
-                url: "{{ url('Reservas/CalendarioReservas') }}",
-                data: config,
-                success: function(data) {
-                      
-                    //console.log(config);
-                    $('#notificacion').fadeIn(); // mostrar notificacion
-                    setTimeout(function(){ $('#notificacion').fadeOut(); }, 1000); // ocultar mensaje 1s
-
-                }
-            });        
-    }
-
-    /*Eliminar Servicios*/
-   function RemoveElement(){
-    var idAbili=  $(this).val();
-       $(this).offsetParent().remove();
-       $('.remove2click'+idAbili).fadeIn();
-   }
-/*Agregar servicios*/
-    function AddServicio(){
-
-        var servicio = $('#'+id).html();
-        //console.log(servicio);
-    
-        $('#EventosSeleccionados').append(servicio);
-        $('.remove2click'+id).fadeOut();
-
-    }
+document.getElementById(''+id+'').style.display = "none";
+document.getElementById(''+id+'').value = "";
+document.getElementById(''+id+'').disabled =true;
+   }     
+}
 
 
 </script>
-
 
 
 @endsection
