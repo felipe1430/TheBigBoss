@@ -149,10 +149,10 @@ class PublicoReservas extends Controller
                     DB::commit();
                 }catch(Exception $e){
                     DB::rollback();
-                    dd($e,'1');
+                    //dd($e,'1');
                 } catch (\Throwable $e) {
                     DB::rollback();
-                    dd($e,'2');
+                   // dd($e,'2');
                     throw $e;
                 }
 
