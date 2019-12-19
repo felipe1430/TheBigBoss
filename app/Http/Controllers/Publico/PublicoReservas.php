@@ -47,7 +47,7 @@ class PublicoReservas extends Controller
 
         $calendar=\Calendar::addEvents($event);
   
-        
+        //80963
 
         return view('Reservas.CalendarioReserva',compact('barberos','calendar','servicios'));
     }
