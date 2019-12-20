@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Auth\Events\Registered;
+use Session;
 class RegisterController extends Controller
 {
     /*
@@ -22,13 +25,14 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/Reservas';
+    protected $redirectTo = '/Reservas/CalendarioReservas';
 
     /**
      * Create a new controller instance.
@@ -66,11 +70,24 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'surname' => 'Sepulveda',
-            'rut' =>'19.796.665-3',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'fk_tipo_user' => 3,
+            'estado'=> 1,
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        Session::flash('success','Usuario agregado');
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 }
