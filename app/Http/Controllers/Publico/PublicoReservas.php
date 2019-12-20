@@ -70,6 +70,7 @@ class PublicoReservas extends Controller
         $date = $date->format('Y-m-d');
         $id=0;
 
+    
         try{
            
             DB::beginTransaction();
