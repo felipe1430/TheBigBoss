@@ -244,7 +244,9 @@ class AdminController extends Controller
         ->where('id_empleado',$empleado)
         ->get();
 
-         $date = Carbon::now();
+
+        $date = Carbon::now("Chile/Continental");
+
 
        return view('Admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
  
@@ -257,7 +259,7 @@ class AdminController extends Controller
       
 
       DB::table('ventas')->insert([
-        'fk_usuario_venta' => null,
+        'fk_usuario_venta' => 4,
         'fk_empleado_venta'=>$request->idempleado,
         'fk_reserva_venta'=>null,
         'fecha_venta'=>$request->fechaservicio,
@@ -301,7 +303,7 @@ class AdminController extends Controller
       ->where('estado_empleado',1);
 
       
-      // Session::flash('success','Venta Realizada');
+      Session::flash('success','Venta Realizada');
 
     
       return view('Admin.ventas',compact('Servicio','empleado'));
@@ -335,6 +337,7 @@ class AdminController extends Controller
       $porcentaje=DB::table('reporte_ventas')
       ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
       ->get();
+
   
 
 

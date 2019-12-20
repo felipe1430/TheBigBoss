@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/Reservas';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'rut' =>'19.796.665-3',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'estado' => 1,
             'fk_tipo_user' => 3,
         ]);
     }

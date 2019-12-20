@@ -54,7 +54,6 @@ Lista De comisión
           <table id="comisiones" class="table table-bordered table-hover dataTable">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
                   <th scope="col">Nombre Trabajador</th>
                   <th scope="col">Apellido Trabajador</th>
                   <th scope="col">Rut</th>
@@ -72,7 +71,6 @@ Lista De comisión
                 @else
                 @foreach($porcentaje as $item)
                 <tr>
-                  <td>{{$item->id_empleado}}</td>
                   <th >{{$item->nombre_empleado}}</th>
                   <td>{{$item->apellido_empleado}}</td>
                   <td>{{$item->rut_empleado}}</td>

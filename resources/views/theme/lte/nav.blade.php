@@ -173,13 +173,7 @@
               <li class="nav-item">
                 <a href="{{route('Reservas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Reservas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
+                  <p>Desde Reserva</p>
                 </a>
               </li>
             </ul>

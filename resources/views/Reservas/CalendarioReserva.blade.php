@@ -122,7 +122,7 @@
                                                 
                                                     <td> <label class="form-check-label" for="{{$item->id_servicios}}">{{$item->nombre_servicio}}</label></td>
                                                     <td>{{' $'.$item->valor_servicio}}</td>
-                                                    <td >  <input type="checkbox"  name="servicios[]" value="{{$item->id_servicios}}"   onChange="comprobar(this);">  </td>
+                                                    <td> <input type="checkbox"  name="servicios[]" value="{{$item->id_servicios}}"   onChange="comprobar(this);">  </td>
                                                 <td><input type="number" class="cant" name="cantidad[]" id="{{$item->id_servicios}}" min="1"  style="display:none" required disabled></td>
                                                 </tr>
                                                 @endforeach
