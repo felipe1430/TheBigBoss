@@ -60,7 +60,7 @@ Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
 
 
 
-
+    
 });
 
 //-----------------------------------RUTAS Barbero----------------------------------------//

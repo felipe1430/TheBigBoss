@@ -46,8 +46,8 @@
                             <tr>
                               <td>{{$itemServicio->nombre_servicio}}</td>
                               <td>${{number_format($itemServicio->valor_servicio,0,',','.')}}</td>
-                              <td><input type="number" name="cantidad[]" min="1" id="cantidad" value=""  style="width : 36px; heigth : 36px"></td>
-                              <td><input type="checkbox" name="servicios[]" id="servicios" value="{{$itemServicio->id_servicios}}" ></td>
+                              <td><input type="number" name="cantidad[]" min="1" id="{{$itemServicio->id_servicios}}" value=""   class="cant" style="display:none "   required disabled></td>
+                              <td><input type="checkbox" name="servicios[]"  id="servicios" onChange="comprobar(this);" value="{{$itemServicio->id_servicios}}" ></td>
                             </tr>
                             @endforeach
                           </tbody>
@@ -66,4 +66,33 @@
   </section>
 
         
+@endsection
+
+
+@section('script')
+
+<script src="{{asset("js/ValidaCheck.js")}}"></script>
+
+<script>
+function comprobar(obj)
+
+{ 
+      id= obj.value;
+    if (obj.checked){
+      //console.log(obj.value);
+id= obj.value;
+ document.getElementById(''+id+'').style.display = "";
+ document.getElementById(''+id+'').disabled =false;
+   } else{
+      
+document.getElementById(''+id+'').style.display = "none";
+document.getElementById(''+id+'').value = "";
+document.getElementById(''+id+'').disabled =true;
+   }     
+}
+
+
+</script>
+
+
 @endsection

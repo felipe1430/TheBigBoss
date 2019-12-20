@@ -105,7 +105,7 @@
                         <div class="row">
                           <div class="col-sm-12 border-right">
                             <div class="description-block">
-                              <a href="" type="btn btn-success">Seleccione Aquí</a>
+                              <a href="{{route('Reservas')}}" type="btn btn-success">Seleccione Aquí</a>
                             </div>
                           </div>
                         </div>
