@@ -47,7 +47,7 @@ class PublicoReservas extends Controller
 
         $calendar=\Calendar::addEvents($event);
   
-        
+        //80963
 
         return view('Reservas.CalendarioReserva',compact('barberos','calendar','servicios'));
     }
@@ -70,6 +70,7 @@ class PublicoReservas extends Controller
         $date = $date->format('Y-m-d');
         $id=0;
 
+    
         try{
            
             DB::beginTransaction();
@@ -149,10 +150,10 @@ class PublicoReservas extends Controller
                     DB::commit();
                 }catch(Exception $e){
                     DB::rollback();
-                    dd($e,'1');
+                    //dd($e,'1');
                 } catch (\Throwable $e) {
                     DB::rollback();
-                    dd($e,'2');
+                   // dd($e,'2');
                     throw $e;
                 }
 

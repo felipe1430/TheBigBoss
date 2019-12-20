@@ -23,7 +23,7 @@ Route::get('/prueba1','Publico\PublicoController@index');
  Route::get('/home', 'HomeController@index')->name('home');
 
 //-----------------------------------RUTAS PUBLICAS----------------------------------------//
-Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCliente')->group(function(){
+Route::prefix('Reservas')->namespace('Publico')->middleware('auth')->group(function(){
 
     Route::get('/CalendarioReservas','PublicoReservas@index')->name('ReservasCliente');
     Route::get('/CalendarioReservas/{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
