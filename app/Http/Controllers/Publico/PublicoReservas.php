@@ -156,9 +156,7 @@ class PublicoReservas extends Controller
                    // dd($e,'2');
                     throw $e;
                 }
-
-//sdksdsakdkas
-//asllasd
+//rama a reserva 2
 
 
                 return redirect('Reservas/CalendarioReservas');
