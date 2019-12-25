@@ -54,15 +54,15 @@ class PublicoReservas extends Controller
 
 
     public function crearEvento(Request $request){
-   dd( $request->all());
+   dd( $request->bloques,substr($request->bloques, 0,-13),substr($request->bloques,13));
       // if ($request->ajax()) {
         $params_array   =$request->all();
         
         $nombreUser     =$params_array['nameUser'];
         $idUser         =$params_array['idUser'];
         $idBarbero      =$params_array['idBarbero'];
-        $start_date     =$params_array['start_date'];
-        $end_date       =$params_array['end_date'];
+       // $start_date     =$params_array['start_date'];
+        //$end_date       =$params_array['end_date'];
 
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
@@ -152,14 +152,6 @@ class PublicoReservas extends Controller
             return redirect('Reservas/CalendarioReservas');
 
         }
-        
-
-
-
-        
-        
-
-        
       // }// if ajax fin 
 
     }
