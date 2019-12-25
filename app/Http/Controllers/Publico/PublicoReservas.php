@@ -54,10 +54,8 @@ class PublicoReservas extends Controller
 
 
     public function crearEvento(Request $request){
-      // dd( $request->all());
+   dd( $request->all());
       // if ($request->ajax()) {
-           
-
         $params_array   =$request->all();
         
         $nombreUser     =$params_array['nameUser'];
@@ -70,7 +68,6 @@ class PublicoReservas extends Controller
         $date = $date->format('Y-m-d');
         $id=0;
 
-    
         try{
            
             DB::beginTransaction();
@@ -85,7 +82,6 @@ class PublicoReservas extends Controller
                      'fecha_reserva' => $date,
                      'estado_reserva' => 1, ]
                 );
-               
                 /*
                         $reserva->title = $nombreUser;
                         $reserva->color = '#1C669F';
@@ -106,14 +102,7 @@ class PublicoReservas extends Controller
             dd($e,'2');
             throw $e;
         }
-
         //dd($id); si llega el id hasta aca XDD
-       
-
-            
-                
-
-
         unset($params_array['nameUser']);
         unset($params_array['idUser']);
         unset($params_array['idBarbero']);
@@ -122,8 +111,6 @@ class PublicoReservas extends Controller
         unset($params_array['end_date']);
         unset($params_array['_token']);
 
-      //  dd($params_array);
-       
         $servicios= $params_array['servicios'];
         $CountServicios=count($servicios);
         $CountServicios = $CountServicios -1;
@@ -145,8 +132,6 @@ class PublicoReservas extends Controller
 
                     }
                             
-                            
-
                     DB::commit();
                 }catch(Exception $e){
                     DB::rollback();
@@ -176,6 +161,44 @@ class PublicoReservas extends Controller
 
         
       // }// if ajax fin 
+
+    }
+
+
+
+
+
+    public function horasDisponibles(Request $request){
+
+        if ($request->ajax()) {
+            $reservas=DB::table('reservas')
+            ->select(DB::raw('time(start_date) as hora_inicio,time(end_date) as hora_termino'))
+            ->whereDate('start_date', $request->Fecha)
+            ->get();
+
+            //dd(count($reservas),$reservas);
+            $count=count($reservas);
+            $horas=[];
+            for ($i=0; $i <$count ; $i++) { 
+                $horas[]=$reservas[$i]->hora_inicio;
+            }
+            //dd($horas);
+            
+            //dd($reservas[0]->hora_inicio );
+            $bloques=DB::table('bloquesdehoras')
+            ->whereNotIn('hora_inicio',$horas )
+            ->get();
+
+            $data=[
+                //"reservas"=> $reservas,
+                "bloques"=>$bloques
+            ];
+
+           // dd($reservas,$bloques);
+            return response()->json(
+                    $data
+            );
+        }
 
     }
 }

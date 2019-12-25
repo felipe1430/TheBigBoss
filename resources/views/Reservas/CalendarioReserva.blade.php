@@ -1,4 +1,7 @@
 @extends("theme.$theme.layout")
+@section('meta')
+<meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('titulo')
  Reservas
 @endsection
@@ -59,13 +62,7 @@
 
 <section class="ftco-section ftco-no-pt ftco-no-pb">
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <a href="" class="btn btn-success">Agregar evento </a>
-            <a href="" class="btn btn-primary">Editar Evento</a>
-            <a href="" class="btn btn-danger">Eliminar evento </a>
-        </div>
-    </div>
+
     <hr>
     <hr>
 
@@ -96,11 +93,16 @@
                                 <input type="text" name="nameUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->name}}">
                                 <input type="hidden" name="idUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->id}}">
                                 <input type="hidden" name="idBarbero" class="form-control" placeholder="Nombre..."  value="{{$barberos->id_empleado}}">
-                                <label for="">Fecha comienso</label>
-                                <input type="datetime-local" name="start_date" class="date form-control" required>
-                                <label for="">Fecha Fin</label>
+                                <label for="Fecha">Fecha comienso</label>
+                                <input type="date" id="Fecha" name="start_date" class="date form-control" required>
+                                <label for="Fecha">Seleccione la hora</label>
+                                <select class="date form-control" name="bloques" id="bloques" style="display:none" required disabled  >
+                                    <option value="">....</option>
+                                
+                                  </select>
+                                {{-- <label for="">Fecha Fin</label>
                                 <input type="datetime-local" class="date form-control" name="end_date" required>
-                                <br>
+                                <br> --}}
                                 {{-- <input type="submit" class="btn btn-primary"> --}}
                                 <div class="scroll2">
                                     <table class="table">
@@ -172,6 +174,56 @@ document.getElementById(''+id+'').disabled =true;
    }     
 }
 
+$("#Fecha").change(function(){
+        var valor = $(this).val();
+        if(valor!=""){
+          console.log(valor);
+          document.getElementById('bloques').style.display = "";
+          document.getElementById('bloques').disabled =false;
+
+          $.ajax({
+                type: "POST",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                url: "{{ url('Reservas/Horas') }}",
+                data: {
+                    "_token":"{{ csrf_token() }}",//pass the CSRF_TOKEN()
+                    "Fecha": valor
+                },
+                success: function(data) {
+                     console.log(data.bloques);
+                     addOptions('bloques',data.bloques);
+
+                }
+            });
+
+
+
+
+
+
+
+
+
+        }else{
+         
+            console.log('campo vacio ');
+
+        }
+    })
+
+function addOptions(domElement, array) {
+ var select = document.getElementsByName(domElement)[0];
+ select.innerHTML='..';
+ var option = document.createElement("option");
+ option.text='...';
+ select.add(option);
+ for (value in array) {
+  var option = document.createElement("option");
+  option.text = array[value].hora_inicio +"  ---  "+array[value].hora_termino ;
+  select.add(option);
+ }
+
+}
 
 </script>
 
