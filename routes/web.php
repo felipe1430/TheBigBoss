@@ -56,7 +56,12 @@ Route::get('/reporteservicios','AdminController@reporteservicios')->name('report
 Route::post('/reporteservicios','AdminController@filtrarservicios')->name('filtrarservicios');
 Route::get('/reportecomosiones','AdminController@reportecomosiones')->name('reportecomosiones');
 Route::post('/reportecomosiones','AdminController@filtrarcomisiones')->name('filtrarcomisiones');
+Route::get('/reporteGastos','AdminController@reportegastos')->name('reportegastos');
+Route::post('/reporteGastos','AdminController@filtrargastos')->name('filtrargastos');
 Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
+Route::get('/AgregarGastos','AdminController@AgregarGastos')->name('AgregarGastos');
+Route::post('/insertargastos','AdminController@insertargastos')->name('confirmargastos');
+
 
 
 

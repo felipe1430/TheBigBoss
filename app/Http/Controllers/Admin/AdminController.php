@@ -7,6 +7,7 @@ use App\empleados;
 use App\User;
 use Session;
 use App\servicios;
+use App\gastos;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -259,7 +260,7 @@ class AdminController extends Controller
       
 
       DB::table('ventas')->insert([
-        'fk_usuario_venta' => 4,
+        'fk_usuario_venta' => 1,
         'fk_empleado_venta'=>$request->idempleado,
         'fk_reserva_venta'=>null,
         'fecha_venta'=>$request->fechaservicio,
@@ -390,6 +391,55 @@ class AdminController extends Controller
     }
 
 
+
+//----------------------------------- CRUD Gastos ----------------------------------------//
+
+
+    public function reportegastos (){
+      
+      return view('Admin.ReporteGastos');
+    }
+
+    public function AgregarGastos (){
+      
+      return view('Admin.AgregarGastos');
+    }
+    
+    
+    
+    public function filtrargastos (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $gastos=DB::table('gastos')
+      ->whereBetween('fecha_gastos', array($request->fecha1,$request->fecha2))
+      ->get();
+  
+
+
+      return view('Admin.ReporteGastos',compact('gastos','fecha1','fecha2'));
+    }
+
+
+
+
+    public function insertargastos(Request $request)
+    {
+        gastos::create([
+
+            
+            'descripcion_gastos' => $request->descripcion_gasto,
+            'valor_gastos' => $request->valor_gasto,
+            'fecha_gastos' => $request->fecha_gasto,
+
+
+        ]);
+
+        return redirect()->route('indexadmin');
+
+    }
+
+//-----------------------------------FIN CRUD Gastos ----------------------------------------//
     
 
     
