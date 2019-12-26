@@ -27,7 +27,11 @@ Route::prefix('Reservas')->namespace('Publico')->middleware('auth')->group(funct
 
     Route::get('/CalendarioReservas','PublicoReservas@index')->name('ReservasCliente');
     Route::get('/CalendarioReservas/{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
+
+
+
     Route::post('/CalendarioReservas','PublicoReservas@crearEvento')->name('addEvento');
+    Route::post('/Horas','PublicoReservas@horasDisponibles')->name('horas');
 
 });
 
