@@ -187,7 +187,8 @@ $("#Fecha").change(function(){
                 url: "{{ url('Reservas/Horas') }}",
                 data: {
                     "_token":"{{ csrf_token() }}",//pass the CSRF_TOKEN()
-                    "Fecha": valor
+                    "Fecha": valor,
+                    "barberoId":"{{$barberos->id_empleado}}"
                 },
                 success: function(data) {
                      console.log(data.bloques);
@@ -213,9 +214,8 @@ $("#Fecha").change(function(){
 
 function addOptions(domElement, array) {
  var select = document.getElementsByName(domElement)[0];
- select.innerHTML='..';
  var option = document.createElement("option");
- option.text='...';
+ option.text='....';
  select.add(option);
  for (value in array) {
   var option = document.createElement("option");

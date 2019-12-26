@@ -54,15 +54,20 @@ class PublicoReservas extends Controller
 
 
     public function crearEvento(Request $request){
-   dd( $request->bloques,substr($request->bloques, 0,-13),substr($request->bloques,13));
+      //  dd($request->start_date);
+   //dd( $request->bloques,substr($request->bloques, 0,-13),substr($request->bloques,13));
       // if ($request->ajax()) {
+        $horaInicio=substr($request->bloques, 0,-13);
+        $horaFin=substr($request->bloques,13);
+
         $params_array   =$request->all();
         
         $nombreUser     =$params_array['nameUser'];
         $idUser         =$params_array['idUser'];
         $idBarbero      =$params_array['idBarbero'];
-       // $start_date     =$params_array['start_date'];
-        //$end_date       =$params_array['end_date'];
+        $start_date     =$params_array['start_date'].' '.$horaInicio;
+        //dd($params_array['start_date'].' '.$horaInicio);
+        $end_date       =$params_array['start_date'].' '.$horaFin;
 
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
@@ -102,7 +107,8 @@ class PublicoReservas extends Controller
             dd($e,'2');
             throw $e;
         }
-        //dd($id); si llega el id hasta aca XDD
+
+        //dd('molesta'); //si llega el id hasta aca XDD
         unset($params_array['nameUser']);
         unset($params_array['idUser']);
         unset($params_array['idBarbero']);
@@ -161,11 +167,12 @@ class PublicoReservas extends Controller
 
 
     public function horasDisponibles(Request $request){
-
+       // dd($request->all());
         if ($request->ajax()) {
             $reservas=DB::table('reservas')
             ->select(DB::raw('time(start_date) as hora_inicio,time(end_date) as hora_termino'))
             ->whereDate('start_date', $request->Fecha)
+            ->where('fk_id_empleado', $request->barberoId)
             ->get();
 
             //dd(count($reservas),$reservas);
