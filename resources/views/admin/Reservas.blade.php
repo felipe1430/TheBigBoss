@@ -20,23 +20,28 @@ Reservas
                   <thead>
                     <tr>
                       <th scope="col">id</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Descripcion</th>
-                      <th scope="col">Valor</th>
-                      <th scope="col">Estado</th>
-                      <th scope="col">Aciones</th>
+                      <th scope="col">Nombre Cliente</th>
+                      <th scope="col">Apellido Cliente</th>
+                      <th scope="col">Telefono Cliente</th>
+                      <th scope="col">Barbero</th>
+                      <th scope="col">Fecha reservada</th>
+                      <th scope="col">Estado De Reserva</th>
+                      <th scope="col">Pagar</th>
+                      <th scope="col">Cancelar Reserva</th>
                     </tr>
                   </thead>
                   <tbody>
                       @foreach($Reserva as $item)
                     <tr>
                       <th scope="row">{{$item->id_reserva}}</th>
-                      <td>{{$item->title}}</td>
-                      <td>{{$item->color}}</td>
-                      <td>{{$item->start_date}}</td>
-                      <td>{{$item->end_date}}</td>
-                      <td><a href="" data-toggle="modal" data-target="#mimodalservicios"
-                         class="btn btn-primary btm-sm">Pagar</a></td>
+                      <td>{{$item->name}}</td>
+                      <td>{{$item->surname}}</td>
+                      <td>{{$item->telefono}}</td>
+                      <td>{{$item->nombre_empleado}}</td>
+                      <td>{{$item->fecha_reserva}}</td>
+                      <td>{{$item->estado_reserva}}</td>
+                      <td><a href="{{route('Reservaspago', $item->id_reserva)}}" class="btn btn-primary" >Pagar</a></td>
+                      <td><button type="button" class="btn btn-warning">Cancelar</button></td>
                     </tr>
                     @endforeach
                   </tbody>

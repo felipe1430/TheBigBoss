@@ -315,13 +315,62 @@ class AdminController extends Controller
     public function Reservas(Request $request)
     {
 
-      $Reserva=DB::table('reservas')
+      $Reserva=DB::table('reserva')
       ->orderBy('id_reserva', 'desc')->get();
       
     
       return view('Admin.Reservas',compact('Reserva'));
 
     }
+
+
+    public function Reservaspago($id_reserva){
+
+      $idreserva = $id_reserva;
+
+      $encabezado = DB::table('reservas')
+      ->where('id_reserva','=',$id_reserva)
+      ->get();
+
+
+      $detalle = DB::table('detalle_reserva')
+      ->where('fk_reserva','=',$id_reserva)
+      ->get();
+
+
+      $cliente = DB::table('users')
+      ->where('id','=',$encabezado[0]->fk_id_usuario)
+      ->get();
+
+      $trabajador = DB::table('empleados')
+      ->where('id_empleado','=',$encabezado[0]->fk_id_empleado)
+      ->get();
+
+      $Servicio=DB::table('servicios')->get()
+      ->where('estado_servicios',1);
+
+
+
+
+      return view('Admin.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
+        
+      
+    }
+
+
+    public function enviarpagoreserva (Request $request){
+      
+      dd($request->all());
+  
+
+
+      // return view('Admin.confirmarpagoreserva');
+    }
+
+
+
+
+
 
 
     public function reporteventas (){
