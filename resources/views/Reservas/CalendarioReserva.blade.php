@@ -215,6 +215,7 @@ $("#Fecha").change(function(){
 function addOptions(domElement, array) {
  var select = document.getElementsByName(domElement)[0];
  var option = document.createElement("option");
+ select.innerHTML='';
  option.text='....';
  select.add(option);
  for (value in array) {

@@ -14,7 +14,7 @@
             <li class="nav-item"><a href="{{route('about')}}" class="nav-link">Acerca de</a></li>
             <li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
             <li class="nav-item"><a href="{{route('blogsimple')}}" class="nav-link">Blog simple</a></li>
-            <li class="nav-item"><a href="{{route('login')}}" class="nav-link"><i class="fas fa-users"></i>    Iniciar Sesion</a></li>
+            {{-- <li class="nav-item"><a href="{{route('login')}}" class="nav-link"><i class="fas fa-users"></i>    Iniciar Sesion</a></li> --}}
            @else
            <li class="nav-item active"><a href="{{route('inicio')}}" class="nav-link">Inicio</a></li>
             <li class="nav-item"><a href="{{route('serviciosweb')}}" class="nav-link">Servicios</a></li>
