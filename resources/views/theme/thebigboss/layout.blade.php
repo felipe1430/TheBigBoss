@@ -4,9 +4,21 @@
     <title>@yield('titulo','TheBigBoos')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Barberia">
+    <meta name="keywords" content=" Barberia , barberia, corte de pelo , corte de barba , Corte , Barba, Reservas , reservas , chillan , Chillan , Ñuble , ñuble , uñas, alisado, Alisado ,TheBigBoss, thebigboss , barber shop , the big boss, the big boss chillan, barberias chillan  ">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:500,600,700&display=swap" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155178498-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155178498-1');
+    </script>
+
     
  <!-- Font Awesome -->
  <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/fontawesome-free/css/all.min.css")}}">
@@ -74,6 +86,8 @@
   <script src="{{asset("assets/$theme/js/jquery.timepicker.min.js")}}"></script>
   <script src="{{asset("assets/$theme/js/scrollax.min.js")}}"></script>
 
+  @include("theme/mensajes")
+   <!-- Global site tag (gtag.js) - Google Analytics -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155159268-1"></script>
 <script>

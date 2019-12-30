@@ -62,7 +62,11 @@ class LoginController extends Controller
         }elseif(session()->get('tipo_usuario') == 3){
 
             return '/Reservas/CalendarioReservas';
-        }
+        
+         }elseif(session()->get('tipo_usuario') == 5){
+
+            return '/admin';
+         }
 
         
     
