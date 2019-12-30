@@ -238,7 +238,6 @@ class AdminController extends Controller
 
 
 
-
         $empleado=$Serviciopaso[0]->id_trabajador_paso;
 
         $trabajador=DB::table('empleados')
@@ -360,11 +359,55 @@ class AdminController extends Controller
 
     public function enviarpagoreserva (Request $request){
       
-      dd($request->all());
+      // dd($request->all());
+
+      $cantidad=$request->cantidad;
+      $servicios=$request->servicios;
+
+      $pago = DB::table('servicios')
+      ->wherein('id_servicios',$request->servicios)
+      ->get();
+
+
+    
+     $serv=count($servicios);
+     $serv = $serv-1;
+
+     DB::table('tabla_paso_reserva')->delete();
+
+     for ($i = 0; $i <= $serv; $i++){
+
+
+      DB::table('tabla_paso_reserva')->insert([
+        'nombre_cliente_paso_reserva' => $request->nombrecliente,
+        'apellido_cliente_paso_reserva'=>$request->apellidocliente,
+        'id_cliente_paso_reserva'=>$request->idcliente,
+        'trabajador_paso_reseva'=>$request->trabajador,
+        'id_trabajador_paso_reserva'=>$request->idtrabajador,
+        'hora_inicio_paso_reserva'=>$request->horainicio,
+        'hora_fin_paso_reserva'=>$request->horatermino,
+        'nombre_servicio_paso_reserva'=>$pago[$i]->nombre_servicio,
+        'cantidad'=>$cantidad[$i],
+        'valor_paso_reserva'=>$pago[$i]->valor_servicio,
+        'total_paso_reserva'=>$pago[$i]->valor_servicio*$cantidad[$i]
+        
+
+        ]);
+
+        $Serviciopasoreserva=DB::table('tabla_paso_reserva')->get();
+
+
+
+        $trabajador = DB::table('empleados')
+        ->where('id_empleado','=',$Serviciopasoreserva[0]->id_trabajador_paso_reserva)
+        ->get();
+
+        
+     }
   
 
 
-      // return view('Admin.confirmarpagoreserva');
+      return view('Admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador'));
     }
 
 
