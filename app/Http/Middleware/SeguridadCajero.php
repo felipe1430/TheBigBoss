@@ -21,7 +21,7 @@ class SeguridadCajero
 
         }
 
-        return redirect('/admin/index')->with('mensaje','No tiene los permisos para entrar a esta pagina');
+        return redirect('/admin')->with('mensaje','No tiene los permisos para entrar a esta pagina');
     }
 
 
