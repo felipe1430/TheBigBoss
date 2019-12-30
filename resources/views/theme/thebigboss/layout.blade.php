@@ -73,6 +73,17 @@
   <script src="{{asset("assets/$theme/js/bootstrap-datepicker.js")}}"></script>
   <script src="{{asset("assets/$theme/js/jquery.timepicker.min.js")}}"></script>
   <script src="{{asset("assets/$theme/js/scrollax.min.js")}}"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155159268-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-155159268-1');
+</script>
+
   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> --}}
   {{-- <script src="{{asset("assets/$theme/js/google-map.js")}}"></script> --}}
   <script src="{{asset("assets/$theme/js/main.js")}}"></script>
