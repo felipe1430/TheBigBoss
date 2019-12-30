@@ -183,7 +183,7 @@
 @yield('script')
 
 
-@include("theme/$theme2/mensajes")
+@include("theme/mensajes")
 
 
 </body>

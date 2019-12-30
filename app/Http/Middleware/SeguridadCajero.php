@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Session;
 
-class LoginRutas
+class SeguridadCajero
 {
     /**
      * Handle an incoming request.
@@ -21,17 +20,13 @@ class LoginRutas
         return $next($request);
 
         }
-        Session::flash('error','No tiene los permisos para entrar a esta pagina');
-        return redirect('/admin')->with('error','No tiene los permisos para entrar a esta pagina');
-    
-    
-    
-    
+
+        return redirect('/admin/index')->with('mensaje','No tiene los permisos para entrar a esta pagina');
     }
+
 
 
     private function permiso(){
-        return session()->get('tipo_usuario') == 1;
+        return session()->get('tipo_usuario') == 5;
     }
-
 }

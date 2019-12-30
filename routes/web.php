@@ -87,5 +87,20 @@ Route::prefix('barberos')->namespace('Barberos')->middleware('auth','SeguridadBa
     
     });
 
+Route::middleware('auth','SeguridadCajero')->group(function(){
+
+         Route::get('admin/','Admin\AdminController@index')->name('indexadmin');
+
+        Route::get('admin/ventas','Admin\AdminController@ventas')->name('ventas');
+        Route::post('admin/enviarpago','Admin\AdminController@enviarpago')->name('enviarpago');
+
+    
+        Route::get('admin/Reservas','Admin\AdminController@Reservas')->name('Reservas');
+        Route::get('admin/Reservas/{id_reserva}','Admin\AdminController@Reservaspago')->name('Reservaspago');
+        Route::post('admin/enviarpagoreserva','Admin\AdminController@enviarpagoreserva')->name('enviarpagoreserva');
+
+
+});
+
 
 
