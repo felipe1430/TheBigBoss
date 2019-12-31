@@ -16,7 +16,7 @@ class LoginRutas
      */
     public function handle($request, Closure $next)
     {
-        dd('midlewareadmin');
+        //dd('midlewareadmin');
         if ($this->permiso()) {
 
         return $next($request);
