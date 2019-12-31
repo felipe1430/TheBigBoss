@@ -70,6 +70,7 @@ Route::post('/enviarpagoreserva','AdminController@enviarpagoreserva')->name('env
 
 Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCliente')->group(function(){
 
+
     Route::get('/CalendarioReservas','PublicoReservas@index')->name('ReservasCliente');
     Route::get('/CalendarioReservas/{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
 
