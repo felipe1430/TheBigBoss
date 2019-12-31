@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-    The Big Boss Barber Shop
+    inicio
 @endsection
 
 @section('contenido')

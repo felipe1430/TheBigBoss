@@ -16,13 +16,14 @@ class LoginRutas
      */
     public function handle($request, Closure $next)
     {
+        //dd('midlewareadmin');
         if ($this->permiso()) {
 
         return $next($request);
 
         }
-        Session::flash('error','No tiene los permisos para entrar a esta pagina');
-        return redirect('/admin')->with('error','No tiene los permisos para entrar a esta pagina');
+     
+        return redirect('/')->with('mensaje','No tiene los permisos para entrar a esta pagina');
     
     
     

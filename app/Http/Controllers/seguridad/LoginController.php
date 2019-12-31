@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    //protected $redirectTo = '/Admin';
+    protected $redirectTo = '/Admin';
 
    use AuthenticatesUsers;
 
@@ -35,6 +35,7 @@ class LoginController extends Controller
         if ($user->fk_tipo_user == null || $user->estado== 0) {
             $this->guard()->logout();
             $request->session()->invalidate();
+
             return redirect('/Login')->withErrors(['error'=>'Este usuario no tiene cargo asignado o esta deshabilitado ']);
         }else{
             $user->setSession();
@@ -45,39 +46,52 @@ class LoginController extends Controller
   
     }
 
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+      
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()->intended($this->redirectPath());
+    }
+
 
     public function redirectPath()
     {
+       
         
-        
-        
-        if( session()->get('tipo_usuario') == 1){
-
+        if(session()->get('tipo_usuario') == 1){
+            
             return '/admin';
 
-
-        }elseif(session()->get('tipo_usuario') == 2){
-
-            return '/barberos';
-        }elseif(session()->get('tipo_usuario') == 3){
+        }
+         
+        if(session()->get('tipo_usuario') == 3){
 
             return '/Reservas/CalendarioReservas';
-        
-         }elseif(session()->get('tipo_usuario') == 5){
-
-            return '/admin';
-         }
+        }
 
         
-    
-        /*
+     
+       
+       
+
+       // return '/admin';
+
+        
+    /*
+        
         if (method_exists($this, 'redirectTo')) {
             return $this->redirectTo();
         }
 
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
-        */
+        
     }
-
+*/
     
+}
+
+
 }

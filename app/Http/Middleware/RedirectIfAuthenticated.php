@@ -29,15 +29,11 @@ class RedirectIfAuthenticated
 
             }elseif(Auth::user()->fk_tipo_user==3){
                 return redirect('/Reservas/CalendarioReservas');
-
-            }elseif(Auth::user()->fk_tipo_user==5){
-               return redirect('/admin');
-
-            }else{
-                return redirect('/');
             }
-           
         }
+           
+           
+        
 
         return $next($request);
     }
