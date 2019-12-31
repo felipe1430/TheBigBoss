@@ -15,7 +15,7 @@ class SeguridadCliente
      */
     public function handle($request, Closure $next)
     {
-        dd('midlewareacliente');
+//dd($this->permiso());
         if ($this->permiso()) {
             return $next($request);
         }
