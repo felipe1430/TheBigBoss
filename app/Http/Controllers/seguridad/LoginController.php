@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    //protected $redirectTo = '/Admin';
+    protected $redirectTo = '/Admin';
 
    use AuthenticatesUsers;
 
@@ -45,13 +45,13 @@ class LoginController extends Controller
         }
   
     }
-    
+
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
-
+      
         return $this->authenticated($request, $this->guard()->user())
                 ?: redirect()->intended($this->redirectPath());
     }
@@ -61,38 +61,37 @@ class LoginController extends Controller
     {
        
         
-        
-        if( session()->get('tipo_usuario') == 1){
-          
+        if(session()->get('tipo_usuario') == 1){
+            
             return '/admin';
 
-
         }
-        
-        if(session()->get('tipo_usuario') == 2){
-
-            return '/barberos';
-
-        }
-        
+         
         if(session()->get('tipo_usuario') == 3){
 
             return '/Reservas/CalendarioReservas';
         }
-       
-
-      
 
         
-    
-        /*
+     
+       
+       
+
+       // return '/admin';
+
+        
+    /*
+        
         if (method_exists($this, 'redirectTo')) {
             return $this->redirectTo();
         }
 
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
-        */
+        
     }
-
+*/
     
+}
+
+
 }

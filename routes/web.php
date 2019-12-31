@@ -23,17 +23,6 @@ Route::get('/prueba1','Publico\PublicoController@index');
  Route::get('/home', 'HomeController@index')->name('home');
 
 //-----------------------------------RUTAS PUBLICAS----------------------------------------//
-Route::prefix('Reservas')->namespace('Publico')->middleware('auth')->group(function(){
-
-    Route::get('/CalendarioReservas','PublicoReservas@index')->name('ReservasCliente');
-    Route::get('/CalendarioReservas/{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
-
-
-
-    Route::post('/CalendarioReservas','PublicoReservas@crearEvento')->name('addEvento');
-    Route::post('/Horas','PublicoReservas@horasDisponibles')->name('horas');
-
-});
 
 //-----------------------------------RUTAS ADMINISTRADOR----------------------------------------//
 Route::prefix('admin')->namespace('Admin')->middleware('auth','LoginRutas')->group(function(){
@@ -76,6 +65,19 @@ Route::post('/enviarpagoreserva','AdminController@enviarpagoreserva')->name('env
 
 
     
+});
+
+
+Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCliente')->group(function(){
+
+    Route::get('/CalendarioReservas','PublicoReservas@index')->name('ReservasCliente');
+    Route::get('/CalendarioReservas/{id_empleado}','PublicoReservas@cargarCalendario')->name('calendario');
+
+
+
+    Route::post('/CalendarioReservas','PublicoReservas@crearEvento')->name('addEvento');
+    Route::post('/Horas','PublicoReservas@horasDisponibles')->name('horas');
+
 });
 
 //-----------------------------------RUTAS Barbero----------------------------------------//
