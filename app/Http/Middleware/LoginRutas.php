@@ -17,11 +17,11 @@ class LoginRutas
     public function handle($request, Closure $next)
     {
         if ($this->permiso()) {
-           
+
         return $next($request);
 
         }
-        //Session::flash('error','No tiene los permisos para entrar a esta pagina');
+     
         return redirect('/')->with('mensaje','No tiene los permisos para entrar a esta pagina');
     
     
@@ -31,9 +31,7 @@ class LoginRutas
 
 
     private function permiso(){
-      // dd(session()->get('tipo_usuario') == 1);
         return session()->get('tipo_usuario') == 1;
-     
     }
 
 }

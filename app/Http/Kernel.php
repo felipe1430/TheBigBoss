@@ -64,7 +64,6 @@ class Kernel extends HttpKernel
         'LoginRutas'=>\App\Http\Middleware\LoginRutas::class,
         'SeguridadBarberos'=>\App\Http\Middleware\SeguridadBarberos::class,
         'SeguridadCliente'=>\App\Http\Middleware\SeguridadCliente::class,
-        'SeguridadCajero'=>\App\Http\Middleware\SeguridadCajero::class,
     ];
 
     /**

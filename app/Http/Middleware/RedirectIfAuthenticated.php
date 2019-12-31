@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
         //dd(Auth::guard($guard)->check());
         if (Auth::guard($guard)->check()) {
-            //dd(Auth::user()->fk_tipo_user);
+            dd(Auth::user()->fk_tipo_user);
             
             if(Auth::user()->fk_tipo_user==1){
                 return redirect('/admin');

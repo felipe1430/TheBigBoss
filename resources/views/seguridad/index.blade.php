@@ -41,10 +41,6 @@
                               <p><a href="#"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-outline-primary px-4 py-2">Registrate</a></p>
 
                             </form>
-                            <a class="btn btn-link" href="#" class="input100"> 
-                              {{-- {{ route('password.request') }} --}}
-                              Has Olviado su contraseña?
-                          </a>
                           </div>
                         </div>
                       </div>
