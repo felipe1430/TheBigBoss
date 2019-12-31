@@ -16,12 +16,12 @@ class SeguridadCajero
     public function handle($request, Closure $next)
     {
         if ($this->permiso()) {
-
+           
         return $next($request);
 
         }
 
-        return redirect('/admin')->with('mensaje','No tiene los permisos para entrar a esta pagina');
+        return redirect('/')->with('mensaje','No tiene los permisos para entrar a esta pagina');
     }
 
 

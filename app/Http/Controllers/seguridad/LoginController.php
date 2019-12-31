@@ -48,25 +48,23 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        
-        
-        
+       
         if( session()->get('tipo_usuario') == 1){
 
             return '/admin';
 
+          
 
         }elseif(session()->get('tipo_usuario') == 2){
 
             return '/barberos';
+
         }elseif(session()->get('tipo_usuario') == 3){
 
             return '/Reservas/CalendarioReservas';
+            
+        }
         
-         }elseif(session()->get('tipo_usuario') == 5){
-
-            return '/admin';
-         }
 
         
     
