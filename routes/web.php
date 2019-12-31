@@ -85,11 +85,13 @@ Route::prefix('barberos')->namespace('Barberos')->middleware('auth','SeguridadBa
     Route::get('/','BarberosController@index');
     
     
+
+    
     });
 
-Route::middleware('auth','SeguridadCajero')->group(function(){
+    Route::middleware('auth','SeguridadCajero')->group(function(){
 
-         Route::get('admin/','Admin\AdminController@index')->name('indexadmin');
+        Route::get('admin/','Admin\AdminController@index')->name('indexadmin');
 
         Route::get('admin/ventas','Admin\AdminController@ventas')->name('ventas');
         Route::post('admin/enviarpago','Admin\AdminController@enviarpago')->name('enviarpago');
