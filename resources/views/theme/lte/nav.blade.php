@@ -121,6 +121,12 @@
                       <p>Agregar Gastos</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{route('AgregarGastos')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Eliminar Ventas</p>
+                    </a>
+                  </li>
 
                 </ul>
               </li>
