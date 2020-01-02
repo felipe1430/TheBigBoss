@@ -85,40 +85,21 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
               <!--Agregar items de administrador -->
-           
-               <li class="nav-item has-treeview">
-                <a href="" class="nav-link">
-                  <i class="nav-icon fas fa-user-lock"></i>
-                  <p>
-                    Administracion
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  
-                    <li class="nav-item">
-                        <a href="{{route('ListarServicios')}}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Servicios</p>
-                        </a>
-                      </li>
-                
-                  <li class="nav-item">
-                    <a href="{{route('ListarEmpleados')}}" class="nav-link">
+           @if (session()->get('tipo_usuario') == 1)
+           <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-user-lock"></i>
+              <p>
+                Administracion
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+                <li class="nav-item">
+                    <a href="{{route('ListarServicios')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Control De Trabajadores </p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{route('ListarUsuarios')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Control De Usuarios </p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{route('AgregarGastos')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Agregar Gastos</p>
+                      <p>Servicios</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -129,9 +110,34 @@
                   </li>
 
                 </ul>
+            
+              <li class="nav-item">
+                <a href="{{route('ListarEmpleados')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Control De Trabajadores </p>
+                </a>
               </li>
-      
-          <li class="nav-item has-treeview">
+              <li class="nav-item">
+                <a href="{{route('ListarUsuarios')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Control De Usuarios </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('AgregarGastos')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agregar Gastos</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+           @else
+               
+           @endif
+
+           @if (session()->get('tipo_usuario') == 1)
+           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book-open"></i>
               <p>
@@ -172,7 +178,12 @@
                 </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+           @else
+               
+           @endif
+              
+           @if (session()->get('tipo_usuario') == 1)
+           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-search-dollar"></i>
               <p>
@@ -195,6 +206,35 @@
               </li>
             </ul>
           </li>
+           @else
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-search-dollar"></i>
+              <p>
+                Ventas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Post De Venta</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Desde Reserva</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+               
+           @endif
+      
+          
+         
           {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-warehouse"></i>

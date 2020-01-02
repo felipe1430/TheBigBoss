@@ -72,6 +72,11 @@ class LoginController extends Controller
             return '/Reservas/CalendarioReservas';
         }
 
+        if(session()->get('tipo_usuario') == 5){
+
+            return '/Cajero';
+        }
+
         
      
        

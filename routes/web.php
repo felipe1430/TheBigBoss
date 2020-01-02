@@ -91,4 +91,13 @@ Route::prefix('barberos')->namespace('Barberos')->middleware('auth','SeguridadBa
     });
 
 
+Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero')->group(function(){
+
+
+    Route::get('/','CajeroController@index');
+    
+    
+    });
+
+
 
