@@ -94,7 +94,8 @@
                                 <input type="hidden" name="idUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->id}}">
                                 <input type="hidden" name="idBarbero" class="form-control" placeholder="Nombre..."  value="{{$barberos->id_empleado}}">
                                 <label for="Fecha">Fecha comienso</label>
-                                <input type="date" id="Fecha" name="start_date" class="date form-control" required>
+                                <input type="date" id="Fecha" name="start_date" class="date form-control " required> 
+                                {{-- appointment_date  clase para fechas bonitas--}}
                                 <label for="Fecha">Seleccione la hora</label>
                                 <select class="date form-control" name="bloques" id="bloques" style="display:none" required disabled  >
                                     <option value="">....</option>

@@ -30,16 +30,16 @@
                   <input type="text" class="form-control"  readonly name="apellidotrabajador" id="apellidotrabajador" value="{{$Barbero[0]->apellido_empleado}}">
                 </div>
               </div>
-              <div class="col-sm-6">
+              {{-- <div class="col-sm-6">
                 <div class="form-group">
                     <label for="validationTooltip01">Rut Trabajador</label>
-                  <input type="text" class="form-control appointment_date" readonly name="ruttrabajador" id="ruttrabajador" value="{{$Barbero[0]->rut_empleado}}">
+                  <input type="text" class="form-control" readonly name="ruttrabajador" id="ruttrabajador" value="{{$Barbero[0]->rut_empleado}}">
                 </div>    
-              </div>
-              <div class="col-sm-6">
+              </div> --}}
+              <div class="col-sm-12">
                 <div class="form-group">
-                    <label for="validationTooltip01">Fecha Servicio</label>
-                  <input type="text" class="form-control appointment_time" readonly name="fechaservicio" id="fechaservicio" value="{{$date}}">
+                    <label for="validationTooltip01">Fecha y Hora Reserva</label>
+                  <input type="text" class="form-control appointment_time" readonly name="fechaservicio" id="fechaservicio" value="{{$params_array['start_date'].'             '.$params_array['bloques']}}">
                 </div>
               </div>
               <div class="col-sm-6">

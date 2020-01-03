@@ -225,8 +225,20 @@ class PublicoReservas extends Controller
 
 
     public function CargarDetalle(Request $request){
+        //dd($request->all());
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $params_array   =$request->all();
 
+        if($request->start_date <$date ){
+
+            Session::flash('error','no puede reservar en esa fecha');
+            return redirect('Reservas/CalendarioReservas/'.$params_array['idBarbero']);
+
+        }
         
+
+
         $params_array   =$request->all();
         unset($params_array['_token']);
         $servicios= $params_array['servicios'];
