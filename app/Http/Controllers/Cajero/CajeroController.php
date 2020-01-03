@@ -33,7 +33,7 @@ class CajeroController extends Controller
       ->where('estado_empleado',1);
       
     
-      return view('Admin.ventas',compact('Servicio','empleado'));
+      return view('cajero.ventas',compact('Servicio','empleado'));
 
     }
 
@@ -90,7 +90,7 @@ class CajeroController extends Controller
         $date = Carbon::now("Chile/Continental");
 
 
-       return view('Admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
+       return view('cajero.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
  
     }
 
@@ -148,7 +148,7 @@ class CajeroController extends Controller
       Session::flash('success','Venta Realizada');
 
     
-      return view('Admin.ventas',compact('Servicio','empleado'));
+      return view('cajero.ventas',compact('Servicio','empleado'));
 
     }
 
@@ -160,7 +160,7 @@ class CajeroController extends Controller
       ->orderBy('id_reserva', 'desc')->get();
       
     
-      return view('Admin.Reservas',compact('Reserva'));
+      return view('cajero.Reservas',compact('Reserva'));
 
     }
 
@@ -193,7 +193,7 @@ class CajeroController extends Controller
 
 
 
-      return view('Admin.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
+      return view('cajero.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
         
       
     }
@@ -201,15 +201,19 @@ class CajeroController extends Controller
 
     public function enviarpagoreserva (Request $request){
       
-      // dd($request->all());
+      dd($request->all());
 
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
+
+      // dd($servicios);
 
       $pago = DB::table('servicios')
       ->wherein('id_servicios',$request->servicios)
       ->get();
 
+
+      // dd($pago);
 
 
     
@@ -254,7 +258,7 @@ class CajeroController extends Controller
   
 
 
-      return view('Admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
+      return view('cajero.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
     }
 
     public function confirmarventareserva(Request $request)

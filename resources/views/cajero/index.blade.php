@@ -40,7 +40,7 @@
             <div class="row">
               <div class="col-sm-12 border-right">
                 <div class="description-block">
-                  <a href="{{route('ventas')}}" type="btn btn-success">Seleccione Aquí</a>
+                  <a href="{{route('ventascajero')}}" type="btn btn-success">Seleccione Aquí</a>
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
             <div class="row">
               <div class="col-sm-12 border-right">
                 <div class="description-block">
-                  <a href="{{route('Reservas')}}" type="btn btn-success">Seleccione Aquí</a>
+                  <a href="{{route('Reservascajero')}}" type="btn btn-success">Seleccione Aquí</a>
                 </div>
               </div>
             </div>

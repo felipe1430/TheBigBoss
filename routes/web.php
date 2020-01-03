@@ -96,7 +96,7 @@ Route::prefix('barberos')->namespace('Barberos')->middleware('auth','SeguridadBa
 Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero')->group(function(){
 
 
-    Route::get('/','CajeroController@index');
+    Route::get('/','CajeroController@index')->name('indexcajero');
     Route::get('/Reservas','CajeroController@Reservas')->name('Reservascajero');
     Route::get('/Reservas/{id_reserva}','CajeroController@Reservaspago')->name('Reservaspagopagocajero');
     Route::post('/enviarpagoreserva','CajeroController@enviarpagoreserva')->name('enviarpagoreservapagocajero');
