@@ -14,6 +14,16 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="" class="nav-link">Información</a>
       </li>
+      <li>
+      @if (session()->get('tipo_usuario') == 1)
+      <a href="{{route('inicio')}}" class="nav-link">TheBigBoss</a>
+      @else
+      <a href="{{route('inicio')}}" class="nav-link">TheBigBoss</a>
+      @endif
+    </li>
+
+
+
     </ul>
 
   
