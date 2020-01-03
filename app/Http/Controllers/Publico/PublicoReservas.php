@@ -9,6 +9,7 @@ use App\reservas;
 use App\servicios;
 use DB;
 use Carbon\Carbon;
+use Session;
 
 class PublicoReservas extends Controller
 {
@@ -25,10 +26,21 @@ class PublicoReservas extends Controller
     public function cargarCalendario($id){
       
         $barberos = empleados::findOrFail($id);  
-        $servicios = servicios::all();
 
-        $events = reservas::where('fk_id_empleado',$id)->get(); 
-       // dd($events);
+        $servicios=DB::table('servicios')
+        ->where('estado_servicios','=',1)
+        ->get();
+
+        //dd($servicios);
+
+        $events = reservas::where('fk_id_empleado',$id)
+        ->where('estado_reserva',1)
+        ->get(); 
+    //    $events =DB::table('reservas')
+    //    ->where('estado_reserva','=',1)
+    //    ->where('fk_id_empleado',$id)
+    //    ->get();
+       //dd($events);
         $event=[];
         foreach($events as $row){
             $enddate=$row->end_date;
@@ -54,7 +66,7 @@ class PublicoReservas extends Controller
 
 
     public function crearEvento(Request $request){
-      //  dd($request->start_date);
+      //  dd($request->all());
    //dd( $request->bloques,substr($request->bloques, 0,-13),substr($request->bloques,13));
       // if ($request->ajax()) {
         $horaInicio=substr($request->bloques, 0,-13);
@@ -72,6 +84,9 @@ class PublicoReservas extends Controller
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
         $id=0;
+
+
+        
 
         try{
            
@@ -142,19 +157,25 @@ class PublicoReservas extends Controller
                 }catch(Exception $e){
                     DB::rollback();
                     //dd($e,'1');
+                 Session::flash('error','algo a salido mal');
+                return redirect('Reservas/CalendarioReservas');
                 } catch (\Throwable $e) {
                     DB::rollback();
+                    Session::flash('error','algo a salido mal');
+                return redirect('Reservas/CalendarioReservas');
                    // dd($e,'2');
-                    throw $e;
+                    //throw $e;
                 }
 //rama a reserva 2
 
-
+            Session::flash('success','reserva realizada con exito');
                 return redirect('Reservas/CalendarioReservas');
 
 
 
         }else{
+            Session::flash('success','reserva realizada con exito');
+        
             return redirect('Reservas/CalendarioReservas');
 
         }
@@ -173,6 +194,7 @@ class PublicoReservas extends Controller
             ->select(DB::raw('time(start_date) as hora_inicio,time(end_date) as hora_termino'))
             ->whereDate('start_date', $request->Fecha)
             ->where('fk_id_empleado', $request->barberoId)
+            ->where('estado_reserva', 1)
             ->get();
 
             //dd(count($reservas),$reservas);
@@ -200,4 +222,45 @@ class PublicoReservas extends Controller
         }
 
     }
+
+
+    public function CargarDetalle(Request $request){
+
+        
+        $params_array   =$request->all();
+        unset($params_array['_token']);
+        $servicios= $params_array['servicios'];
+        $cantidadDeServ = $params_array['cantidad'];
+        $idBarbero =$params_array['idBarbero'];
+        
+        //dd($params_array,$servicios,$cantidadDeServ);
+
+
+        $Barbero=DB::table('empleados')
+        ->where('fk_empleado_tipo_user',2 )
+        ->where('id_empleado',$idBarbero )
+        ->get();
+        //dd($Barbero);
+
+        $serviciosSeleccionados=DB::table('servicios')
+        ->whereIn('id_servicios',$servicios )
+        ->get();
+        //dd($serviciosSeleccionados,$servicios);
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+
+        //dd($params_array);
+        return view('Reservas.ConfirmarReserva',compact('params_array','Barbero','serviciosSeleccionados','date','cantidadDeServ','servicios'));
+
+
+    }
+
+
+
+
+
+
+
+
+
 }

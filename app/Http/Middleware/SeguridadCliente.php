@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Session;
 class SeguridadCliente
 {
     /**
@@ -19,7 +19,7 @@ class SeguridadCliente
         if ($this->permiso()) {
             return $next($request);
         }
-         
+        Session::flash('error','No tiene los permisos para entrar a esta pagina');
         return redirect('/')->with('mensaje','No tiene los permisos para entrar a esta pagina');
     
     }

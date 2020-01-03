@@ -11,7 +11,8 @@
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script> --}}
+    <script src="{{asset("js/fullcalendar.min.js")}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css"/>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/lang/es.js"></script>
   
@@ -65,15 +66,14 @@
 
     <hr>
     <hr>
+    <br>
+    <br>
 
     <div class="row">
         <div class="col-md-6  ">
             <div class="panel panel-default scroll" >
 
-                <div class="panel-heading" >
-                    full calendar
-
-                </div>
+                
                 <div class="panel-body" >
                     {!!$calendar->calendar() !!}
                     {!!$calendar->script() !!}
@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="col-md-12">
                             <h3>Rerserva Tus Servicios</h3>
-                            <form action="{{route('addEvento')}}" method="POST" id="form1" >
+                            <form action="{{route('cargarDetalle')}}" method="POST" id="form1" >
                                 @csrf
                                 <label style="font-size: 10px" for="">Escriba su nombre</label>
                                 <input type="text" name="nameUser" class="form-control" placeholder="Nombre..."  value="{{auth()->user()->name}}">
@@ -157,6 +157,10 @@
 <script src="{{asset("js/ValidaCheck.js")}}"></script>
 
 <script>
+
+
+
+
 function comprobar(obj)
 
 { 
