@@ -176,7 +176,7 @@ class AdminController extends Controller
     }
 
 
-    //----------------------------------- CRUD Usuarios ----------------------------------------//
+    //----------------------------------- Fin CRUD Usuarios ----------------------------------------//
 
 
     public function ventas(Request $request)
@@ -369,6 +369,7 @@ class AdminController extends Controller
       ->get();
 
 
+
     
      $serv=count($servicios);
      $serv = $serv-1;
@@ -384,6 +385,8 @@ class AdminController extends Controller
         'id_cliente_paso_reserva'=>$request->idcliente,
         'trabajador_paso_reseva'=>$request->trabajador,
         'id_trabajador_paso_reserva'=>$request->idtrabajador,
+        'id_servicios_paso_reserva'=>$pago[$i]->id_servicios,
+        'id_reserva_paso'=>$request->idreserva,
         'hora_inicio_paso_reserva'=>$request->horainicio,
         'hora_fin_paso_reserva'=>$request->horatermino,
         'nombre_servicio_paso_reserva'=>$pago[$i]->nombre_servicio,
@@ -404,10 +407,69 @@ class AdminController extends Controller
 
         
      }
+
+     $date = Carbon::now("Chile/Continental");
   
 
 
-      return view('Admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador'));
+      return view('Admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
+    }
+
+    public function confirmarventareserva(Request $request)
+    {
+
+      // dd($request->all());
+
+      DB::table('ventas')->insert([
+        'fk_usuario_venta' => $request->idcliente,
+        'fk_empleado_venta'=>$request->idempleado,
+        'fk_reserva_venta'=>$request->idreserva,
+        'fecha_venta'=>$request->fechaservicio,
+        'total_venta'=>$request->total
+
+        
+        ]);
+
+
+        $ventas=DB::table('ventas')->max('id_ventas');
+        $tbpaso=DB::table('tabla_paso_reserva')->get();
+        $conteo=DB::table('tabla_paso_reserva')->count('id_servicios_paso_reserva');
+        $conteo = $conteo-1;
+
+        
+        
+
+        for ($i = 0; $i <= $conteo; $i++){
+
+
+          DB::table('detalle_ventas')->insert([
+            'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
+            'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
+            'fk_venta_detall_venta'=> $ventas
+            
+  
+            ]);
+  
+            
+         }
+
+
+
+
+
+      $Servicio=DB::table('servicios')->get()
+      ->where('estado_servicios',1);
+
+
+      $empleado=DB::table('empleados')->get()
+      ->where('estado_empleado',1);
+
+      
+      Session::flash('success','Venta Realizada');
+
+    
+      return view('Admin.ventas',compact('Servicio','empleado'));
+
     }
 
 
@@ -534,5 +596,16 @@ class AdminController extends Controller
 //-----------------------------------FIN CRUD Gastos ----------------------------------------//
     
 
+    public function eliminarventas (){
+      
+      return view('Admin.EliminarVentas');
+    }
+
+    public function eliminarventa (Request $request){
+
+      dd($request->all());
+      
+      return redirect()->route('indexadmin');
+    }
     
 }

@@ -13,13 +13,15 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10 ftco-animate">
-          <form  method="POST" action="{{route('confirmar')}}"class="appointment-form" >
+          <form  method="POST" action="{{route('confirmarventareserva')}}"class="appointment-form" >
             @csrf
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                     <label for="validationTooltip01">Nombre cliente</label>
                   <input type="text" class="form-control" readonly name="nombrecliente" id="nombretrabajador" value="{{$Serviciopasoreserva[0]->nombre_cliente_paso_reserva}}" >
+                  <input type="hidden" class="form-control" readonly name="idcliente" id="idtrabajador" value="{{$Serviciopasoreserva[0]->id_cliente_paso_reserva}}" >
+                  <input type="hidden" class="form-control" readonly name="idreserva" id="idreserva" value="{{$Serviciopasoreserva[0]->id_reserva_paso}}" >
                 </div>
               </div>
               <div class="col-sm-6">
@@ -37,7 +39,8 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <label for="validationTooltip01">Apellido Trabajador</label>
-                  <input type="text" class="form-control appointment_time" readonly name="fechaservicio" id="fechaservicio" value="{{$trabajador[0]->apellido_empleado}}" >
+                  <input type="text" class="form-control appointment_time" readonly name="apellido" id="apellido" value="{{$trabajador[0]->apellido_empleado}}" >
+                  <input type="hidden" class="form-control appointment_time" readonly name="fechaservicio" id="fechaservicio" value="{{$date}}" >
                 </div>
               </div>
               <div class="col-sm-6">
@@ -49,7 +52,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <label for="validationTooltip01">Hora Fin Servicio</label>
-                  <input type="text" class="form-control appointment_time" readonly name="fechaservicio" id="fechaservicio" value="{{$Serviciopasoreserva[0]->hora_fin_paso_reserva}}">
+                  <input type="text" class="form-control appointment_time" readonly name="fechaservicioo" id="fechaservicioo" value="{{$Serviciopasoreserva[0]->hora_fin_paso_reserva}}">
                 </div>
               </div>
               <div class="col-sm-6">

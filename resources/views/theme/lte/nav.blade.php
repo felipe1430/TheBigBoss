@@ -102,14 +102,7 @@
                       <p>Servicios</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="{{route('AgregarGastos')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Eliminar Ventas</p>
-                    </a>
-                  </li>
 
-                </ul>
             
               <li class="nav-item">
                 <a href="{{route('ListarEmpleados')}}" class="nav-link">
@@ -127,6 +120,12 @@
                 <a href="{{route('AgregarGastos')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Agregar Gastos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('eliminarventas')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Eliminar Ventas</p>
                 </a>
               </li>
 
@@ -217,13 +216,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('ventas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Post De Venta</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('Reservas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Desde Reserva</p>
                 </a>

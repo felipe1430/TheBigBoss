@@ -42,6 +42,7 @@ Route::get('/ListarUsuarios','AdminController@ListarUsuarios')->name('ListarUsua
 Route::post('/actualizarusuarios', 'AdminController@actualizarusuarios')->name('actualizarusuarios');
 Route::get('/ventas','AdminController@ventas')->name('ventas');
 Route::post('/enviarpago','AdminController@enviarpago')->name('enviarpago');
+Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
 Route::get('/reporteventas','AdminController@reporteventas')->name('reporteventas');
 Route::post('/reporteventas','AdminController@filtrarventas')->name('filtrarventas');
 Route::get('/reporteservicios','AdminController@reporteservicios')->name('reporteservicios');
@@ -50,15 +51,14 @@ Route::get('/reportecomosiones','AdminController@reportecomosiones')->name('repo
 Route::post('/reportecomosiones','AdminController@filtrarcomisiones')->name('filtrarcomisiones');
 Route::get('/reporteGastos','AdminController@reportegastos')->name('reportegastos');
 Route::post('/reporteGastos','AdminController@filtrargastos')->name('filtrargastos');
-Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
 Route::get('/AgregarGastos','AdminController@AgregarGastos')->name('AgregarGastos');
 Route::post('/insertargastos','AdminController@insertargastos')->name('confirmargastos');
-
-
 Route::get('/Reservas','AdminController@Reservas')->name('Reservas');
 Route::get('/Reservas/{id_reserva}','AdminController@Reservaspago')->name('Reservaspago');
 Route::post('/enviarpagoreserva','AdminController@enviarpagoreserva')->name('enviarpagoreserva');
-
+Route::post('/confirmarventareserva','AdminController@confirmarventareserva')->name('confirmarventareserva');
+Route::get('/eliminarventas','AdminController@eliminarventas')->name('eliminarventas');
+Route::post('/eliminarventa','AdminController@eliminarventa')->name('eliminarventa');
 
 
 
@@ -95,6 +95,13 @@ Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero
 
 
     Route::get('/','CajeroController@index');
+    Route::get('/Reservas','CajeroController@Reservas')->name('Reservascajero');
+    Route::get('/Reservas/{id_reserva}','CajeroController@Reservaspago')->name('Reservaspagopagocajero');
+    Route::post('/enviarpagoreserva','CajeroController@enviarpagoreserva')->name('enviarpagoreservapagocajero');
+    Route::post('/confirmarventareserva','CajeroController@confirmarventareserva')->name('confirmarventareservapagocajero');
+    Route::get('/ventas','CajeroController@ventas')->name('ventascajero');
+    Route::post('/enviarpago','CajeroController@enviarpago')->name('enviarpagocajero');
+    Route::post('/confirmar','CajeroController@confirmar')->name('confirmarpagocajero');
     
     
     });
