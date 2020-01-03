@@ -76,7 +76,9 @@ Route::prefix('Reservas')->namespace('Publico')->middleware('auth','SeguridadCli
 
 
 
-    Route::post('/CalendarioReservas','PublicoReservas@crearEvento')->name('addEvento');
+    Route::post('/CalendarioReservas','PublicoReservas@CargarDetalle')->name('cargarDetalle');
+    Route::post('/FinalizarReserva','PublicoReservas@crearEvento')->name('addEvento');
+
     Route::post('/Horas','PublicoReservas@horasDisponibles')->name('horas');
 
 });
