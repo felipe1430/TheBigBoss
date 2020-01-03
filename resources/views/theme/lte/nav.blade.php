@@ -5,7 +5,11 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
+        @if (session()->get('tipo_usuario') == 1)
         <a href="{{route('indexadmin')}}" class="nav-link">Menu Principal</a>
+        @else
+        <a href="{{route('indexcajero')}}" class="nav-link">Menu Principal</a>
+        @endif
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="" class="nav-link">Información</a>
@@ -216,13 +220,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('ventas')}}" class="nav-link">
+                <a href="{{route('ventascajero')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Post De Venta</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('Reservas')}}" class="nav-link">
+                <a href="{{route('Reservascajero')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Desde Reserva</p>
                 </a>
