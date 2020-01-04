@@ -16,6 +16,15 @@ class PublicoReservas extends Controller
     
     public function index(){
 
+        //Carbon::setLocale( 'es_MX', 'es', 'ES');
+        setlocale(LC_ALL, 'es_CL', 'es', 'ES');
+        dd(Carbon::createFromDate('2020/01/26','Chile/Continental')->formatLocalized('%A'));
+        //dd(Carbon::now('Chile/Continental')->formatLocalized('%A')); 
+
+        // todo esto para cargar los bloques de los domingos XD
+
+
+
     $barberos = empleados::where('fk_empleado_tipo_user',2)->get(); // el 2 es solo barberos 
     //dd($barberos);
 

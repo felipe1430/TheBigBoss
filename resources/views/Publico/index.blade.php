@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-    inicio
+    The Big Boss
 @endsection
 
 @section('contenido')
