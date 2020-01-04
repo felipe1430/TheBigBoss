@@ -13,7 +13,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10 ftco-animate">
-          <form  method="POST" action="{{route('enviarpagoreservapagocajero')}}"class="appointment-form" >
+          <form  method="POST" action="{{route('confirmarventareservapagocajero')}}"class="appointment-form" >
             @csrf
             <div class="row">
               <div class="col-sm-6">

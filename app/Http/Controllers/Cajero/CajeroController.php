@@ -201,12 +201,12 @@ class CajeroController extends Controller
 
     public function enviarpagoreserva (Request $request){
       
-      dd($request->all());
+      // dd($request->all());
 
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
 
-      // dd($servicios);
+      //  dd($servicios);
 
       $pago = DB::table('servicios')
       ->wherein('id_servicios',$request->servicios)
