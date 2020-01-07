@@ -201,7 +201,7 @@ class AdminController extends Controller
     public function enviarpago(Request $request)
     {
 
-      
+      //dd($request->all());
 
        $cantidad=$request->cantidad;
        $servicios=$request->servicios;
@@ -308,7 +308,9 @@ class AdminController extends Controller
       Session::flash('success','Venta Realizada');
 
     
-      return view('admin.ventas',compact('Servicio','empleado'));
+      // return view('admin.ventas',compact('Servicio','empleado'));
+      //return view('Admin.ventas',compact('Servicio','empleado'));
+      return redirect()->route('ventas');
 
     }
 

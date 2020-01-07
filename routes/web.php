@@ -40,9 +40,12 @@ Route::get('/agregarservicios','AdminController@agregarservicios')->name('agrega
 Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
 Route::get('/ListarUsuarios','AdminController@ListarUsuarios')->name('ListarUsuarios');
 Route::post('/actualizarusuarios', 'AdminController@actualizarusuarios')->name('actualizarusuarios');
+
 Route::get('/ventas','AdminController@ventas')->name('ventas');
-Route::post('/enviarpago','AdminController@enviarpago')->name('enviarpago');
+Route::post('/ventas','AdminController@enviarpago')->name('enviarpago');
 Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
+
+
 Route::get('/reporteventas','AdminController@reporteventas')->name('reporteventas');
 Route::post('/reporteventas','AdminController@filtrarventas')->name('filtrarventas');
 Route::get('/reporteservicios','AdminController@reporteservicios')->name('reporteservicios');

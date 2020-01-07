@@ -16,6 +16,11 @@ class PublicoReservas extends Controller
     
     public function index(){
 
+        //Carbon::setLocale( 'es_MX', 'es', 'ES');
+    
+
+
+
     $barberos = empleados::where('fk_empleado_tipo_user',2)->get(); // el 2 es solo barberos 
     //dd($barberos);
 
@@ -206,9 +211,29 @@ class PublicoReservas extends Controller
             //dd($horas);
             
             //dd($reservas[0]->hora_inicio );
-            $bloques=DB::table('bloquesdehoras')
-            ->whereNotIn('hora_inicio',$horas )
-            ->get();
+
+            setlocale(LC_ALL, 'es_CL', 'es', 'ES');
+            $dia=Carbon::createFromDate($request->Fecha,'Chile/Continental')->formatLocalized('%A');
+            ///dd($dia);
+            if($dia=='domingo'){
+           // dd('si es dominfo');
+                //dd(Carbon::now('Chile/Continental')->formatLocalized('%A'));  // todo esto para cargar los bloques de los domingos XD
+                $bloques=DB::table('bloquesdehoras')
+                ->where('estado','d')
+                ->whereNotIn('hora_inicio',$horas )
+                ->get();
+            }else{
+               // dd('cualquier dia de la semana');
+  
+                $bloques=DB::table('bloquesdehoras')
+                ->where('estado','s')
+                ->whereNotIn('hora_inicio',$horas )
+                ->get();
+
+            }
+        
+    
+         
 
             $data=[
                 //"reservas"=> $reservas,

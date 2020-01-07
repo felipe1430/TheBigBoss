@@ -72,7 +72,7 @@ Lista De ventas
                     <td>{{$item->nombre_empleado}}</td>
                     <td>{{$item->rut_empleado}}</td>
                     <td>{{$item->fecha_venta}}</td>
-                    <td style="text-align:center">{{number_format($item->total_venta,0,',','.')}}</td>
+                    <td style="text-align:center">${{number_format($item->total_venta,0,',','.')}}</td>
                 </tr>
               @endforeach
                     
