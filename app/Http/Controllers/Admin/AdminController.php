@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use App\empleados;
 use App\User;
+use App\reservas;
+use App\DetalleReserva;
 use Session;
 use App\servicios;
 use App\gastos;
@@ -45,13 +47,13 @@ class AdminController extends Controller
 
       
     
-      return view('Admin.ListarEmpleados',compact('empleados'));
+      return view('admin.ListarEmpleados',compact('empleados'));
     }
 
     public function agregarempleado()
     {
       
-      return view('Admin.AgregarEmpleados');
+      return view('admin.AgregarEmpleados');
     }
 
     public function empleados(Request $request)
@@ -74,7 +76,7 @@ class AdminController extends Controller
       ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.fk_empleado_tipo_user')
       ->get();
 
-        return view('Admin.ListarEmpleados',compact('empleados'));
+        return view('admin.ListarEmpleados',compact('empleados'));
 
     }
 
@@ -106,13 +108,13 @@ class AdminController extends Controller
       $Servicio=DB::table('servicios')->get();
 
     
-      return view('Admin.ListarServicios',compact('Servicio'));
+      return view('admin.ListarServicios',compact('Servicio'));
     }
 
     public function agregarservicios()
     {
       
-      return view('Admin.AgregarServicios');
+      return view('admin.AgregarServicios');
     }
 
     public function actualizarservicios(Request $request)
@@ -143,7 +145,7 @@ class AdminController extends Controller
 
         $Servicio=DB::table('servicios')->get();
 
-        return view('Admin.ListarServicios',compact('Servicio'));
+        return view('admin.ListarServicios',compact('Servicio'));
 
     }
 
@@ -156,7 +158,7 @@ class AdminController extends Controller
       $usuarios=DB::table('users')->get();
 
     
-      return view('Admin.ListarUsuarios',compact('usuarios'));
+      return view('admin.ListarUsuarios',compact('usuarios'));
     }
 
 
@@ -191,7 +193,7 @@ class AdminController extends Controller
       ->where('estado_empleado',1);
       
     
-      return view('Admin.ventas',compact('Servicio','empleado'));
+      return view('admin.ventas',compact('Servicio','empleado'));
 
     }
 
@@ -248,7 +250,7 @@ class AdminController extends Controller
         $date = Carbon::now("Chile/Continental");
 
 
-       return view('Admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
+       return view('admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
  
     }
 
@@ -312,20 +314,24 @@ class AdminController extends Controller
     }
 
 
-    public function Reservas(Request $request)
+    public function Reservas(Request $request) // index de la reserva 
     {
 
-      $Reserva=DB::table('reserva')
-      ->orderBy('id_reserva', 'desc')->get();
-      
-    
-      return view('Admin.Reservas',compact('Reserva'));
+      // $Reserva=DB::table('reserva')
+      // ->orderBy('id_reserva', 'desc')->get();
+
+       $Reserva=reservas::with('Servicios','User','Empleado')->get();
+
+     //dd($Reserva);
+      //$user=$Reserva[0]->user;
+    //dd($user);
+      return view('admin.Reservas',compact('Reserva'));
 
     }
 
 
-    public function Reservaspago($id_reserva){
-
+    public function Reservaspago($id_reserva){ // carga la recerva con el boton de pagar
+     // dd($id_reserva);
       $idreserva = $id_reserva;
 
       $encabezado = DB::table('reservas')
@@ -352,15 +358,15 @@ class AdminController extends Controller
 
 
 
-      return view('Admin.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
+      return view('admin.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
         
       
     }
 
 
-    public function enviarpagoreserva (Request $request){
+    public function enviarpagoreserva (Request $request){ // realizar el pago de la reserva 
       
-      // dd($request->all());
+       //dd($request->all());
 
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
@@ -413,10 +419,10 @@ class AdminController extends Controller
   
 
 
-      return view('Admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
+      return view('admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
     }
 
-    public function confirmarventareserva(Request $request)
+    public function confirmarventareserva(Request $request) // confirmar la reserva 
     {
 
       // dd($request->all());
@@ -469,7 +475,7 @@ class AdminController extends Controller
       Session::flash('success','Venta Realizada');
 
     
-      return view('Admin.ventas',compact('Servicio','empleado'));
+      return view('admin.ventas',compact('Servicio','empleado'));
 
     }
 
@@ -481,7 +487,7 @@ class AdminController extends Controller
 
     public function reporteventas (){
       
-      return view('Admin.ReportesVentas');
+      return view('admin.ReportesVentas');
     }
     
     
@@ -497,7 +503,7 @@ class AdminController extends Controller
   
 
 
-      return view('Admin.ReportesVentas',compact('porcentaje','fecha1','fecha2'));
+      return view('admin.ReportesVentas',compact('porcentaje','fecha1','fecha2'));
     }
 
 
@@ -505,7 +511,7 @@ class AdminController extends Controller
 
     public function reportecomosiones (){
       
-      return view('Admin.Reportescomisiones');
+      return view('admin.Reportescomisiones');
     }
     
     
@@ -520,14 +526,14 @@ class AdminController extends Controller
   
 
 
-      return view('Admin.Reportescomisiones',compact('porcentaje','fecha1','fecha2'));
+      return view('admin.Reportescomisiones',compact('porcentaje','fecha1','fecha2'));
     }
 
 
 
     public function reporteservicios (){
       
-      return view('Admin.ReporteServicios');
+      return view('admin.ReporteServicios');
     }
     
     
@@ -542,7 +548,7 @@ class AdminController extends Controller
   
 
 
-      return view('Admin.ReporteServicios',compact('porcentaje','fecha1','fecha2'));
+      return view('admin.ReporteServicios',compact('porcentaje','fecha1','fecha2'));
     }
 
 
@@ -552,12 +558,12 @@ class AdminController extends Controller
 
     public function reportegastos (){
       
-      return view('Admin.ReporteGastos');
+      return view('admin.ReporteGastos');
     }
 
     public function AgregarGastos (){
       
-      return view('Admin.AgregarGastos');
+      return view('admin.AgregarGastos');
     }
     
     
@@ -572,7 +578,7 @@ class AdminController extends Controller
   
 
 
-      return view('Admin.ReporteGastos',compact('gastos','fecha1','fecha2'));
+      return view('admin.ReporteGastos',compact('gastos','fecha1','fecha2'));
     }
 
 
@@ -599,7 +605,7 @@ class AdminController extends Controller
 
     public function eliminarventas (){
       
-      return view('Admin.EliminarVentas');
+      return view('admin.EliminarVentas');
     }
 
     public function eliminarventa (Request $request){

@@ -77,16 +77,32 @@
 
 
 
+
     
 
 
    <script src="{{asset("assets/$theme2/plugins/jquery/jquery.min.js")}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset("assets/$theme2/plugins/jquery-ui/jquery-ui.min.js")}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->  --}}
+<script>
+  $(function () {
+  
+  $('[data-toggle="popover"]').popover({
+    trigger:'hover',
+    html:true,
+  
+
+    
+  })
+})
+</script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->  
  <script>
+
   $.widget.bridge('uibutton', $.ui.button)
 </script> 
+{{-- popover --}}
+<script src="{{asset("js/popper.min.js")}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset("assets/$theme2/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->

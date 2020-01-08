@@ -26,6 +26,7 @@ Reservas
                       <th scope="col">Barbero</th>
                       <th scope="col">Fecha reservada</th>
                       <th scope="col">Estado De Reserva</th>
+                      <th scope="col">Servicios</th>
                       <th scope="col">Pagar</th>
                       <th scope="col">Cancelar Reserva</th>
                     </tr>
@@ -34,12 +35,43 @@ Reservas
                       @foreach($Reserva as $item)
                     <tr>
                       <th scope="row">{{$item->id_reserva}}</th>
-                      <td>{{$item->name}}</td>
-                      <td>{{$item->surname}}</td>
-                      <td>{{$item->telefono}}</td>
-                      <td>{{$item->nombre_empleado}}</td>
+
+                     
+                              
+                         
+                          <td>{{$item->user['name']}}</td>
+                          <td>{{$item->user['surname']}}</td>
+                          <td>{{$item->user['telefono']}}</td>
+                        
+
+                      <td>{{$item->empleado['nombre_empleado']}}</td>
                       <td>{{$item->fecha_reserva}}</td>
                       <td>{{$item->estado_reserva}}</td>
+                     
+                      <td><button
+                        id="popo" 
+                        type="button"  
+                        data-toggle="popover" 
+                        data-trigger="focus" 
+                        title="Servicios De la Reserva" 
+                        data-content="
+                        
+                        <ul>
+                          @foreach ($item->servicios as $item2)
+                          <li> {{$item2->nombre_servicio}} </li>
+                          @endforeach
+                        </ul>
+                        
+                         
+                       
+                        "
+                        
+                        >
+                        
+
+                        <i class="fas fa-info-circle"></i>
+                          </button >
+                      </td>
                       <td><a href="{{route('Reservaspago', $item->id_reserva)}}" class="btn btn-primary" >Pagar</a></td>
                       <td><button type="button" class="btn btn-warning">Cancelar</button></td>
                     </tr>
@@ -53,6 +85,9 @@ Reservas
               </div>
             </div>
           </section>
+
+       
+       
       
 @endsection
 @section('script')
@@ -61,6 +96,10 @@ Reservas
 <script src="{{asset("assets/$theme2/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 
 <script>
+
+
+
+
   $(document).ready( function () {
     $('#users').DataTable();
 } );
