@@ -167,6 +167,7 @@ class CajeroController extends Controller
 
     public function Reservaspago($id_reserva){
 
+     dd($id_reserva);
       $idreserva = $id_reserva;
 
       $encabezado = DB::table('reservas')

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use App\empleados;
 use App\User;
+use App\reservas;
+use App\DetalleReserva;
 use Session;
 use App\servicios;
 use App\gastos;
@@ -322,20 +324,24 @@ class AdminController extends Controller
     }
 
 
-    public function Reservas(Request $request)
+    public function Reservas(Request $request) // index de la reserva 
     {
 
-      $Reserva=DB::table('reserva')
-      ->orderBy('id_reserva', 'desc')->get();
-      
-    
+      // $Reserva=DB::table('reserva')
+      // ->orderBy('id_reserva', 'desc')->get();
+
+       $Reserva=reservas::with('Servicios','User','Empleado')->get();
+
+     //dd($Reserva);
+      //$user=$Reserva[0]->user;
+    //dd($user);
       return view('admin.Reservas',compact('Reserva'));
 
     }
 
 
-    public function Reservaspago($id_reserva){
-
+    public function Reservaspago($id_reserva){ // carga la recerva con el boton de pagar
+     // dd($id_reserva);
       $idreserva = $id_reserva;
 
       $encabezado = DB::table('reservas')
@@ -368,9 +374,9 @@ class AdminController extends Controller
     }
 
 
-    public function enviarpagoreserva (Request $request){
+    public function enviarpagoreserva (Request $request){ // realizar el pago de la reserva 
       
-      // dd($request->all());
+       //dd($request->all());
 
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
@@ -426,7 +432,7 @@ class AdminController extends Controller
       return view('admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
     }
 
-    public function confirmarventareserva(Request $request)
+    public function confirmarventareserva(Request $request) // confirmar la reserva 
     {
 
       // dd($request->all());

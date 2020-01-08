@@ -53,10 +53,14 @@ Route::get('/reporteGastos','AdminController@reportegastos')->name('reportegasto
 Route::post('/reporteGastos','AdminController@filtrargastos')->name('filtrargastos');
 Route::get('/AgregarGastos','AdminController@AgregarGastos')->name('AgregarGastos');
 Route::post('/insertargastos','AdminController@insertargastos')->name('confirmargastos');
+
+
 Route::get('/Reservas','AdminController@Reservas')->name('Reservas');
 Route::get('/Reservas/{id_reserva}','AdminController@Reservaspago')->name('Reservaspago');
 Route::post('/enviarpagoreserva','AdminController@enviarpagoreserva')->name('enviarpagoreserva');
 Route::post('/confirmarventareserva','AdminController@confirmarventareserva')->name('confirmarventareserva');
+
+
 Route::get('/eliminarventas','AdminController@eliminarventas')->name('eliminarventas');
 Route::post('/eliminarventa','AdminController@eliminarventa')->name('eliminarventa');
 Route::post('/eliminarventafinal','AdminController@eliminarventafinal')->name('eliminarventafinal');
