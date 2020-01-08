@@ -12,7 +12,11 @@
         @endif
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Información</a>
+        @if (session()->get('tipo_usuario') == 1)
+        <a href="{{route('infodesarrolladores')}}" class="nav-link">Información</a>
+        @else
+        <a href="{{route('infodesarrolladorescaja')}}" class="nav-link">Información</a>
+        @endif
       </li>
       <li>
       @if (session()->get('tipo_usuario') == 1)
@@ -239,6 +243,12 @@
                 <a href="{{route('Reservascajero')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Desde Reserva</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('reporteventascajero')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ventas Del Dia</p>
                 </a>
               </li>
             </ul>

@@ -40,12 +40,9 @@ Route::get('/agregarservicios','AdminController@agregarservicios')->name('agrega
 Route::post('/actualizarservicios', 'AdminController@actualizarservicios')->name('actualizarservicios');
 Route::get('/ListarUsuarios','AdminController@ListarUsuarios')->name('ListarUsuarios');
 Route::post('/actualizarusuarios', 'AdminController@actualizarusuarios')->name('actualizarusuarios');
-
 Route::get('/ventas','AdminController@ventas')->name('ventas');
 Route::post('/ventas','AdminController@enviarpago')->name('enviarpago');
 Route::post('/confirmar','AdminController@confirmar')->name('confirmar');
-
-
 Route::get('/reporteventas','AdminController@reporteventas')->name('reporteventas');
 Route::post('/reporteventas','AdminController@filtrarventas')->name('filtrarventas');
 Route::get('/reporteservicios','AdminController@reporteservicios')->name('reporteservicios');
@@ -66,6 +63,10 @@ Route::post('/confirmarventareserva','AdminController@confirmarventareserva')->n
 
 Route::get('/eliminarventas','AdminController@eliminarventas')->name('eliminarventas');
 Route::post('/eliminarventa','AdminController@eliminarventa')->name('eliminarventa');
+Route::post('/eliminarventafinal','AdminController@eliminarventafinal')->name('eliminarventafinal');
+Route::get('/infodesarrolladores','AdminController@infodesarrolladores')->name('infodesarrolladores');
+
+
 
 
 
@@ -111,6 +112,10 @@ Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero
     Route::get('/ventas','CajeroController@ventas')->name('ventascajero');
     Route::post('/enviarpago','CajeroController@enviarpago')->name('enviarpagocajero');
     Route::post('/confirmar','CajeroController@confirmar')->name('confirmarpagocajero');
+
+    Route::get('/reporteventascajero','CajeroController@reporteventascajero')->name('reporteventascajero');
+    Route::get('/infocajero','CajeroController@infodesarrolladorescaja')->name('infodesarrolladorescaja');
+
     
     
     });

@@ -202,12 +202,12 @@ class CajeroController extends Controller
 
     public function enviarpagoreserva (Request $request){
       
-      dd($request->all());
+      // dd($request->all());
 
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
 
-      // dd($servicios);
+      //  dd($servicios);
 
       $pago = DB::table('servicios')
       ->wherein('id_servicios',$request->servicios)
@@ -318,6 +318,31 @@ class CajeroController extends Controller
       return view('cajero.index');
 
     }
+
+
+
+    public function reporteventascajero (Request $request){
+
+
+      $reporte = DB::table('reporte_ventas_cajera')
+      ->get();
+
+
+      
+      return view('cajero.ReportesVentasCajero',compact('reporte'));
+
+    }
+
+
+    public function infodesarrolladorescaja (){
+      
+      return view('cajero.informacioncajero');
+    }
+    
+    
+
+
+
 
 
 

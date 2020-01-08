@@ -45,14 +45,14 @@
                   <div class="col-lg-3 col-6">
                     <div class="small-box bg-danger">
                       <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{$eliminados}}</h3>
           
-                        <p>visitas del dia </p>
+                        <p>Ventas Eliminadas</p>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="ion ion-android-cancel"></i>
                       </div>
-                      <a href="#" class="small-box-footer">FECHA<i class=""></i></a>
+                      <a href="{{route('eliminarventas')}}" class="small-box-footer">Eliminar Ventas<i class=""></i></a>
                     </div>
                   </div>
                 </div>
