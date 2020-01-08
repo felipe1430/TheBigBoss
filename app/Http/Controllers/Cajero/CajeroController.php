@@ -320,4 +320,29 @@ class CajeroController extends Controller
 
 
 
+    public function reporteventascajero (Request $request){
+
+
+      $reporte = DB::table('reporte_ventas_cajera')
+      ->get();
+
+
+      
+      return view('cajero.ReportesVentasCajero',compact('reporte'));
+
+    }
+
+
+    public function infodesarrolladorescaja (){
+      
+      return view('cajero.informacioncajero');
+    }
+    
+    
+
+
+
+
+
+
 }

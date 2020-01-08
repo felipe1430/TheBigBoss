@@ -19,17 +19,24 @@ class AdminController extends Controller
   public function index(){
 
         $date = Carbon::now();
-        $date = $date->format('d-m-Y');
+        $date = $date->format('Y-m-d');
 
-        $compras=DB::table('ventas')
-        ->count('id_ventas');
+        $compras=DB::table('fechas')
+        ->where('estado',1)
+        ->where('fechafort',$date)
+        ->count();
+
 
         $registros=DB::table('users')
         ->count('id');
         
+        $eliminados=DB::table('ventas')
+        ->where('estado_venta',0)
+        ->count('id_ventas');
+        
 
 
-      return view('admin.index',compact('date','compras','registros'));
+      return view('admin.index',compact('date','compras','registros','eliminados'));
 
 
   }  
@@ -607,9 +614,63 @@ class AdminController extends Controller
 
     public function eliminarventa (Request $request){
 
-      dd($request->all());
+      // dd($request->all());
+
+      $codigo=$request->codigo;
+
+      $encabezado = DB::table('ventas')
+        ->where('id_ventas',$codigo)
+        ->get();
+
+      // dd($encabezado);  
+   
+
+      $cliente = DB::table('users')
+      ->where('id',$encabezado[0]->fk_usuario_venta)
+      ->get();
+
+      $trabajador = DB::table('empleados')
+      ->where('id_empleado',$encabezado[0]->fk_empleado_venta)
+      ->get();
+
+      $servicios = DB::table('detalle_ventas')
+      ->join('servicios', 'servicios.id_servicios', '=', 'detalle_ventas.fk_servicio_detall_venta')
+      ->where('fk_venta_detall_venta',$codigo)
+      ->get();
+
+       
+
       
-      return redirect()->route('indexadmin');
+      
+        return view('admin.EliminarVentas',compact('encabezado','cliente','trabajador','codigo','servicios'));
+    }
+
+
+    public function eliminarventafinal (Request $request){
+
+      //  dd($request->all());
+
+      $codigo=$request->cod;
+      
+      $update = DB::table('ventas')
+      ->where('id_ventas',$codigo)
+            ->update(['estado_venta' => 0]);
+            
+
+       $update = DB::table('detalle_ventas')
+       ->where('fk_venta_detall_venta',$codigo)
+        ->update(['estado_venta_detalle' => 0]);
+
+      
+        
+      
+      
+        return view('admin.EliminarVentas');
+    }
+
+    public function infodesarrolladores (){
+      
+      return view('admin.informacion');
     }
     
 }
