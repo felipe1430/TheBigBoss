@@ -34,6 +34,7 @@ Route::get('/ListarEmpleados','AdminController@ListarEmpleados')->name('ListarEm
 Route::post('/ListarEmpleados','AdminController@empleados')->name('empleados');
 Route::get('/agregarempleado','AdminController@agregarempleado')->name('agregarempleado');
 Route::post('/actualizarempleados', 'AdminController@actualizarempleados')->name('actualizarempleados');
+Route::post('/eliminarempleados', 'AdminController@eliminarempleados')->name('eliminarempleados');
 Route::get('/ListarServicios','AdminController@ListarServicios')->name('ListarServicios');
 Route::post('/ListarServicios','AdminController@servicios')->name('servicios');
 Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');

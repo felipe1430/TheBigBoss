@@ -50,6 +50,7 @@ class AdminController extends Controller
       
       $empleados=DB::table('empleados')
       ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.fk_empleado_tipo_user')
+      ->where('estado_empleado',1)
       ->get();
 
       
@@ -100,6 +101,17 @@ class AdminController extends Controller
       $empleado->comision_empleado=$request->get('comision');
       $empleado->direccion_empleado=$request->get('Direccion');
       $empleado->fk_empleado_tipo_user=$request->get('fk_empleado_tipo_user');
+      $empleado->estado_empleado=$request->get('Estado');
+      $empleado->update();
+      return back();
+    }
+
+
+    public function eliminarempleados(Request $request)
+    {
+      // dd($request->all());
+      $empleado = empleados::findOrfail($request->id_empleado);
+      $empleado->id_empleado=$request->get('id_empleado');
       $empleado->estado_empleado=$request->get('Estado');
       $empleado->update();
       return back();

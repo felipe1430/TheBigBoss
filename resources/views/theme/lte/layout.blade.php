@@ -148,6 +148,21 @@
   })</script>
 <!-- Fin Modal edit empleado -->
 
+<!-- Modal delete empleado -->
+<script> $('#mimodaleliminar').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  var id_empleado = button.data('id_empleado')
+  var estado_servicios = button.data('estado_servicios') 
+
+  var modal = $(this)
+  modal.find('.modal-body #id_empleado').val(id_empleado);
+  modal.find('.modal-body #estado_servicios').val(estado_servicios);
+
+
+  
+})</script>
+<!-- Fin Modal delete empleado -->
+
 <!-- Modal edit servicios -->
 <script> $('#mimodalservicios').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) 
