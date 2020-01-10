@@ -46,9 +46,21 @@ Reservas
 
                       <td>{{$item->empleado['nombre_empleado']}}</td>
                       <td>{{$item->fecha_reserva}}</td>
-                      <td>{{$item->estado_reserva}}</td>
+
+                      @if ($item->estado_reserva == 'PENDIENTE')
+
+                      <td class="bg-primary" style="text-align: center">Pendiente</td>
+
+                      @elseif($item->estado_reserva == 'PAGADA')
+
+                      <td class="bg-success" style="text-align: center">Pagada</td>
+
+                      @elseif($item->estado_reserva == 'CANCELADA')
+                      <td class="bg-danger" style="text-align: center">Cancelada</td>
+                      @endif
+                      
                      
-                      <td><button
+                      <td> <center> <a
                         id="popo" 
                         type="button"  
                         data-toggle="popover" 
@@ -61,18 +73,19 @@ Reservas
                           <li> {{$item2->nombre_servicio}} </li>
                           @endforeach
                         </ul>
-                        
-                         
-                       
-                        "
-                        
-                        >
+                        ">
                         
 
                         <i class="fas fa-info-circle"></i>
-                          </button >
+                      </a > </center>
                       </td>
+                      @if ($item->estado_reserva !='PENDIENTE')
+                      <td><button class="btn btn-primary">Pagar</button></td>
+                      @else
                       <td><a href="{{route('Reservaspago', $item->id_reserva)}}" class="btn btn-primary" >Pagar</a></td>
+                      @endif
+                     
+
                       <td><button type="button" class="btn btn-warning">Cancelar</button></td>
                     </tr>
                     @endforeach

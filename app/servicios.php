@@ -22,4 +22,10 @@ class servicios extends Model
     protected $fillable = [
         'id_servicios','nombre_servicio','descripcion_servicio','valor_servicio','estado_servicios'
     ];
+
+
+    // public function cantidad()
+    // {
+    //     return $this->belongsTo(DetalleReserva::class,'fk_id_usuario');
+    // }
 }

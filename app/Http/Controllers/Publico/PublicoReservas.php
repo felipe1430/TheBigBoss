@@ -21,7 +21,9 @@ class PublicoReservas extends Controller
 
 
 
-    $barberos = empleados::where('fk_empleado_tipo_user',2)->get(); // el 2 es solo barberos 
+    $barberos = empleados::where('fk_empleado_tipo_user',2)
+                                ->where('estado_empleado',1)
+                                ->get(); // el 2 es solo barberos 
     //dd($barberos);
 
      return view('Reservas.ReservasCliente',compact('barberos'));
@@ -39,7 +41,7 @@ class PublicoReservas extends Controller
         //dd($servicios);
 
         $events = reservas::where('fk_id_empleado',$id)
-        ->where('estado_reserva',1)
+        ->where('estado_reserva','PENDIENTE')
         ->get(); 
     //    $events =DB::table('reservas')
     //    ->where('estado_reserva','=',1)
@@ -74,10 +76,34 @@ class PublicoReservas extends Controller
       //  dd($request->all());
    //dd( $request->bloques,substr($request->bloques, 0,-13),substr($request->bloques,13));
       // if ($request->ajax()) {
+        $params_array   =$request->all();
         $horaInicio=substr($request->bloques, 0,-13);
         $horaFin=substr($request->bloques,13);
 
-        $params_array   =$request->all();
+
+        $confirmarReserva=DB::table('reservas')
+        ->where('estado_reserva','PENDIENTE')
+        ->where('start_date',$params_array['start_date'].' '.$horaInicio)
+        ->where('fk_id_usuario',$params_array['idUser'])
+        ->where('fk_id_usuario',$params_array['idUser'])
+        ->where('fk_id_empleado',$params_array['idBarbero'])
+        ->get();
+        //dd($confirmarReserva ,$params_array['start_date'].' '.$horaInicio);
+
+        if($confirmarReserva->isNotEmpty()){
+
+            Session::flash('error','ya se ha reservado esa hora ');
+            return redirect()->route('calendario',$params_array['idBarbero']);
+
+        }else{
+
+
+
+        }
+        // $horaInicio=substr($request->bloques, 0,-13);
+        // $horaFin=substr($request->bloques,13);
+
+        // $params_array   =$request->all();
         
         $nombreUser     =$params_array['nameUser'];
         $idUser         =$params_array['idUser'];
@@ -105,7 +131,7 @@ class PublicoReservas extends Controller
                      'fk_id_usuario' => $idUser,
                      'fk_id_empleado' => $idBarbero,
                      'fecha_reserva' => $date,
-                     'estado_reserva' => 1, ]
+                     'estado_reserva' => 'PENDIENTE', ]
                 );
                 /*
                         $reserva->title = $nombreUser;
@@ -199,7 +225,7 @@ class PublicoReservas extends Controller
             ->select(DB::raw('time(start_date) as hora_inicio,time(end_date) as hora_termino'))
             ->whereDate('start_date', $request->Fecha)
             ->where('fk_id_empleado', $request->barberoId)
-            ->where('estado_reserva', 1)
+            ->where('estado_reserva', 'PENDIENTE')
             ->get();
 
             //dd(count($reservas),$reservas);

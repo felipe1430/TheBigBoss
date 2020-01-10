@@ -4,9 +4,17 @@ $('form').submit(function(e){
     // muestra una alerta al usuario
     if ($('input[type=checkbox]:checked').length === 0) {
         e.preventDefault();
-        alert('Debe seleccionar al menos un valor');
+        alert('Debe seleccionar al menos un valorooo');
     }
+    /*
+    for (i=0;i<document.f1.elements.length;i++)
+    if(document.f1.elements[i].type == "checkbox")
+       document.f1.elements[i].checked=0*/
+
 });
+
+
+
 
 // Use 'prop' instead of 'attr'
 // 'attr' only work the first time, better use 'prop'
