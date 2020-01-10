@@ -34,6 +34,7 @@ Route::get('/ListarEmpleados','AdminController@ListarEmpleados')->name('ListarEm
 Route::post('/ListarEmpleados','AdminController@empleados')->name('empleados');
 Route::get('/agregarempleado','AdminController@agregarempleado')->name('agregarempleado');
 Route::post('/actualizarempleados', 'AdminController@actualizarempleados')->name('actualizarempleados');
+Route::post('/eliminarempleados', 'AdminController@eliminarempleados')->name('eliminarempleados');
 Route::get('/ListarServicios','AdminController@ListarServicios')->name('ListarServicios');
 Route::post('/ListarServicios','AdminController@servicios')->name('servicios');
 Route::get('/agregarservicios','AdminController@agregarservicios')->name('agregarservicios');
@@ -69,6 +70,9 @@ Route::get('/eliminarventas','AdminController@eliminarventas')->name('eliminarve
 Route::post('/eliminarventa','AdminController@eliminarventa')->name('eliminarventa');
 Route::post('/eliminarventafinal','AdminController@eliminarventafinal')->name('eliminarventafinal');
 Route::get('/infodesarrolladores','AdminController@infodesarrolladores')->name('infodesarrolladores');
+
+Route::get('/reporteventaseliminadas','AdminController@reporteventaseliminadas')->name('reporteventaseliminadas');
+Route::post('/reporteventaseliminadas','AdminController@filtrarventaseliminadas')->name('filtrarventaseliminadas');
 
 
 

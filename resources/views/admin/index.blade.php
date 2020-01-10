@@ -20,14 +20,14 @@
                   <div class="col-lg-3 col-6">
                     <div class="small-box bg-success">
                       <div class="inner">
-                        <h3>454<sup style="font-size: 20px"><!--%--></sup></h3>
+                        <h3>{{number_format($ganancias,0,',','.')}}<sup style="font-size: 20px"><!--%--></sup></h3>
           
-                        <p>Productos Negativos</p>
+                        <p>Ganancias Del Dia</p>
                       </div>
                       <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                       </div>
-                      <a href="#" class="small-box-footer">Mas info.<i class=""></i></a>
+                      <a href="{{route('reporteventas')}}" class="small-box-footer">Mas info.<i class=""></i></a>
                     </div>
                   </div>
                   <div class="col-lg-3 col-6">

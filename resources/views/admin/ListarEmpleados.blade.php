@@ -28,7 +28,8 @@ Lista De Trabajadores
                       <th scope="col">Comision</th>
                       <th scope="col">Tipo</th>
                       <th scope="col">Estado</th>
-                      <th scope="col">Acciones</th>
+                      <th scope="col">Editar</th>
+                      <th scope="col">Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -53,6 +54,8 @@ Lista De Trabajadores
                       @endif
                       <td><a href="" data-toggle="modal" data-target="#mimodal"
                         data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' data-fk_empleado_tipo_user='{{$item->fk_empleado_tipo_user}}' class="btn btn-primary btm-sm">Editar</a></td>
+                        <td><a href="" data-toggle="modal" data-target="#mimodaleliminar"
+                            data-id_empleado='{{$item->id_empleado}}' class="btn btn-danger btm-sm">Eliminar</a></td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -199,12 +202,12 @@ Lista De Trabajadores
                     </div>
                     <!-- Estado -->
                     <div class="form-group row">
-                        <label for="Estado" class="col-md-4 col-form-label text-md-right">Estado De Usuario</label>
+                        <label for="Estado" class="col-md-4 col-form-label text-md-right">Eliminar Usuario</label>
 
                         <div class="col-md-6">
                             <select id="estado_empleado" list="Estado" class="form-control" name="Estado" value="" required >
                                 <option value="1">Activo</option> 
-                                <option value="0">No Activo</option>
+                                <option value="0">Eliminar</option>
                              </select>
                         </div>
                     </div>
@@ -220,6 +223,38 @@ Lista De Trabajadores
      </div>
    </div>
     <!-- FIN Modal -->
+
+
+
+
+
+    <!-- Modal ELIMINAR-->
+   <div class="modal fade" id="mimodaleliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Eliminar Trabajador</h4>
+        </div>
+        <div class="modal-body">
+           <div class="card-body">
+               <form method="POST" action="{{route('eliminarempleados')}}">
+                 {{method_field('post')}}
+                       {{csrf_field()}}
+                   @csrf
+                   <input type="hidden" name="id_empleado" id="id_empleado" value="">
+                   <input type="hidden" name="Estado" id="estado_empleado" value="0">
+                   <h5>¿Esta Seguro Que Desea Elimianar El Trabajador?<span class="badge badge-secondary"></span></h5>
+                   <div class="modal-footer">
+                     <button type="submit" class="btn btn-danger">Si</button>
+                     <button type="button" data-dismiss="modal" class="btn btn-secondary">No</button>
+                  </div>
+               </form>
+             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- FIN Modal ELIMINAR -->
 @endsection
 @section('script')
 

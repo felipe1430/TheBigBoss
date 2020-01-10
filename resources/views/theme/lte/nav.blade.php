@@ -193,6 +193,12 @@
                     <p>Reportes Gastos</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('reporteventaseliminadas')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ventas Eliminadas</p>
+                  </a>
+                </li>
             </ul>
           </li>
            @else

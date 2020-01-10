@@ -35,10 +35,18 @@ class AdminController extends Controller
         $eliminados=DB::table('ventas')
         ->where('estado_venta',0)
         ->count('id_ventas');
+
+        $ganancias=DB::table('fechas')
+        ->where('estado',1)
+        ->where('fechafort',$date)
+        ->sum('total');
         
 
 
-      return view('admin.index',compact('date','compras','registros','eliminados'));
+
+      
+
+      return view('admin.index',compact('date','compras','registros','eliminados','ganancias'));
 
 
   }  
@@ -50,6 +58,7 @@ class AdminController extends Controller
       
       $empleados=DB::table('empleados')
       ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.fk_empleado_tipo_user')
+      ->where('estado_empleado',1)
       ->get();
 
       
@@ -100,6 +109,17 @@ class AdminController extends Controller
       $empleado->comision_empleado=$request->get('comision');
       $empleado->direccion_empleado=$request->get('Direccion');
       $empleado->fk_empleado_tipo_user=$request->get('fk_empleado_tipo_user');
+      $empleado->estado_empleado=$request->get('Estado');
+      $empleado->update();
+      return back();
+    }
+
+
+    public function eliminarempleados(Request $request)
+    {
+      // dd($request->all());
+      $empleado = empleados::findOrfail($request->id_empleado);
+      $empleado->id_empleado=$request->get('id_empleado');
       $empleado->estado_empleado=$request->get('Estado');
       $empleado->update();
       return back();
@@ -745,6 +765,28 @@ class AdminController extends Controller
     public function infodesarrolladores (){
       
       return view('admin.informacion');
+    }
+
+
+    public function reporteventaseliminadas (){
+      
+      return view('admin.ReporteVentasEliminadas');
+    }
+    
+    
+    
+    public function filtrarventaseliminadas (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $porcentaje=DB::table('reporte_ventas_eliminadas')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->get();
+
+  
+
+
+      return view('admin.ReporteVentasEliminadas',compact('porcentaje','fecha1','fecha2'));
     }
     
 }
