@@ -1,6 +1,6 @@
 @extends("theme.$theme2.layout")
 @section('titulo')
-Lista De ventas 
+Lista De ventas eliminadas
 @endsection
 @section('styles')
 
@@ -9,11 +9,11 @@ Lista De ventas
 @endsection
 @section('contenido')
 <div class="container-fluid">
-    <h3 class="display-3">Lista De Ventas</h3>
+    <h3 class="display-3">Lista De Ventas (Eliminadas)</h3>
     <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
-        <form action="{{route('filtrarventas')}}" method="post"  id="desvForm" class="form-inline">
+        <form action="{{route('filtrarventaseliminadas')}}" method="post"  id="desvForm" class="form-inline">
           @csrf
                  Desde  
                 <div class="form-group mb-2">
@@ -33,15 +33,21 @@ Lista De ventas
                   <input type="date" id="fecha2" name="fecha2" class="form-control">
                   @else
                 <input type="date" id="fecha2" name="fecha2" class="form-control" value="{{$fecha2}}">
-                  @endif             
+                  @endif
+             
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Filtrar</button>    
+                <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+            
+               
               </form>
               <hr>
-        </div>    
+        </div>
+    
       </div>
-      <div class="row">  
-      <div class="col-md-8">
+   
+      <div class="row">
+      
+      <div class="col-md-12">
           <table id="reporteventa" class="table table-bordered table-hover dataTable">
               <thead>
                 <tr>
@@ -68,12 +74,15 @@ Lista De ventas
                     <td>{{$item->fecha_venta}}</td>
                     <td style="text-align:center">${{number_format($item->total_venta,0,',','.')}}</td>
                 </tr>
-              @endforeach                    
-                @endif         
+              @endforeach
+                    
+                @endif
+          
             </tbody>
         </table>
         {{-- {{$porcentaje->links()}} --}}
       </div>
+
     </div>
 </div>
 @endsection

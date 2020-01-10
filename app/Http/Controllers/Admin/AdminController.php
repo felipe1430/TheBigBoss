@@ -35,10 +35,18 @@ class AdminController extends Controller
         $eliminados=DB::table('ventas')
         ->where('estado_venta',0)
         ->count('id_ventas');
+
+        $ganancias=DB::table('fechas')
+        ->where('estado',1)
+        ->where('fechafort',$date)
+        ->sum('total');
         
 
 
-      return view('admin.index',compact('date','compras','registros','eliminados'));
+
+      
+
+      return view('admin.index',compact('date','compras','registros','eliminados','ganancias'));
 
 
   }  
@@ -689,6 +697,28 @@ class AdminController extends Controller
     public function infodesarrolladores (){
       
       return view('admin.informacion');
+    }
+
+
+    public function reporteventaseliminadas (){
+      
+      return view('admin.ReporteVentasEliminadas');
+    }
+    
+    
+    
+    public function filtrarventaseliminadas (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $porcentaje=DB::table('reporte_ventas_eliminadas')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->get();
+
+  
+
+
+      return view('admin.ReporteVentasEliminadas',compact('porcentaje','fecha1','fecha2'));
     }
     
 }

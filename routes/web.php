@@ -67,6 +67,9 @@ Route::post('/eliminarventa','AdminController@eliminarventa')->name('eliminarven
 Route::post('/eliminarventafinal','AdminController@eliminarventafinal')->name('eliminarventafinal');
 Route::get('/infodesarrolladores','AdminController@infodesarrolladores')->name('infodesarrolladores');
 
+Route::get('/reporteventaseliminadas','AdminController@reporteventaseliminadas')->name('reporteventaseliminadas');
+Route::post('/reporteventaseliminadas','AdminController@filtrarventaseliminadas')->name('filtrarventaseliminadas');
+
 
 
 
