@@ -57,7 +57,11 @@ Route::post('/insertargastos','AdminController@insertargastos')->name('confirmar
 
 Route::get('/Reservas','AdminController@Reservas')->name('Reservas');
 Route::get('/Reservas/{id_reserva}','AdminController@Reservaspago')->name('Reservaspago');
+
+Route::get('/enviarpagoreserva','AdminController@Reservas')->name('reservaIndex');
 Route::post('/enviarpagoreserva','AdminController@enviarpagoreserva')->name('enviarpagoreserva');
+
+
 Route::post('/confirmarventareserva','AdminController@confirmarventareserva')->name('confirmarventareserva');
 
 
@@ -107,6 +111,7 @@ Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero
     Route::get('/','CajeroController@index')->name('indexcajero');
     Route::get('/Reservas','CajeroController@Reservas')->name('Reservascajero');
     Route::get('/Reservas/{id_reserva}','CajeroController@Reservaspago')->name('Reservaspagopagocajero');
+    
     Route::post('/enviarpagoreserva','CajeroController@enviarpagoreserva')->name('enviarpagoreservapagocajero');
     Route::post('/confirmarventareserva','CajeroController@confirmarventareserva')->name('confirmarventareservapagocajero');
     Route::get('/ventas','CajeroController@ventas')->name('ventascajero');

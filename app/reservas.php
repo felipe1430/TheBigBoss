@@ -23,6 +23,7 @@ class reservas extends Model
     {
         return $this->belongsTo(User::class,'fk_id_usuario');
     }
+  
 
     public function Empleado()
     {

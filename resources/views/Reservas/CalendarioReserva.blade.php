@@ -171,6 +171,7 @@ function comprobar(obj)
 id= obj.value;
  document.getElementById(''+id+'').style.display = "";
  document.getElementById(''+id+'').disabled =false;
+ document.getElementById(''+id+'').value=1;
    } else{
       
 document.getElementById(''+id+'').style.display = "none";

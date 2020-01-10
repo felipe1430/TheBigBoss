@@ -341,43 +341,84 @@ class AdminController extends Controller
 
 
     public function Reservaspago($id_reserva){ // carga la recerva con el boton de pagar
-     // dd($id_reserva);
-      $idreserva = $id_reserva;
+      // dd($id_reserva);
 
-      $encabezado = DB::table('reservas')
-      ->where('id_reserva','=',$id_reserva)
+      //$id_reserva=0;
+      if(empty($id_reserva) || $id_reserva == 0){
+        Session::flash('error','algo a salido mal :C');
+        return redirect()->route('Reservas');
+      }
+   
+      $Reserva=reservas::with('Servicios','User','Empleado')
+      ->where('id_reserva',$id_reserva)
+      ->get();
+      
+      $ServiciosReservados=DB::table('detalle_reserva')
+      ->select('servicios.*', 'detalle_reserva.cantidad_serv_det_reserva as CantidadServicio','detalle_reserva.fk_reserva')
+      ->join('servicios', 'detalle_reserva.fk_servicio', '=', 'servicios.id_servicios')
+      ->where('detalle_reserva.fk_reserva',$id_reserva)
+      ->get();
+
+      $data=[];
+      foreach ($ServiciosReservados as $key) {
+
+        $data[]=$key->id_servicios;
+      }
+
+      $ServiciosNoReservados=DB::table('servicios')
+      ->whereNotIn('id_servicios',$data)
       ->get();
 
 
-      $detalle = DB::table('detalle_reserva')
-      ->where('fk_reserva','=',$id_reserva)
-      ->get();
+   
 
 
-      $cliente = DB::table('users')
-      ->where('id','=',$encabezado[0]->fk_id_usuario)
-      ->get();
-
-      $trabajador = DB::table('empleados')
-      ->where('id_empleado','=',$encabezado[0]->fk_id_empleado)
-      ->get();
-
-      $Servicio=DB::table('servicios')->get()
-      ->where('estado_servicios',1);
+     // dd($ServiciosReservados,$ServiciosNoReservados);
+      // $Reserva=reservas::find($id_reserva);
+      // $servicios=reservas::find($id_reserva)->servicios;
+      // $User=reservas::find($id_reserva)->Users2;
+      // dd($Reserva,$servicios,$User);
 
 
 
+      return view('admin.PagoReserva',compact('Reserva','ServiciosReservados','ServiciosNoReservados'));
 
-      return view('admin.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
-        
+      
+      //return view('admin.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
+
+
+      // $idreserva = $id_reserva;
+
+      // $encabezado = DB::table('reservas')
+      // ->where('id_reserva','=',$id_reserva)
+      // ->get();
+
+
+      // $detalle = DB::table('detalle_reserva')
+      // ->where('fk_reserva','=',$id_reserva)
+      // ->get();
+
+
+      // $cliente = DB::table('users')
+      // ->where('id','=',$encabezado[0]->fk_id_usuario)
+      // ->get();
+
+      // $trabajador = DB::table('empleados')
+      // ->where('id_empleado','=',$encabezado[0]->fk_id_empleado)
+      // ->get();
+
+      // $Servicio=DB::table('servicios')->get()
+      // ->where('estado_servicios',1);
+
+
       
     }
 
 
     public function enviarpagoreserva (Request $request){ // realizar el pago de la reserva 
       
-       //dd($request->all());
-
+      // dd($request->all());
+      $id_reserva=$request->idreserva;
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
 
@@ -429,63 +470,90 @@ class AdminController extends Controller
   
 
 
-      return view('admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
+      return view('admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date','id_reserva'));
     }
 
     public function confirmarventareserva(Request $request) // confirmar la reserva 
     {
 
       // dd($request->all());
-
-      DB::table('ventas')->insert([
-        'fk_usuario_venta' => $request->idcliente,
-        'fk_empleado_venta'=>$request->idempleado,
-        'fk_reserva_venta'=>$request->idreserva,
-        'fecha_venta'=>$request->fechaservicio,
-        'total_venta'=>$request->total
-
-        
-        ]);
-
-
-        $ventas=DB::table('ventas')->max('id_ventas');
-        $tbpaso=DB::table('tabla_paso_reserva')->get();
-        $conteo=DB::table('tabla_paso_reserva')->count('id_servicios_paso_reserva');
-        $conteo = $conteo-1;
-
-        
-        
-
-        for ($i = 0; $i <= $conteo; $i++){
-
-
-          DB::table('detalle_ventas')->insert([
-            'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
-            'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
-            'fk_venta_detall_venta'=> $ventas
-            
-  
-            ]);
-  
-            
-         }
-
-
-
-
-
-      $Servicio=DB::table('servicios')->get()
-      ->where('estado_servicios',1);
-
-
-      $empleado=DB::table('empleados')->get()
-      ->where('estado_empleado',1);
-
       
-      Session::flash('success','Venta Realizada');
+      $confirmarReserva=DB::table('reservas')
+      ->where('id_reserva',$request->id_RESERVA)
+      ->where('estado_reserva','PENDIENTE')
+      ->get();
 
-    
-      return view('admin.ventas',compact('Servicio','empleado'));
+      if($confirmarReserva->isEmpty()){
+
+        Session::flash('error','Venta ya fue realizada');
+
+        return redirect()->route('Reservas');
+
+
+
+      }else{
+           // dd('pos no ',$confirmarReserva);
+
+        
+
+          DB::table('ventas')->insert([
+            'fk_usuario_venta' => $request->idcliente,
+            'fk_empleado_venta'=>$request->idempleado,
+            'fk_reserva_venta'=>$request->idreserva,
+            'fecha_venta'=>$request->fechaservicio,
+            'total_venta'=>$request->total
+
+            
+            ]);
+
+
+            $ventas=DB::table('ventas')->max('id_ventas');
+            $tbpaso=DB::table('tabla_paso_reserva')->get();
+            $conteo=DB::table('tabla_paso_reserva')->count('id_servicios_paso_reserva');
+            $conteo = $conteo-1;
+
+            
+            
+
+            for ($i = 0; $i <= $conteo; $i++){
+
+
+              DB::table('detalle_ventas')->insert([
+                'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
+                'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
+                'fk_venta_detall_venta'=> $ventas
+                
+      
+                ]);
+      
+                
+            }
+
+            DB::table('reservas')
+                ->where('id_reserva', $request->id_RESERVA)
+                ->where('estado_reserva', 'PENDIENTE')
+                ->update(['estado_reserva' => 'PAGADA']);
+
+
+
+
+
+
+
+          $Servicio=DB::table('servicios')->get()
+          ->where('estado_servicios',1);
+
+
+          $empleado=DB::table('empleados')->get()
+          ->where('estado_empleado',1);
+
+          
+          Session::flash('success','Venta Realizada');
+
+    }
+     // return view('admin.ventas',compact('Servicio','empleado'));
+
+     return redirect()->route('Reservas');
 
     }
 
