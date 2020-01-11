@@ -18,6 +18,8 @@
             @csrf
             <div class="row">
               <div class="col-sm-6">
+
+
                 <div class="form-group">
                     <label for="validationTooltip01">Nombre Cliente</label>
                    @foreach ($Reserva as $item)
@@ -46,7 +48,8 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <label for="validationTooltip01">Hora De Inicio</label>
-                  <input type="text" class="form-control appointment_time" name="horainicio" id="horainicio" value="{{substr($item->start_date,-8)}}" placeholder="Hora Inicio">
+                  <input type="text" class="form-control appointment_time" name="" id="horainicio" value="{{substr($item->start_date,-8)}}" placeholder="Hora Inicio">
+                  <input type="hidden" class="form-control appointment_time" name="horainicio" id="horainicio" value="{{$item->start_date}}" placeholder="Hora Inicio">
                 </div>
               </div>
               <div class="col-sm-6">
@@ -61,9 +64,12 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <label for="validationTooltip01">Hora De Termino</label>
-                <input type="text" class="form-control" id="phone" name="horatermino" id="horatermino" value="{{substr($item->end_date,-8)}}" placeholder="Hora Termino">
+                <input type="text" class="form-control" id="phone" name="" id="horatermino" value="{{substr($item->end_date,-8)}}" placeholder="Hora Termino">
+                <input type="hidden" class="form-control" id="phone" name="horatermino" id="horatermino" value="{{$item->end_date}}" placeholder="Hora Termino">
                 </div>
               </div>
+
+              
               <div class="col-sm-6">
                 <div class="form-group">
                       <table id="users" class="table table-sm table-hover">

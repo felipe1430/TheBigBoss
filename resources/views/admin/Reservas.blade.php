@@ -45,6 +45,7 @@ Reservas
                         
 
                       <td>{{$item->empleado['nombre_empleado']}}</td>
+                      
                       <td>{{$item->fecha_reserva}}</td>
 
                       @if ($item->estado_reserva == 'PENDIENTE')

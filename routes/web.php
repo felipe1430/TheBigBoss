@@ -116,7 +116,10 @@ Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero
     
     Route::post('/enviarpagoreserva','CajeroController@enviarpagoreserva')->name('enviarpagoreservapagocajero');
     Route::post('/confirmarventareserva','CajeroController@confirmarventareserva')->name('confirmarventareservapagocajero');
+
+
     Route::get('/ventas','CajeroController@ventas')->name('ventascajero');
+    Route::get('/enviarpago','CajeroController@ventas')->name('enviarpagocajeroget');
     Route::post('/enviarpago','CajeroController@enviarpago')->name('enviarpagocajero');
     Route::post('/confirmar','CajeroController@confirmar')->name('confirmarpagocajero');
 
@@ -124,6 +127,7 @@ Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero
     Route::get('/infocajero','CajeroController@infodesarrolladorescaja')->name('infodesarrolladorescaja');
 
     
+    Route::post('/BuscarUser','CajeroController@BuscarUser')->name('BuscarUser');
     
     });
 

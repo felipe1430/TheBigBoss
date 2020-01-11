@@ -26,6 +26,7 @@ Reservas
                       <th scope="col">Barbero</th>
                       <th scope="col">Fecha reservada</th>
                       <th scope="col">Estado De Reserva</th>
+                      <th scope="col">Servicios</th>
                       <th scope="col">Pagar</th>
                       <th scope="col">Cancelar Reserva</th>
                     </tr>
@@ -34,13 +35,63 @@ Reservas
                       @foreach($Reserva as $item)
                     <tr>
                       <th scope="row">{{$item->id_reserva}}</th>
-                      <td>{{$item->name}}</td>
-                      <td>{{$item->surname}}</td>
-                      <td>{{$item->telefono}}</td>
-                      <td>{{$item->nombre_empleado}}</td>
+
+
+
+                          <td>{{$item->user['name']}}</td>
+                          <td>{{$item->user['surname']}}</td>
+                          <td>{{$item->user['telefono']}}</td>
+
+
+                          <td>{{$item->empleado['nombre_empleado']}}</td>
+
                       <td>{{$item->fecha_reserva}}</td>
-                      <td>{{$item->estado_reserva}}</td>
+
+
+        
+                      @if ($item->estado_reserva == 'PENDIENTE')
+
+                      <td class="bg-primary" style="text-align: center">Pendiente</td>
+
+                      @elseif($item->estado_reserva == 'PAGADA')
+
+                      <td class="bg-success" style="text-align: center">Pagada</td>
+
+                      @elseif($item->estado_reserva == 'CANCELADA')
+                      <td class="bg-danger" style="text-align: center">Cancelada</td>
+                      @endif
+                      
+                     
+                      <td> <center> <a
+                        id="popo" 
+                        type="button"  
+                        data-toggle="popover" 
+                        data-trigger="focus" 
+                        title="Servicios De la Reserva" 
+                        data-content="
+                        
+                        <ul>
+                          @foreach ($item->servicios as $item2)
+                          <li> {{$item2->nombre_servicio}} </li>
+                          @endforeach
+                        </ul>
+                        ">
+                        
+
+                        <i class="fas fa-info-circle"></i>
+                      </a > </center>
+                      </td>
+                      @if ($item->estado_reserva !='PENDIENTE')
+                      <td><button class="btn btn-primary">Pagar</button></td>
+                      @else
                       <td><a href="{{route('Reservaspagopagocajero', $item->id_reserva)}}" class="btn btn-primary" >Pagar</a></td>
+                      @endif
+
+
+
+
+
+                      
                       <td><button type="button" class="btn btn-warning">Cancelar</button></td>
                     </tr>
                     @endforeach

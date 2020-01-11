@@ -1,4 +1,7 @@
 @extends("theme.$theme2.layout")
+@section('meta')
+<meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('contenido')
 
 
@@ -30,36 +33,57 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="form-group">
-                      <table id="users" class="table table-sm table-hover">
-                          <thead>
-                            <tr class="table-primary">
-                              <th scope="col">Nombre</th>
-                              <th scope="col">valor</th>
-                              <th scope="col">Cantidad</th>
-                              <th scope="col"></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                              @foreach($Servicio as $itemServicio)
-                            <tr>
-                              <td>{{$itemServicio->nombre_servicio}}</td>
-                              <td>${{number_format($itemServicio->valor_servicio,0,',','.')}}</td>
-                              <td><input type="number" name="cantidad[]" min="1" id="{{$itemServicio->id_servicios}}" value=""   class="cant" style="display:none "   required disabled></td>
-                              <td><input type="checkbox" name="servicios[]"  id="servicios" onChange="comprobar(this);" value="{{$itemServicio->id_servicios}}" ></td>
-                            </tr>
-                            @endforeach
-                          </tbody>
-                        </table>
+                  <div class="select-wrap">
+                    <label for="validationTooltip01">Usuario</label>
+                    <select name="User" id="User" required class="form-control">
+                        <option value="">Usuario</option>
+                       
+                    </select>
+                  </div>
                 </div>
-                
               </div>
             </div>
+
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                        <table id="users" class="table table-sm table-hover">
+                            <thead>
+                              <tr class="table-primary">
+                                <th scope="col">Nombre</th>
+                                <th scope="col">valor</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($Servicio as $itemServicio)
+                              <tr>
+                                <td>{{$itemServicio->nombre_servicio}}</td>
+                                <td>${{number_format($itemServicio->valor_servicio,0,',','.')}}</td>
+                                <td><input type="number" name="cantidad[]" min="1" id="{{$itemServicio->id_servicios}}" value=""   class="cant" style="display:none "   required disabled></td>
+                                <td><input type="checkbox" name="servicios[]"  id="servicios" onChange="comprobar(this);" value="{{$itemServicio->id_servicios}}" ></td>
+                              </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                  </div>
+                  
+                </div>
+            </div>
+            
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Realizar Pago</button>
             </div>
           </form>
+        </div>
+        <div class="col-md-2 ftco-animate">
+          <label for="validationTooltip01">Buscar USer</label>
+          <input type="text" name="" id="SearchText">
+          <button class="btn btn-primary" id="bucarUser"><i class="fas fa-search"></i></button>
         </div>
       </div>
     </div>
@@ -83,6 +107,7 @@ function comprobar(obj)
 id= obj.value;
  document.getElementById(''+id+'').style.display = "";
  document.getElementById(''+id+'').disabled =false;
+ document.getElementById(''+id+'').value =1;
    } else{
       
 document.getElementById(''+id+'').style.display = "none";
@@ -91,6 +116,54 @@ document.getElementById(''+id+'').disabled =true;
    }     
 }
 
+
+</script>
+
+<script>
+$("#bucarUser").click(function(){
+        var valor = document.getElementById('SearchText').value;
+        if(valor!=""){
+          console.log(valor);
+          // document.getElementById('bloques').style.display = "";
+          // document.getElementById('bloques').disabled =false;
+
+          $.ajax({
+                type: "POST",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                url: "{{ url('Cajero/BuscarUser') }}",
+                data: {
+                     "_token":"{{ csrf_token() }}",//pass the CSRF_TOKEN()
+                     "Nombre": valor,
+                    
+                },
+                success: function(data) {
+
+                  for (value in array) {
+                    var option = document.createElement("option");
+                    option.text = array[value].hora_inicio +"  ---  "+array[value].hora_termino ;
+                    select.add(option);
+                    }
+                    //   console.log(data.Users.name);
+                    //  addOptions('User',data.Users.name);
+                    
+
+                }
+            });
+
+
+
+
+
+
+
+
+
+        }else{
+         
+            console.log('campo vacio ');
+
+        }
+    });
 
 </script>
 
