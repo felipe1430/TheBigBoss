@@ -181,6 +181,12 @@
                   <p>Reportes Comisiones</p>
                 </a>
               </li>
+              {{-- <li class="nav-item">
+                <a href="{{route('reportecomosionestotal')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comisiones Totales</p>
+                </a>
+              </li> --}}
               <li class="nav-item">
                   <a href="{{route('reporteservicios')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>

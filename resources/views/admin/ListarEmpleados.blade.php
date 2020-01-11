@@ -28,6 +28,7 @@ Lista De Trabajadores
                       <th scope="col">Comision</th>
                       <th scope="col">Tipo</th>
                       <th scope="col">Estado</th>
+                      <th scope="col">Servicios</th>
                       <th scope="col">Editar</th>
                       <th scope="col">Eliminar</th>
                     </tr>
@@ -52,8 +53,9 @@ Lista De Trabajadores
                       @else
                       <td>No Activo</td>
                       @endif
+                      <td><a href="{{route('agregarservempleado', $item->id_empleado)}}" class="btn btn-primary">Agregar</a></td>
                       <td><a href="" data-toggle="modal" data-target="#mimodal"
-                        data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' data-fk_empleado_tipo_user='{{$item->fk_empleado_tipo_user}}' class="btn btn-primary btm-sm">Editar</a></td>
+                        data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' data-fk_empleado_tipo_user='{{$item->fk_empleado_tipo_user}}' class="btn btn-warning">Editar</a></td>
                         <td><a href="" data-toggle="modal" data-target="#mimodaleliminar"
                             data-id_empleado='{{$item->id_empleado}}' class="btn btn-danger btm-sm">Eliminar</a></td>
                     </tr>

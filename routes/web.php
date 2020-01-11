@@ -54,25 +54,23 @@ Route::get('/reporteGastos','AdminController@reportegastos')->name('reportegasto
 Route::post('/reporteGastos','AdminController@filtrargastos')->name('filtrargastos');
 Route::get('/AgregarGastos','AdminController@AgregarGastos')->name('AgregarGastos');
 Route::post('/insertargastos','AdminController@insertargastos')->name('confirmargastos');
-
-
 Route::get('/Reservas','AdminController@Reservas')->name('Reservas');
 Route::get('/Reservas/{id_reserva}','AdminController@Reservaspago')->name('Reservaspago');
-
 Route::get('/enviarpagoreserva','AdminController@Reservas')->name('reservaIndex');
 Route::post('/enviarpagoreserva','AdminController@enviarpagoreserva')->name('enviarpagoreserva');
-
-
 Route::post('/confirmarventareserva','AdminController@confirmarventareserva')->name('confirmarventareserva');
-
-
 Route::get('/eliminarventas','AdminController@eliminarventas')->name('eliminarventas');
 Route::post('/eliminarventa','AdminController@eliminarventa')->name('eliminarventa');
 Route::post('/eliminarventafinal','AdminController@eliminarventafinal')->name('eliminarventafinal');
 Route::get('/infodesarrolladores','AdminController@infodesarrolladores')->name('infodesarrolladores');
-
 Route::get('/reporteventaseliminadas','AdminController@reporteventaseliminadas')->name('reporteventaseliminadas');
 Route::post('/reporteventaseliminadas','AdminController@filtrarventaseliminadas')->name('filtrarventaseliminadas');
+Route::get('/reportecomosionestotal','AdminController@reportecomosionestotal')->name('reportecomosionestotal');
+Route::post('/reportecomosionestotal','AdminController@filtrarcomisionestotal')->name('filtrarcomisionestotal');
+
+Route::get('/agregarservempleado/{id_empleado}','AdminController@agregarservempleado')->name('agregarservempleado');
+Route::post('/eliminarservicioempleado','AdminController@eliminarservicioempleado')->name('eliminarservicioempleado');
+Route::post('/agregarservicioempleado','AdminController@agregarservicioempleado')->name('agregarservicioempleado');
 
 
 
