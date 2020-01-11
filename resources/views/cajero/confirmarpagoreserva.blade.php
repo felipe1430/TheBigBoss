@@ -22,6 +22,7 @@
                   <input type="text" class="form-control" readonly name="nombrecliente" id="nombretrabajador" value="{{$Serviciopasoreserva[0]->nombre_cliente_paso_reserva}}" >
                   <input type="hidden" class="form-control" readonly name="idcliente" id="idtrabajador" value="{{$Serviciopasoreserva[0]->id_cliente_paso_reserva}}" >
                   <input type="hidden" class="form-control" readonly name="idreserva" id="idreserva" value="{{$Serviciopasoreserva[0]->id_reserva_paso}}" >
+                  <input type="hidden" class="form-control" readonly name="id_RESERVA" id="idreserva" value="{{$id_reserva}}" >
                 </div>
               </div>
               <div class="col-sm-6">

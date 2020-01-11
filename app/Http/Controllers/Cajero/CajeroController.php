@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\empleados;
 use App\User;
+use App\reservas;
+use App\DetalleReserva;
 use Session;
 use App\servicios;
 use App\gastos;
@@ -41,7 +43,7 @@ class CajeroController extends Controller
     public function enviarpago(Request $request)
     {
 
-      
+     
 
        $cantidad=$request->cantidad;
        $servicios=$request->servicios;
@@ -55,7 +57,7 @@ class CajeroController extends Controller
        $serv=count($servicios);
        $serv = $serv-1;
 
-       //  dd($serv);
+       
        DB::table('tabla_paso')->delete();
 
 
@@ -155,10 +157,11 @@ class CajeroController extends Controller
 
     public function Reservas(Request $request)
     {
-
+/*
       $Reserva=DB::table('reserva')
       ->orderBy('id_reserva', 'desc')->get();
-      
+      */
+      $Reserva=reservas::with('Servicios','User','Empleado')->get();
     
       return view('cajero.Reservas',compact('Reserva'));
 
@@ -167,9 +170,47 @@ class CajeroController extends Controller
 
     public function Reservaspago($id_reserva){
 
-     dd($id_reserva);
-      $idreserva = $id_reserva;
+     //dd($id_reserva);
+      
+      if(empty($id_reserva) || $id_reserva == 0){
+        Session::flash('error','algo a salido mal :C');
+        return redirect()->route('Reservas');
+      }
+      $Reserva=reservas::with('Servicios','User','Empleado')
+      ->where('id_reserva',$id_reserva)
+      ->get();
+      $ServiciosReservados=DB::table('detalle_reserva')
+      ->select('servicios.*', 'detalle_reserva.cantidad_serv_det_reserva as CantidadServicio','detalle_reserva.fk_reserva')
+      ->join('servicios', 'detalle_reserva.fk_servicio', '=', 'servicios.id_servicios')
+      ->where('detalle_reserva.fk_reserva',$id_reserva)
+      ->get();
+      $data=[];
+      foreach ($ServiciosReservados as $key) {
 
+        $data[]=$key->id_servicios;
+      }
+      $ServiciosNoReservados=DB::table('servicios')
+      ->whereNotIn('id_servicios',$data)
+      ->get();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
       $encabezado = DB::table('reservas')
       ->where('id_reserva','=',$id_reserva)
       ->get();
@@ -192,9 +233,9 @@ class CajeroController extends Controller
       ->where('estado_servicios',1);
 
 
+*/
 
-
-      return view('cajero.PagoReserva',compact('encabezado','detalle','cliente','trabajador','Servicio','id_reserva'));
+      return view('cajero.PagoReserva',compact('Reserva','ServiciosReservados','ServiciosNoReservados'));
         
       
     }
@@ -203,7 +244,7 @@ class CajeroController extends Controller
     public function enviarpagoreserva (Request $request){
       
       // dd($request->all());
-
+      $id_reserva=$request->idreserva;
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
 
@@ -259,63 +300,78 @@ class CajeroController extends Controller
   
 
 
-      return view('cajero.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date'));
+      return view('cajero.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date','id_reserva'));
     }
 
     public function confirmarventareserva(Request $request)
     {
 
-      // dd($request->all());
+      $confirmarReserva=DB::table('reservas')
+      ->where('id_reserva',$request->id_RESERVA)
+      ->where('estado_reserva','PENDIENTE')
+      ->get();
 
-      DB::table('ventas')->insert([
-        'fk_usuario_venta' => $request->idcliente,
-        'fk_empleado_venta'=>$request->idempleado,
-        'fk_reserva_venta'=>$request->idreserva,
-        'fecha_venta'=>$request->fechaservicio,
-        'total_venta'=>$request->total
+      if($confirmarReserva->isEmpty()){
 
-        
-        ]);
+        Session::flash('error','Venta ya fue realizada');
 
-
-        $ventas=DB::table('ventas')->max('id_ventas');
-        $tbpaso=DB::table('tabla_paso_reserva')->get();
-        $conteo=DB::table('tabla_paso_reserva')->count('id_servicios_paso_reserva');
-        $conteo = $conteo-1;
-
-        
-        
-
-        for ($i = 0; $i <= $conteo; $i++){
+        return redirect()->route('Reservascajero');
+      }else{
 
 
-          DB::table('detalle_ventas')->insert([
-            'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
-            'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
-            'fk_venta_detall_venta'=> $ventas
-            
-  
-            ]);
-  
-            
-         }
+              DB::table('ventas')->insert([
+                'fk_usuario_venta' => $request->idcliente,
+                'fk_empleado_venta'=>$request->idempleado,
+                'fk_reserva_venta'=>$request->idreserva,
+                'fecha_venta'=>$request->fechaservicio,
+                'total_venta'=>$request->total
+
+                
+                ]);
+
+
+                $ventas=DB::table('ventas')->max('id_ventas');
+                $tbpaso=DB::table('tabla_paso_reserva')->get();
+                $conteo=DB::table('tabla_paso_reserva')->count('id_servicios_paso_reserva');
+                $conteo = $conteo-1;
+
+                
+                
+
+                for ($i = 0; $i <= $conteo; $i++){
+
+
+                  DB::table('detalle_ventas')->insert([
+                    'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
+                    'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
+                    'fk_venta_detall_venta'=> $ventas
+                    
+          
+                    ]);
+          
+                    
+                }
+                DB::table('reservas')
+                ->where('id_reserva', $request->id_RESERVA)
+                ->where('estado_reserva', 'PENDIENTE')
+                ->update(['estado_reserva' => 'PAGADA']);
 
 
 
 
 
-      $Servicio=DB::table('servicios')->get()
-      ->where('estado_servicios',1);
+              $Servicio=DB::table('servicios')->get()
+              ->where('estado_servicios',1);
 
 
-      $empleado=DB::table('empleados')->get()
-      ->where('estado_empleado',1);
+              $empleado=DB::table('empleados')->get()
+              ->where('estado_empleado',1);
 
-      
-      Session::flash('success','Venta Realizada');
-
+              
+              Session::flash('success','Venta Realizada');
+        }
     
-      return view('cajero.index');
+        return redirect()->route('Reservascajero');
 
     }
 
@@ -335,8 +391,28 @@ class CajeroController extends Controller
 
 
     public function infodesarrolladorescaja (){
-      
+    
       return view('cajero.informacioncajero');
+    }
+
+    public function BuscarUser(Request $request){
+      //dd($request->all());
+      $Users = DB::table('users')
+      ->where('name', 'like',''.$request->Nombre.'')
+      ->get();
+     // dd($Users);
+
+      $data=[
+        //"reservas"=> $reservas,
+        "Users"=>$Users
+       ];
+
+   // dd($reservas,$bloques);
+    return response()->json(
+            $data
+        );
+      //dd($request->all(),$empleados);
+
     }
     
     

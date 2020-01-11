@@ -437,7 +437,7 @@ class AdminController extends Controller
 
     public function enviarpagoreserva (Request $request){ // realizar el pago de la reserva 
       
-      // dd($request->all());
+       //dd($request->all());
       $id_reserva=$request->idreserva;
       $cantidad=$request->cantidad;
       $servicios=$request->servicios;
@@ -488,7 +488,7 @@ class AdminController extends Controller
 
      $date = Carbon::now("Chile/Continental");
   
-
+     // dd($Serviciopasoreserva,$trabajador, $date);
 
       return view('admin.confirmarpagoreserva',compact('Serviciopasoreserva','trabajador','date','id_reserva'));
     }
