@@ -1,6 +1,6 @@
 @extends("theme.$theme2.layout")
 @section('titulo')
-Lista De comisión
+Lista De comisión totales
 @endsection
 
 @section('styles')
@@ -12,11 +12,11 @@ Lista De comisión
 @section('contenido')
 
 <div class="container-fluid">
-    <h3 class="display-3">Lista De comisiónes Por Ventas</h3>
+    <h3 class="display-3">Lista De comisiónes Totales</h3>
     <div class="row">
     <div class="col-md-12">
 
-        <form action="{{route('filtrarcomisiones')}}" method="post"  id="desvForm" class="form-inline">
+        <form action="{{route('filtrarcomisionestotal')}}" method="post"  id="desvForm" class="form-inline">
           @csrf
                  Desde  
                 <div class="form-group mb-2">

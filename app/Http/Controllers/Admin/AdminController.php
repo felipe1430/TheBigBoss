@@ -138,8 +138,10 @@ class AdminController extends Controller
       return view('admin.ListarServicios',compact('Servicio'));
     }
 
-    public function agregarservicios()
-    {
+    public function agregarservicios(Request $request){
+
+
+    
       
       return view('admin.AgregarServicios');
     }
@@ -788,5 +790,179 @@ class AdminController extends Controller
 
       return view('admin.ReporteVentasEliminadas',compact('porcentaje','fecha1','fecha2'));
     }
+
+
+
+
+    public function reportecomosionestotal (){
+      
+      return view('admin.ReporteComisionesTotales');
+    }
+    
+    
+    
+    public function filtrarcomisionestotal (Request $request){
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+      $porcentaje=DB::table('comision_empleado_total')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->get();
+  
+
+
+      return view('admin.ReporteComisionesTotales',compact('porcentaje','fecha1','fecha2'));
+    }
+
+
+
+
+    public function agregarservempleado($id_empleado){
+
+
+      $id=$id_empleado;
+      $empleados=DB::table('empleado_servicio_detalle')
+      ->where('fk_empleado',$id_empleado)
+      ->where('estado',1)
+      ->join('empleados', 'empleados.id_empleado', '=', 'empleado_servicio_detalle.fk_empleado')
+      ->join('servicios', 'servicios.id_servicios', '=', 'empleado_servicio_detalle.fk_servicio')
+      ->get();
+
+      // dd($empleados);
+
+      $servicios=DB::table('servicios')
+      ->where('estado_servicios',1)
+      ->get();
+
+
+
+      return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
+       
+      
+    }
+
+
+    public function eliminarservicioempleado(Request $request){
+
+      $id_empleado=$request->id_trabajador;
+      $lista=$request->case;
+
+      $conteo=count($request->case);
+      $conteo = $conteo-1;
+
+      // dd($conteo);
+
+      for ($i = 0; $i <= $conteo; $i++){
+       $validar=DB::table('empleado_servicio_detalle')
+        ->where('fk_empleado',$id_empleado)
+        ->where('fk_servicio',$lista[$i])
+        ->where('estado',1)
+        ->get();
+
+        if($validar->isNotEmpty()){
+          $agregar = DB::table('empleado_servicio_detalle')
+          ->where('fk_empleado',$id_empleado)
+          ->where('fk_servicio',$lista[$i])
+          ->update(['estado' => 0
+
+  
+          ]);
+          
+        }else{
+
+
+        }
+       
+
+        }
+
+
+      $empleados=DB::table('empleado_servicio_detalle')
+      ->where('fk_empleado',$id_empleado)
+      ->where('estado',1)
+      ->join('empleados', 'empleados.id_empleado', '=', 'empleado_servicio_detalle.fk_empleado')
+      ->join('servicios', 'servicios.id_servicios', '=', 'empleado_servicio_detalle.fk_servicio')
+      ->get();
+      
+
+      $servicios=DB::table('servicios')
+      ->where('estado_servicios',1)
+      ->get();
+
+      $id=$id_empleado;
+
+
+      return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
+        
+      
+    }
+
+
+    public function agregarservicioempleado(Request $request){
+
+
+      $id_empleado=$request->id_trabajador;
+      $lista=$request->case;
+
+      $conteo=count($request->case);
+      $conteo = $conteo-1;
+
+
+      for ($i = 0; $i <= $conteo; $i++){
+       $validar=DB::table('empleado_servicio_detalle')
+        ->where('fk_empleado',$id_empleado)
+        ->where('fk_servicio',$lista[$i])
+        ->get();
+
+        if($validar->isEmpty()){
+          $agregar = DB::table('empleado_servicio_detalle')
+          ->insert(['fk_empleado' => $id_empleado,
+                    'fk_servicio' => $lista[$i]
+  
+          ]);
+
+        }elseif($validar->isNotEmpty()){
+          $agregar = DB::table('empleado_servicio_detalle')
+          ->where('fk_empleado',$id_empleado)
+          ->where('fk_servicio',$lista[$i])
+          ->update(['estado' => 1  ]);
+         
+        }else{
+
+          
+       
+
+        }
+       
+
+        }
+
+      
+      $empleados=DB::table('empleado_servicio_detalle')
+      ->where('fk_empleado',$id_empleado)
+      ->where('estado',1)
+      ->join('empleados', 'empleados.id_empleado', '=', 'empleado_servicio_detalle.fk_empleado')
+      ->join('servicios', 'servicios.id_servicios', '=', 'empleado_servicio_detalle.fk_servicio')
+      ->get();
+
+      $servicios=DB::table('servicios')
+      ->where('estado_servicios',1)
+      ->get();
+
+        
+      
+      $id=$id_empleado;
+
+
+
+
+      return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
+        
+      
+    }
+
+
+
+
     
 }
