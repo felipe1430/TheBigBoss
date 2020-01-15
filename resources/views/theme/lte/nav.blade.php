@@ -263,6 +263,12 @@
                   <p>Ventas Del Dia</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('ListarUsuariosCaja')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Usuarios</p>
+                </a>
+              </li>
             </ul>
           </li>
                

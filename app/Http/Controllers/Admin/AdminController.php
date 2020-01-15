@@ -88,6 +88,11 @@ class AdminController extends Controller
             'fk_empleado_tipo_user' => $request->tipo,
 
         ]);
+        
+    
+
+
+
         $empleados=DB::table('empleados')
       ->join('tipo_user', 'tipo_user.id_tipo_user', '=', 'empleados.fk_empleado_tipo_user')
       ->get();
@@ -208,6 +213,26 @@ class AdminController extends Controller
       return back();
     }
 
+    public function CrearUsers(){
+
+          /*
+        Users::create([
+          'name'=>$request->nombre_empleado,
+          'surname'=>$request->apellido_empleado,
+          'rut'=>$request->rut_empleado,
+          'email'=>$request->correo_empleado,
+           'password'=>,
+           'edad'=>,
+           'fecha_nacimiento'=>,
+           'telefono'=>,
+           'estado'=>,
+           'fk_tipo_user'=>,
+        ]);
+
+*/
+
+    }
+
 
     //----------------------------------- Fin CRUD Usuarios ----------------------------------------//
 
@@ -236,12 +261,16 @@ class AdminController extends Controller
 
        $cantidad=$request->cantidad;
        $servicios=$request->servicios;
+       $id_user=$request->User;
 
        
         $pago = DB::table('servicios')
         ->wherein('id_servicios',$request->servicios)
         ->get();
 
+        $User = DB::table('users')
+        ->where('id',$request->User)
+        ->get();
       
        $serv=count($servicios);
        $serv = $serv-1;
@@ -281,66 +310,79 @@ class AdminController extends Controller
         $date = Carbon::now("Chile/Continental");
 
 
-       return view('admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado'));
+       return view('admin.confirmarpago',compact('Serviciopaso','trabajador','date','empleado','User'));
  
     }
 
 
     public function confirmar(Request $request)
     {
+      //dd($request->all());
+      $ValidarVenta=DB::table('ventas')
+      ->where('fk_usuario_venta',$request->id_user)
+      ->where('fk_empleado_venta',$request->idempleado)
+      ->where('fecha_venta',$request->fechaservicio)
+      ->get();
 
-      
+      if($ValidarVenta->isNotEmpty()){
 
-      DB::table('ventas')->insert([
-        'fk_usuario_venta' => 1,
-        'fk_empleado_venta'=>$request->idempleado,
-        'fk_reserva_venta'=>null,
-        'fecha_venta'=>$request->fechaservicio,
-        'total_venta'=>$request->total
-
-        
-        ]);
-
-
-        $ventas=DB::table('ventas')->max('id_ventas');
-        $tbpaso=DB::table('tabla_paso')->get();
-        $conteo=DB::table('tabla_paso')->count('id_servicio_paso');
-        $conteo = $conteo-1;
-
-        
+        Session::flash('error','La venta ya fue realizada');
+        return redirect()->route('ventas');
         
 
-        for ($i = 0; $i <= $conteo; $i++){
+      }else{
+
+            DB::table('ventas')->insert([
+              'fk_usuario_venta' => $request->id_user,
+              'fk_empleado_venta'=>$request->idempleado,
+              'fk_reserva_venta'=>null,
+              'fecha_venta'=>$request->fechaservicio,
+              'total_venta'=>$request->total
+
+              
+              ]);
 
 
-          DB::table('detalle_ventas')->insert([
-            'cantidad_detalle_venta' => $tbpaso[$i]->cantidad_servicio_paso,
-            'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicio_paso,
-            'fk_venta_detall_venta'=> $ventas
+              $ventas=DB::table('ventas')->max('id_ventas');
+              $tbpaso=DB::table('tabla_paso')->get();
+              $conteo=DB::table('tabla_paso')->count('id_servicio_paso');
+              $conteo = $conteo-1;
+
+              
+              
+
+              for ($i = 0; $i <= $conteo; $i++){
+
+
+                DB::table('detalle_ventas')->insert([
+                  'cantidad_detalle_venta' => $tbpaso[$i]->cantidad_servicio_paso,
+                  'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicio_paso,
+                  'fk_venta_detall_venta'=> $ventas
+                  
+        
+                  ]);
+        
+                  
+              }
+
+
+
+
+
+            $Servicio=DB::table('servicios')->get()
+            ->where('estado_servicios',1);
+
+
+            $empleado=DB::table('empleados')->get()
+            ->where('estado_empleado',1);
+
             
-  
-            ]);
-  
-            
-         }
-
-
-
-
-
-      $Servicio=DB::table('servicios')->get()
-      ->where('estado_servicios',1);
-
-
-      $empleado=DB::table('empleados')->get()
-      ->where('estado_empleado',1);
-
-      
-      Session::flash('success','Venta Realizada');
+            Session::flash('success','Venta Realizada');
 
     
       // return view('admin.ventas',compact('Servicio','empleado'));
       //return view('Admin.ventas',compact('Servicio','empleado'));
+        }
       return redirect()->route('ventas');
 
     }
@@ -892,15 +934,15 @@ class AdminController extends Controller
       $id=$id_empleado;
 
 
-      return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
-        
+     // return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
+     return redirect()->route('agregarservempleado',$id_empleado);
       
     }
 
 
     public function agregarservicioempleado(Request $request){
 
-
+        //dd($request->all());
       $id_empleado=$request->id_trabajador;
       $lista=$request->case;
 
@@ -917,7 +959,8 @@ class AdminController extends Controller
         if($validar->isEmpty()){
           $agregar = DB::table('empleado_servicio_detalle')
           ->insert(['fk_empleado' => $id_empleado,
-                    'fk_servicio' => $lista[$i]
+                    'fk_servicio' => $lista[$i],
+                    'estado' => 1 
   
           ]);
 
@@ -956,9 +999,31 @@ class AdminController extends Controller
 
 
 
-      return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
-        
+      //return view('admin.agregrarserdetalle',compact('empleados','servicios','id'));
+       
+      return redirect()->route('agregarservempleado',$id_empleado);
       
+    }
+
+    public function BuscarUser(Request $request){
+      //dd($request->all());
+      $Users = DB::table('users')
+      ->select('id','name','surname','email')
+      ->where('name', 'like','%'.$request->Nombre.'%')
+      ->get();
+     // dd($Users);
+
+      $data=[
+        //"reservas"=> $reservas,
+        "Users"=>$Users
+       ];
+
+   // dd($reservas,$bloques);
+    return response()->json(
+            $data
+        );
+      //dd($request->all(),$empleados);
+
     }
 
 
