@@ -19,6 +19,8 @@
         <div class="col-md-10 ftco-animate">
           <form  method="POST" action="{{route('enviarpagocajero')}}"class="appointment-form" >
             @csrf
+
+
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -38,7 +40,8 @@
                   <div class="select-wrap">
                     <label for="validationTooltip01">Usuario</label>
                     <select name="User" id="User" required class="form-control">
-                        <option value="">Usuario</option>
+                      <option value="">Usuarios</option>
+                     
                        
                     </select>
                   </div>
@@ -79,12 +82,14 @@
                 <button type="submit" class="btn btn-primary">Realizar Pago</button>
             </div>
           </form>
+
         </div>
+
         <div class="col-md-2 ftco-animate">
           <label for="validationTooltip01">Buscar USer</label>
           <input type="text" name="" id="SearchText">
-          <button class="btn btn-primary" id="bucarUser"><i class="fas fa-search"></i></button>
         </div>
+
       </div>
     </div>
   </section>
@@ -120,7 +125,13 @@ document.getElementById(''+id+'').disabled =true;
 </script>
 
 <script>
-$("#bucarUser").click(function(){
+  var controladorTiempo = "";
+  $("#SearchText").on("keyup", function() {
+    clearTimeout(controladorTiempo);
+    controladorTiempo = setTimeout(BuscarUserCaja, 250);
+});
+
+function BuscarUserCaja(){
         var valor = document.getElementById('SearchText').value;
         if(valor!=""){
           console.log(valor);
@@ -138,32 +149,39 @@ $("#bucarUser").click(function(){
                 },
                 success: function(data) {
 
-                  for (value in array) {
-                    var option = document.createElement("option");
-                    option.text = array[value].hora_inicio +"  ---  "+array[value].hora_termino ;
-                    select.add(option);
-                    }
-                    //   console.log(data.Users.name);
-                    //  addOptions('User',data.Users.name);
+                  
+                       //console.log(data.Users);
+                     addOptions('User',data.Users);
                     
 
                 }
             });
-
-
-
-
-
-
-
-
 
         }else{
          
             console.log('campo vacio ');
 
         }
-    });
+}
+
+    function addOptions(domElement, array) {
+ var select = document.getElementsByName(domElement)[0];
+ var option = document.createElement("option");
+ var option2 = document.createElement("option");
+ select.innerHTML='';
+ option.text='....';
+ select.add(option);
+ option2.text='NO REGISTRADO';
+ option2.value=0;
+ select.add(option2);
+ for (value in array) {
+  var option = document.createElement("option");
+  option.value=array[value].id;
+  option.text = array[value].name +" "+array[value].surname+"--"+array[value].email ;
+  select.add(option);
+ }
+
+}
 
 </script>
 

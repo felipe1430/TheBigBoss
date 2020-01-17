@@ -73,7 +73,7 @@ Route::post('/eliminarservicioempleado','AdminController@eliminarservicioemplead
 Route::post('/agregarservicioempleado','AdminController@agregarservicioempleado')->name('agregarservicioempleado');
 
 
-
+Route::post('/BuscarUser','AdminController@BuscarUser')->name('BuscarUserAdmin');
 
 
 
@@ -128,6 +128,12 @@ Route::prefix('Cajero')->namespace('Cajero')->middleware('auth','SeguridadCajero
 
     
     Route::post('/BuscarUser','CajeroController@BuscarUser')->name('BuscarUser');
+
+
+    Route::get('/ListarUsuarios','CajeroController@ListarUsuarios')->name('ListarUsuariosCaja');
+    Route::post('/actualizarusuarios', 'CajeroController@actualizarusuarios')->name('actualizarusuariosCaja');
+
+    Route::get('/CancelarReserva/{id_reserva}', 'CajeroController@CancelarReserva')->name('cancelarReserva');
     
     });
 
