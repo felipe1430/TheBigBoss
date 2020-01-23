@@ -86,13 +86,12 @@ Reservas
                       @else
                       <td><a href="{{route('Reservaspagopagocajero', $item->id_reserva)}}" class="btn btn-primary" >Pagar</a></td>
                       @endif
-
-
-
-
-
-                      
-                      <td><button type="button" class="btn btn-warning">Cancelar</button></td>
+                      @if ($item->estado_reserva=='PENDIENTE')
+                      <td><a class="btn btn-danger" href="{{route('cancelarReserva', $item->id_reserva)}}">Cancelar</a> </td>
+                      @else
+                     <td><button type="button" class="btn btn-danger">Cancelar</button></td>
+                      @endif
+                      {{-- <td><button type="button" class="btn btn-warning">Cancelar</button></td> --}}
                     </tr>
                     @endforeach
                   </tbody>

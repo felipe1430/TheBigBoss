@@ -14,6 +14,7 @@
       <div class="row justify-content-center">
         <div class="col-md-10 ftco-animate">
           <form  method="POST" action="{{route('confirmar')}}"class="appointment-form" >
+            <input type="hidden" name="id_user" value="{{$User[0]->id}}">
             @csrf
             <div class="row">
               <div class="col-sm-6">
@@ -30,8 +31,9 @@
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="validationTooltip01">Rut Trabajador</label>
-                  <input type="text" class="form-control appointment_date" readonly name="ruttrabajador" id="ruttrabajador" value="{{$trabajador[0]->rut_empleado}}">
+                    <label for="validationTooltip01">Nombre Cliente</label>
+                    <input type="text" class="form-control appointment_date" readonly name="user" id="user" value="{{$User[0]->name.' '.$User[0]->surname}}">
+                  <input type="hidden" class="form-control appointment_date" readonly name="ruttrabajador" id="ruttrabajador" value="{{$trabajador[0]->rut_empleado}}">
                 </div>    
               </div>
               <div class="col-sm-6">

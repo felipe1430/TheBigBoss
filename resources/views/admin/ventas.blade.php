@@ -16,6 +16,8 @@
         <div class="col-md-10 ftco-animate">
           <form  method="POST" action="{{route('enviarpago')}}"class="appointment-form" >
             @csrf
+           
+            
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -30,6 +32,19 @@
                   </div>
                 </div>
               </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div class="select-wrap">
+                    <label for="validationTooltip01">Usuario</label>
+                    <select name="User" id="User" required class="form-control">
+                      <option value="">Usuarios</option>
+                     
+                       
+                    </select>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-sm-12">
                 <div class="form-group">
                       <table id="users" class="table table-sm table-hover">
@@ -55,12 +70,19 @@
                 </div>
                 
               </div>
+
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Realizar Pago</button>
             </div>
           </form>
         </div>
+
+        <div class="col-md-2 ftco-animate">
+          <label for="validationTooltip01">Buscar USer</label>
+          <input type="text" name="" id="SearchText">
+        </div>
+
       </div>
     </div>
   </section>
@@ -83,6 +105,7 @@ function comprobar(obj)
 id= obj.value;
  document.getElementById(''+id+'').style.display = "";
  document.getElementById(''+id+'').disabled =false;
+ document.getElementById(''+id+'').value =1;
    } else{
       
 document.getElementById(''+id+'').style.display = "none";
@@ -93,6 +116,70 @@ document.getElementById(''+id+'').disabled =true;
 
 
 </script>
+
+<script>
+var controladorTiempo = "";
+
+$("#SearchText").on("keyup", function() {
+    clearTimeout(controladorTiempo);
+    controladorTiempo = setTimeout(BucarUsers, 250);
+});
+
+
+  function BucarUsers(){
+          var valor = document.getElementById('SearchText').value;
+          if(valor!=""){
+            console.log(valor);
+            // document.getElementById('bloques').style.display = "";
+            // document.getElementById('bloques').disabled =false;
+  
+            $.ajax({
+                  type: "POST",
+                  headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                  url: "{{ url('admin/BuscarUser') }}",
+                  data: {
+                       "_token":"{{ csrf_token() }}",//pass the CSRF_TOKEN()
+                       "Nombre": valor,
+                      
+                  },
+                  success: function(data) {
+  
+                    
+                         //console.log(data.Users);
+                       addOptions('User',data.Users);
+                      
+  
+                  }
+              });
+  
+          }else{
+           
+              console.log('campo vacio ');
+  
+          }
+  }
+   
+  
+      function addOptions(domElement, array) {
+   var select = document.getElementsByName(domElement)[0];
+   var option = document.createElement("option");
+   var option2 = document.createElement("option");
+   select.innerHTML='';
+   option.text='....';
+   select.add(option);
+   option2.text='NO REGISTRADO';
+   option2.value=0;
+   select.add(option2);
+   for (value in array) {
+    var option = document.createElement("option");
+    option.value=array[value].id;
+    option.text = array[value].name +" "+array[value].surname+"--"+array[value].email ;
+    select.add(option);
+   }
+  
+  }
+  
+  </script>
 
 
 @endsection
