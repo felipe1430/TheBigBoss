@@ -1,22 +1,19 @@
 @extends("theme.$theme2.layout")
 @section('titulo')
-Lista De comisión totales
+Total De servicios
 @endsection
-
 @section('styles')
 
 <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
 
-
 @endsection
 @section('contenido')
-
 <div class="container-fluid">
-    <h3 class="display-3">Lista De comisiónes Totales</h3>
+    <h3 class="display-3">Totales Servicios</h3>
     <div class="row">
     <div class="col-md-12">
 
-        <form action="{{route('filtrarcomisionestotal')}}" method="post"  id="desvForm" class="form-inline">
+        <form action="{{route('reportetotalesserviciosfiltrar')}}" method="post"  id="desvForm" class="form-inline">
           @csrf
                  Desde  
                 <div class="form-group mb-2">
@@ -51,33 +48,21 @@ Lista De comisión totales
       <div class="row">
       
       <div class="col-md-12">
-          <table id="comisiones" class="table table-bordered table-hover dataTable">
+          <table id="reporteventa" class="table table-bordered table-hover dataTable">
               <thead>
                 <tr>
-                  <th scope="col">Nombre Trabajador</th>
-                  <th scope="col">Apellido Trabajador</th>
-                  <th scope="col">Rut</th>
-                  <th scope="col">porsentaje comisión</th>
-                  <th scope="col">Fecha Servicio</th>
-                  <th scope="col">comisión Trabajador</th>
-                  <th scope="col">comisión Administrador</th>
-                  <th scope="col">Total Venta</th>
-                </tr>
+                    <th scope="col">Nombre Servicio</th>
+                    <th scope="col">Total</th>
+                  </tr>
               </thead>
               <tbody> 
-                @if (empty($porcentaje))
+                @if (empty($consulta))
                     
                 @else
-                @foreach($porcentaje as $item)
+                @foreach($consulta as $item)
                 <tr>
-                  <th >{{$item->nombre_empleado}}</th>
-                  <td>{{$item->apellido_empleado}}</td>
-                  <td>{{$item->rut_empleado}}</td>
-                  <td>{{$item->comision_empleado}}%</td>
-                  <td>{{$item->fecha_venta}}</td>
-                  <td style="text-align:center">{{number_format($item->comision_empleados,0,',','.')}}</td>
-                  <td style="text-align:center">{{number_format($item->comision_administrador,0,',','.')}}</td>
-                  <td style="text-align:center">{{number_format($item->total_venta,0,',','.')}}</td>
+                    <th scope="row">{{$item->nombre_servicio}}</th>
+                    <td style="text-align:center">${{number_format($item->valorserv,0,',','.')}}</td>
                 </tr>
               @endforeach
                     
@@ -90,16 +75,11 @@ Lista De comisión totales
 
     </div>
 </div>
-
-
-
-
-
 @endsection
 @section('script')
 <script>
     $(document).ready(function() {
-      $('#comisiones').DataTable( {
+      $('#reporteventa').DataTable( {
           dom: 'Bfrtip',
           buttons: [
               'copy', 'csv', 'excel', 'pdf', 'print'
@@ -121,6 +101,8 @@ Lista De comisión totales
       });
     } );
     </script>
+<script src="{{asset("assets/$theme2/plugins/datatables/jquery.dataTables.js")}}"></script>
+<script src="{{asset("assets/$theme2/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 
   <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/datatables-bs4/css/buttons.dataTables.min.css")}}">
   <link rel="stylesheet" href="{{asset("assets/$theme2/plugins/datatables-bs4/css/jquery.dataTables.min.css")}}">
@@ -134,5 +116,12 @@ Lista De comisión totales
   <script src="{{asset("js/buttons.html5.min.js")}}"></script>
   <script src="{{asset("js/buttons.print.min.js")}}"></script>
 
+<script>
+  $(document).ready( function () {
+    $('#users').DataTable();
+} );
 
+</script>
+
+    
 @endsection

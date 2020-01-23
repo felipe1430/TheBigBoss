@@ -805,13 +805,23 @@ class AdminController extends Controller
       
       $fecha1=$request->fecha1;
       $fecha2=$request->fecha2;
-      $porcentaje=DB::table('comision_empleado_total')
+
+
+      $consulta=DB::table('empleados')
+      ->select('nombre_empleado','apellido_empleado','rut_empleado')
+      ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
+      ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
       ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->groupBy('rut_empleado')
+      // ->sum('valor_servicio')
       ->get();
+      
+
+      // dd($consulta);
   
 
 
-      return view('admin.ReporteComisionesTotales',compact('porcentaje','fecha1','fecha2'));
+      return view('admin.ReporteComisionesTotales',compact('consulta','fecha1','fecha2'));
     }
 
 
@@ -964,5 +974,47 @@ class AdminController extends Controller
 
 
 
+    public function reportetotalesservicios(){
+
+
+
+      return view('admin.Reporteserviciostotales');
+       
+      
+    }
+
+
+    public function reportetotalesserviciosfiltrar (Request $request){
+
+      // dd($request->all());
+      
+      $fecha1=$request->fecha1;
+      $fecha2=$request->fecha2;
+
+
+      $consulta=DB::table('servicios')
+      ->selectRaw('nombre_servicio ,sum(valor_servicio) as valorserv')
+      ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
+      ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
+      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->groupBy('nombre_servicio')
+      // ->sum('valor_servicio')
+      ->get();
+      
+
+      // dd($consulta);
+
+
+
+      return view('admin.Reporteserviciostotales',compact('consulta','fecha1','fecha2'));
+    }
+
+
+
+
+
+
+
+    
     
 }

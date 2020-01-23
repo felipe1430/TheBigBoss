@@ -67,10 +67,13 @@ Route::get('/reporteventaseliminadas','AdminController@reporteventaseliminadas')
 Route::post('/reporteventaseliminadas','AdminController@filtrarventaseliminadas')->name('filtrarventaseliminadas');
 Route::get('/reportecomosionestotal','AdminController@reportecomosionestotal')->name('reportecomosionestotal');
 Route::post('/reportecomosionestotal','AdminController@filtrarcomisionestotal')->name('filtrarcomisionestotal');
-
 Route::get('/agregarservempleado/{id_empleado}','AdminController@agregarservempleado')->name('agregarservempleado');
 Route::post('/eliminarservicioempleado','AdminController@eliminarservicioempleado')->name('eliminarservicioempleado');
 Route::post('/agregarservicioempleado','AdminController@agregarservicioempleado')->name('agregarservicioempleado');
+
+
+Route::get('/reportetotalesservicios','AdminController@reportetotalesservicios')->name('reportetotalesservicios');
+Route::post('/reportetotalesserviciosfiltrar','AdminController@reportetotalesserviciosfiltrar')->name('reportetotalesserviciosfiltrar');
 
 
 
