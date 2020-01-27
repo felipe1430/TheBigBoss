@@ -58,26 +58,24 @@ Lista De comisión totales
                   <th scope="col">Apellido Trabajador</th>
                   <th scope="col">Rut</th>
                   <th scope="col">porsentaje comisión</th>
-                  <th scope="col">Fecha Servicio</th>
                   <th scope="col">comisión Trabajador</th>
                   <th scope="col">comisión Administrador</th>
                   <th scope="col">Total Venta</th>
                 </tr>
               </thead>
               <tbody> 
-                @if (empty($porcentaje))
+                @if (empty($consulta))
                     
                 @else
-                @foreach($porcentaje as $item)
+                @foreach($consulta as $item)
                 <tr>
                   <th >{{$item->nombre_empleado}}</th>
                   <td>{{$item->apellido_empleado}}</td>
                   <td>{{$item->rut_empleado}}</td>
                   <td>{{$item->comision_empleado}}%</td>
-                  <td>{{$item->fecha_venta}}</td>
                   <td style="text-align:center">{{number_format($item->comision_empleados,0,',','.')}}</td>
                   <td style="text-align:center">{{number_format($item->comision_administrador,0,',','.')}}</td>
-                  <td style="text-align:center">{{number_format($item->total_venta,0,',','.')}}</td>
+                  <td style="text-align:center">{{number_format($item->total,0,',','.')}}</td>
                 </tr>
               @endforeach
                     

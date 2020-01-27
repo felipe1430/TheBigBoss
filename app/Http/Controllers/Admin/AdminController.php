@@ -850,17 +850,17 @@ class AdminController extends Controller
 
 
       $consulta=DB::table('empleados')
-      ->select('nombre_empleado','apellido_empleado','rut_empleado')
-      ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
-      ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
+      ->selectRaw('nombre_empleado,apellido_empleado,rut_empleado, comision_empleado, sum( ROUND(total_venta - total_venta * comision_empleado / 100,
+      0)) AS comision_administrador, sum(ROUND(total_venta * comision_empleado / 100,
+      0) )AS comision_empleados, sum(total_venta) as total')
+      ->join('ventas', 'ventas.fk_empleado_venta', '=', 'empleados.id_empleado')
       ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
       ->groupBy('rut_empleado')
-      // ->sum('valor_servicio')
       ->get();
       
 
       // dd($consulta);
-  
+    
 
 
       return view('admin.ReporteComisionesTotales',compact('consulta','fecha1','fecha2'));
