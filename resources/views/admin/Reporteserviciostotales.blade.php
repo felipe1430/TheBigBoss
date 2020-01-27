@@ -59,16 +59,31 @@ Total De servicios
                 @if (empty($consulta))
                     
                 @else
+                <div style="display: none">
+                  {{-- variable suma --}}
+                    {{ $total = 0 }} 
+                  </div>
                 @foreach($consulta as $item)
                 <tr>
                     <th scope="row">{{$item->nombre_servicio}}</th>
                     <td style="text-align:center">${{number_format($item->valorserv,0,',','.')}}</td>
+                    <div style="display: none">{{$total += $item->valorserv}}</div>
                 </tr>
               @endforeach
                     
                 @endif
           
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="1"><strong>Total</strong> </td>
+                @if(empty($total))
+                <td><span class="price text-success">$</span></td>
+                @else
+                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                @endif
+              </tr>
+            </tfoot>
         </table>
         {{-- {{$porcentaje->links()}} --}}
       </div>

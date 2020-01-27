@@ -64,18 +64,34 @@ lista servicios top
                 @if (empty($porcentaje))
                     
                 @else
+                <div style="display: none">
+                  {{-- variable suma --}}
+                    {{ $total = 0 }} 
+                  </div>
                 @foreach($porcentaje as $item)
                 <tr>
                   <td>{{$item->servicio}}</td>
                   <th >{{$item->cantidad}}</th>
                   <td style="text-align:center">{{number_format($item->valor_servicio,0,',','.')}}</td>
                   <td style="text-align:center">{{number_format($item->total,0,',','.')}}</td>
+                  <div style="display: none">{{$total += $item->total}}</div>
+
                 </tr>
               @endforeach
                     
                 @endif
           
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"><strong>Total</strong> </td>
+                @if(empty($total))
+                <td><span class="price text-success">$</span></td>
+                @else
+                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                @endif
+              </tr>
+            </tfoot>
         </table>
         {{-- {{$porcentaje->links()}} --}}
       </div>

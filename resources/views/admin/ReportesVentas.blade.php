@@ -11,7 +11,7 @@ Lista De ventas
 <div class="container-fluid">
     <h3 class="display-3">Lista De Ventas</h3>
     <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
         <form action="{{route('filtrarventas')}}" method="post"  id="desvForm" class="form-inline">
           @csrf
@@ -41,7 +41,7 @@ Lista De ventas
         </div>    
       </div>
       <div class="row">  
-      <div class="col-md-8">
+      <div class="col-md-12">
           <table id="reporteventa" class="table table-bordered table-hover dataTable">
               <thead>
                 <tr>
@@ -58,6 +58,10 @@ Lista De ventas
                 @if (empty($porcentaje))
                     
                 @else
+                <div style="display: none">
+                  {{-- variable suma --}}
+                    {{ $total = 0 }} 
+                  </div>
                 @foreach($porcentaje as $item)
                 <tr>
                     <th scope="row">{{$item->id_ventas}}</th>
@@ -67,10 +71,21 @@ Lista De ventas
                     <td>{{$item->rut_empleado}}</td>
                     <td>{{$item->fecha_venta}}</td>
                     <td style="text-align:center">${{number_format($item->total_venta,0,',','.')}}</td>
+                    <div style="display: none">{{$total += $item->total_venta}}</div>
                 </tr>
               @endforeach                    
                 @endif         
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6"><strong>Total</strong> </td>
+                @if(empty($total))
+                <td><span class="price text-success">$</span></td>
+                @else
+                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                @endif
+              </tr>
+            </tfoot>
         </table>
         {{-- {{$porcentaje->links()}} --}}
       </div>

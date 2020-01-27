@@ -53,7 +53,7 @@ Lista De Gastos
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Descripcion</th>
-                    <th scope="col">Valor</th>
+                    <th scope="col" style="text-align:center">Valor</th>
                     <th scope="col">Fecha</th>
                   </tr>
               </thead>
@@ -61,11 +61,16 @@ Lista De Gastos
                 @if (empty($gastos))
                     
                 @else
+                <div style="display: none">
+                  {{-- variable suma --}}
+                    {{ $total = 0 }} 
+                  </div>
                 @foreach($gastos as $item)
                 <tr>
                     <th scope="row">{{$item->id_gastos}}</th>
                     <td>{{$item->descripcion_gastos}}</td>
                     <td style="text-align:center">{{number_format($item->valor_gastos,0,',','.')}}</td>
+                    <div style="display: none">{{$total += $item->valor_gastos}}</div>
                     <td>{{$item->fecha_gastos}}</td>
                 </tr>
               @endforeach
@@ -73,6 +78,16 @@ Lista De Gastos
                 @endif
           
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"><strong>Total</strong> </td>
+                @if(empty($total))
+                <td><span class="price text-success">$</span></td>
+                @else
+                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                @endif
+              </tr>
+            </tfoot>
         </table>
         {{-- {{$porcentaje->links()}} --}}
       </div>

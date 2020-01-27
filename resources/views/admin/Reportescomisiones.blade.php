@@ -69,6 +69,10 @@ Lista De comisión
                 @if (empty($porcentaje))
                     
                 @else
+                <div style="display: none">
+                  {{-- variable suma --}}
+                    {{ $total = 0 }} 
+                  </div>
                 @foreach($porcentaje as $item)
                 <tr>
                   <th >{{$item->nombre_empleado}}</th>
@@ -80,12 +84,23 @@ Lista De comisión
                   <td style="text-align:center">{{number_format($item->comision_empleados,0,',','.')}}</td>
                   <td style="text-align:center">{{number_format($item->comision_administrador,0,',','.')}}</td>
                   <td style="text-align:center">{{number_format($item->total_venta,0,',','.')}}</td>
+                  <div style="display: none">{{$total += $item->total_venta}}</div>
                 </tr>
               @endforeach
                     
                 @endif
           
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6"><strong>Total</strong> </td>
+                @if(empty($total))
+                <td><span class="price text-success">$</span></td>
+                @else
+                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                @endif
+              </tr>
+            </tfoot>
         </table>
         {{-- {{$porcentaje->links()}} --}}
       </div>
