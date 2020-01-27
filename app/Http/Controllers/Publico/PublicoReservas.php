@@ -38,14 +38,13 @@ class PublicoReservas extends Controller
         ->join('empleado_servicio_detalle', 'empleado_servicio_detalle.fk_servicio', '=', 'servicios.id_servicios')
         ->where('fk_empleado',$id)
         ->where('empleado_servicio_detalle.estado',1)
-        ->where('servicios.estado',1)
+        ->where('servicios.estado_servicios',1)
         ->get();
 
        // dd($servicios);
 
         $events = reservas::where('fk_id_empleado',$id)
         ->where('estado_reserva','PENDIENTE')
-        ->where('estado_reserva','PAGADA')
         ->get(); 
     //    $events =DB::table('reservas')
     //    ->where('estado_reserva','=',1)
