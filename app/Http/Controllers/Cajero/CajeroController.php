@@ -148,7 +148,7 @@ class CajeroController extends Controller
               for ($i = 0; $i <= $conteo; $i++){
                 $ValorServ=DB::table('servicios')
                 ->select('valor_servicio')
-                ->where('id_servicios','=',$tbpaso[$i]->id_servicios_paso_reserva)
+                ->where('id_servicios','=',$tbpaso[$i]->id_servicio_paso)
                 ->get();
 
                 DB::table('detalle_ventas')->insert([
@@ -373,6 +373,7 @@ class CajeroController extends Controller
                   ->select('valor_servicio')
                   ->where('id_servicios','=',$tbpaso[$i]->id_servicios_paso_reserva)
                   ->get();
+                  
                  //dd($ValorServ[0]->valor_servicio);
 
                   DB::table('detalle_ventas')->insert([
