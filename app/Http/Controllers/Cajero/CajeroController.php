@@ -365,23 +365,33 @@ class CajeroController extends Controller
 
                 for ($i = 0; $i <= $conteo; $i++){
 
+                  $ValorServ=DB::table('servicios')
+                  ->select('valor_servicio')
+                  ->where('id_servicios','=',$tbpaso[$i]->id_servicios_paso_reserva)
+                  ->get();
+                 //dd($ValorServ[0]->valor_servicio);
 
                   DB::table('detalle_ventas')->insert([
                     'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
                     'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
-                    'fk_venta_detall_venta'=> $ventas
+                    'fk_venta_detall_venta'=> $ventas,
+                    'valor_servicio_historico'=>$ValorServ[0]->valor_servicio
                     
           
                     ]);
           
                     
                 }
+
+
                 DB::table('reservas')
                 ->where('id_reserva', $request->id_RESERVA)
                 ->where('estado_reserva', 'PENDIENTE')
                 ->update(['estado_reserva' => 'PAGADA']);
 
+                 
 
+          
 
 
 
