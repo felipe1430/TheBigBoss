@@ -77,6 +77,10 @@ Route::post('/reportetotalesserviciosfiltrar','AdminController@reportetotalesser
 
 
 
+Route::post('/BuscarUser','AdminController@BuscarUser')->name('BuscarUserAdmin');
+
+
+
 
 
 
