@@ -41,6 +41,8 @@
                     <label for="validationTooltip01">Usuario</label>
                     <select name="User" id="User" required class="form-control">
                       <option value="">Usuarios</option>
+                      <option value="0">NO REGISTRADO</option>
+                      
                      
                        
                     </select>

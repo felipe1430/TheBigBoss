@@ -155,8 +155,8 @@ class CajeroController extends Controller
                   'cantidad_detalle_venta' => $tbpaso[$i]->cantidad_servicio_paso,
                   'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicio_paso,
                   'fk_venta_detall_venta'=> $ventas,
-                  'valor_servicio_historico'=>$ValorServ[0]->valor_servicio
-                  
+                  'valor_servicio_historico'=>$ValorServ[0]->valor_servicio,
+                  'Cantidad_x_Valor'=>$tbpaso[$i]->cantidad_servicio_paso * $ValorServ[0]->valor_servicio
         
                   ]);
         
@@ -222,47 +222,6 @@ class CajeroController extends Controller
       ->whereNotIn('id_servicios',$data)
       ->get();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-      $encabezado = DB::table('reservas')
-      ->where('id_reserva','=',$id_reserva)
-      ->get();
-
-
-      $detalle = DB::table('detalle_reserva')
-      ->where('fk_reserva','=',$id_reserva)
-      ->get();
-
-
-      $cliente = DB::table('users')
-      ->where('id','=',$encabezado[0]->fk_id_usuario)
-      ->get();
-
-      $trabajador = DB::table('empleados')
-      ->where('id_empleado','=',$encabezado[0]->fk_id_empleado)
-      ->get();
-
-      $Servicio=DB::table('servicios')->get()
-      ->where('estado_servicios',1);
-
-
-*/
 
       return view('cajero.PagoReserva',compact('Reserva','ServiciosReservados','ServiciosNoReservados'));
         
@@ -374,13 +333,13 @@ class CajeroController extends Controller
                   ->where('id_servicios','=',$tbpaso[$i]->id_servicios_paso_reserva)
                   ->get();
                   
-                 //dd($ValorServ[0]->valor_servicio);
-
+            
                   DB::table('detalle_ventas')->insert([
                     'cantidad_detalle_venta' => $tbpaso[$i]->cantidad,
                     'fk_servicio_detall_venta'=> $tbpaso[$i]->id_servicios_paso_reserva,
                     'fk_venta_detall_venta'=> $ventas,
-                    'valor_servicio_historico'=>$ValorServ[0]->valor_servicio
+                    'valor_servicio_historico'=>$ValorServ[0]->valor_servicio,
+                    'Cantidad_x_Valor'=>$tbpaso[$i]->cantidad * $ValorServ[0]->valor_servicio
                     
           
                     ]);
