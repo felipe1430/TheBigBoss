@@ -674,8 +674,9 @@ class AdminController extends Controller
       $fecha1=$request->fecha1;
       $fecha2=$request->fecha2;
 
+
        $porcentaje=DB::table('servicios')
-      ->selectRaw('nombre_servicio as servicio,sum(valor_servicio_historico) as valor_servicio_historico,sum(cantidad_detalle_venta) as cantidad, sum(valor_servicio_historico) * sum(cantidad_detalle_venta) as total')
+      ->selectRaw('nombre_servicio as servicio,sum(cantidad_detalle_venta) as cantidad, sum(Cantidad_x_Valor) as total')
       ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
       ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
       ->whereBetween(DB::raw('date(fecha_venta)'), array($request->fecha1,$request->fecha2))
@@ -1056,11 +1057,11 @@ class AdminController extends Controller
 
 
       $consulta=DB::table('servicios')
-      ->selectRaw('nombre_servicio ,sum(valor_servicio_historico) as valorserv')
+      ->selectRaw('nombre_servicio ,cantidad_detalle_venta as cantidad, valor_servicio_historico as valorserv,cantidad_detalle_venta * valor_servicio_historico as total')
       ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
       ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
       ->whereBetween(DB::raw('date(fecha_venta)'), array($request->fecha1,$request->fecha2))
-      ->groupBy('nombre_servicio')
+      // ->groupBy('nombre_servicio')
       ->get();
       
 

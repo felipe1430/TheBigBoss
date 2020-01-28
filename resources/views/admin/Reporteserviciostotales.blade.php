@@ -9,7 +9,7 @@ Total De servicios
 @endsection
 @section('contenido')
 <div class="container-fluid">
-    <h3 class="display-3">Totales Servicios</h3>
+    <h3 class="display-3">Ventas Unitarias Servicios</h3>
     <div class="row">
     <div class="col-md-12">
 
@@ -52,6 +52,7 @@ Total De servicios
               <thead>
                 <tr>
                     <th scope="col">Nombre Servicio</th>
+                    <th style="text-align:center" scope="col">Valor Unitario</th>
                     <th style="text-align:center" scope="col">Total</th>
                   </tr>
               </thead>
@@ -67,7 +68,8 @@ Total De servicios
                 <tr>
                     <th scope="row">{{$item->nombre_servicio}}</th>
                     <td style="text-align:center">${{number_format($item->valorserv,0,',','.')}}</td>
-                    <div style="display: none">{{$total += $item->valorserv}}</div>
+                    <td style="text-align:center">${{number_format($item->total,0,',','.')}}</td>
+                    <div style="display: none">{{$total += $item->total}}</div>
                 </tr>
               @endforeach
                     
@@ -76,7 +78,7 @@ Total De servicios
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="1"><strong>Total</strong> </td>
+                <td colspan="2"><strong>Total</strong> </td>
                 @if(empty($total))
                 <td><span class="price text-success">$</span></td>
                 @else
