@@ -761,7 +761,13 @@ class AdminController extends Controller
         ->get();
 
       // dd($encabezado);  
-   
+
+      if($encabezado->isEmpty()){
+
+        return view('admin.EliminarVentas');
+
+      }else{}
+
 
       $cliente = DB::table('users')
       ->where('id',$encabezado[0]->fk_usuario_venta)
@@ -781,6 +787,7 @@ class AdminController extends Controller
       
       
         return view('admin.EliminarVentas',compact('encabezado','cliente','trabajador','codigo','servicios'));
+ 
     }
 
 
