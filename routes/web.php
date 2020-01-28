@@ -79,6 +79,8 @@ Route::post('/reportetotalesserviciosfiltrar','AdminController@reportetotalesser
 
 Route::post('/BuscarUser','AdminController@BuscarUser')->name('BuscarUserAdmin');
 
+Route::get('/CancelarReserva/{id_reserva}', 'AdminController@CancelarReserva')->name('cancelarReservaAdmin');
+
 
 
 
