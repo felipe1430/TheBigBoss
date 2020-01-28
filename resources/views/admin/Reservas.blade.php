@@ -80,15 +80,21 @@ Reservas
                         <i class="fas fa-info-circle"></i>
                       </a > </center>
                       </td>
+
+
                       @if ($item->estado_reserva !='PENDIENTE')
                       <td><button class="btn btn-primary">Pagar</button></td>
                       @else
                       <td><a href="{{route('Reservaspago', $item->id_reserva)}}" class="btn btn-primary" >Pagar</a></td>
                       @endif
-                     
-
-                      <td><button type="button" class="btn btn-warning">Cancelar</button></td>
+                      @if ($item->estado_reserva=='PENDIENTE')
+                      <td><a class="btn btn-danger" href="{{route('cancelarReservaAdmin', $item->id_reserva)}}">Cancelar</a> </td>
+                      @else
+                     <td><button type="button" class="btn btn-danger">Cancelar</button></td>
+                      @endif
                     </tr>
+
+
                     @endforeach
                   </tbody>
                 </table>
