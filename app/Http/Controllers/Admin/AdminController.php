@@ -436,7 +436,7 @@ class AdminController extends Controller
 
       $ServiciosNoReservados=DB::table('servicios')
       ->whereNotIn('id_servicios',$data)
-      ->where('id_servicios','=',1)
+      ->where('estado_servicios','=',1)
       ->get();
 
 

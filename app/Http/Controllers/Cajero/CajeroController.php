@@ -220,6 +220,7 @@ class CajeroController extends Controller
       }
       $ServiciosNoReservados=DB::table('servicios')
       ->whereNotIn('id_servicios',$data)
+      ->where('estado_servicios','=',1)
       ->get();
 
 
