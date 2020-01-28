@@ -93,11 +93,11 @@ Lista De comisión
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="6"><strong>Total</strong> </td>
+                <td colspan="8"><strong>Total</strong> </td>
                 @if(empty($total))
                 <td><span class="price text-success">$</span></td>
                 @else
-                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                <td style="text-align:center"><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
                 @endif
               </tr>
             </tfoot>

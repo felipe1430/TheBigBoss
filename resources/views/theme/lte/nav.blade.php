@@ -193,12 +193,12 @@
                     <p>Reportes Servicios</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="{{route('reportetotalesservicios')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Reportes Servicios Totales</p>
                   </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                   <a href="{{route('reportegastos')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>

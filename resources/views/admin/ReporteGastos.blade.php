@@ -53,8 +53,8 @@ Lista De Gastos
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Descripcion</th>
+                    <th scope="col" style="text-align:center">Fecha</th>
                     <th scope="col" style="text-align:center">Valor</th>
-                    <th scope="col">Fecha</th>
                   </tr>
               </thead>
               <tbody> 
@@ -69,9 +69,10 @@ Lista De Gastos
                 <tr>
                     <th scope="row">{{$item->id_gastos}}</th>
                     <td>{{$item->descripcion_gastos}}</td>
+                    <td style="text-align:center">{{$item->fecha_gastos}}</td>
                     <td style="text-align:center">{{number_format($item->valor_gastos,0,',','.')}}</td>
                     <div style="display: none">{{$total += $item->valor_gastos}}</div>
-                    <td>{{$item->fecha_gastos}}</td>
+                    
                 </tr>
               @endforeach
                     
@@ -84,7 +85,7 @@ Lista De Gastos
                 @if(empty($total))
                 <td><span class="price text-success">$</span></td>
                 @else
-                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                <td style="text-align:center"><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
                 @endif
               </tr>
             </tfoot>

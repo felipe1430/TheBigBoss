@@ -52,7 +52,7 @@ Total De servicios
               <thead>
                 <tr>
                     <th scope="col">Nombre Servicio</th>
-                    <th scope="col">Total</th>
+                    <th style="text-align:center" scope="col">Total</th>
                   </tr>
               </thead>
               <tbody> 
@@ -80,7 +80,7 @@ Total De servicios
                 @if(empty($total))
                 <td><span class="price text-success">$</span></td>
                 @else
-                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                <td style="text-align:center"><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
                 @endif
               </tr>
             </tfoot>

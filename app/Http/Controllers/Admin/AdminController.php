@@ -693,9 +693,16 @@ class AdminController extends Controller
       
       $fecha1=$request->fecha1;
       $fecha2=$request->fecha2;
-      $porcentaje=DB::table('reporte_servicios')
-      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+
+       $porcentaje=DB::table('servicios')
+      ->selectRaw('nombre_servicio as servicio,sum(valor_servicio_historico) as valor_servicio_historico,sum(cantidad_detalle_venta) as cantidad, sum(valor_servicio_historico) * sum(cantidad_detalle_venta) as total')
+      ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
+      ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
+      ->whereBetween(DB::raw('date(fecha_venta)'), array($request->fecha1,$request->fecha2))
+      ->groupBy('nombre_servicio')
       ->get();
+      
+      // dd($porcentaje);
   
 
 
@@ -858,12 +865,14 @@ class AdminController extends Controller
       $fecha2=$request->fecha2;
 
 
+
       $consulta=DB::table('empleados')
       ->selectRaw('nombre_empleado,apellido_empleado,rut_empleado, comision_empleado, sum( ROUND(total_venta - total_venta * comision_empleado / 100,
       0)) AS comision_administrador, sum(ROUND(total_venta * comision_empleado / 100,
       0) )AS comision_empleados, sum(total_venta) as total')
       ->join('ventas', 'ventas.fk_empleado_venta', '=', 'empleados.id_empleado')
-      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      // ->whereRaw('date(fecha_venta) Between '.$request->fecha1.' and '.$request->fecha2)
+      ->whereBetween(DB::raw('date(fecha_venta)'), array($request->fecha1,$request->fecha2))
       ->groupBy('rut_empleado')
       ->get();
       
@@ -1067,12 +1076,11 @@ class AdminController extends Controller
 
 
       $consulta=DB::table('servicios')
-      ->selectRaw('nombre_servicio ,sum(valor_servicio) as valorserv')
+      ->selectRaw('nombre_servicio ,sum(valor_servicio_historico) as valorserv')
       ->join('detalle_ventas', 'detalle_ventas.fk_servicio_detall_venta', '=', 'servicios.id_servicios')
       ->join('ventas', 'ventas.id_ventas', '=', 'detalle_ventas.fk_venta_detall_venta')
-      ->whereBetween('fecha_venta', array($request->fecha1,$request->fecha2))
+      ->whereBetween(DB::raw('date(fecha_venta)'), array($request->fecha1,$request->fecha2))
       ->groupBy('nombre_servicio')
-      // ->sum('valor_servicio')
       ->get();
       
 

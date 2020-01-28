@@ -12,7 +12,7 @@ lista servicios top
 @section('contenido')
 
 <div class="container-fluid">
-    <h3 class="display-3">lista servicios top</h3>
+    <h3 class="display-3">Venta de Servicios Totales</h3>
     <div class="row">
     <div class="col-md-12">
 
@@ -55,9 +55,9 @@ lista servicios top
               <thead>
                 <tr>
                   <th scope="col">Servicio</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Valor</th>
-                  <th scope="col">Total</th>
+                  <th style="text-align:center" scope="col">Cantidad</th>
+                  {{-- <th style="text-align:center" scope="col">Valor</th> --}}
+                  <th style="text-align:center" scope="col">Total</th>
                 </tr>
               </thead>
               <tbody> 
@@ -71,8 +71,8 @@ lista servicios top
                 @foreach($porcentaje as $item)
                 <tr>
                   <td>{{$item->servicio}}</td>
-                  <th >{{$item->cantidad}}</th>
-                  <td style="text-align:center">{{number_format($item->valor_servicio,0,',','.')}}</td>
+                  <th style="text-align:center">{{$item->cantidad}}</th>
+                  {{-- <td style="text-align:center">{{number_format($item->valor_servicio_historico,0,',','.')}}</td> --}}
                   <td style="text-align:center">{{number_format($item->total,0,',','.')}}</td>
                   <div style="display: none">{{$total += $item->total}}</div>
 
@@ -84,11 +84,11 @@ lista servicios top
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="3"><strong>Total</strong> </td>
+                <td colspan="2"><strong>Total</strong> </td>
                 @if(empty($total))
                 <td><span class="price text-success">$</span></td>
                 @else
-                <td><span class="price text-success">${{number_format($total,0,',','.')}}</span></td>
+                <td style="text-align:center"><span  class="price text-success">${{number_format($total,0,',','.')}}</span></td>
                 @endif
               </tr>
             </tfoot>
