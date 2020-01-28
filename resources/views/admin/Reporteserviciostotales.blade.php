@@ -52,6 +52,7 @@ Total De servicios
               <thead>
                 <tr>
                     <th scope="col">Nombre Servicio</th>
+                    <th style="text-align:center" scope="col">Cantidad</th>
                     <th style="text-align:center" scope="col">Valor Unitario</th>
                     <th style="text-align:center" scope="col">Total</th>
                   </tr>
@@ -67,6 +68,7 @@ Total De servicios
                 @foreach($consulta as $item)
                 <tr>
                     <th scope="row">{{$item->nombre_servicio}}</th>
+                    <td style="text-align:center">{{number_format($item->cantidad,0,',','.')}}</td>
                     <td style="text-align:center">${{number_format($item->valorserv,0,',','.')}}</td>
                     <td style="text-align:center">${{number_format($item->total,0,',','.')}}</td>
                     <div style="display: none">{{$total += $item->total}}</div>
@@ -78,7 +80,7 @@ Total De servicios
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="2"><strong>Total</strong> </td>
+                <td colspan="3"><strong>Total</strong> </td>
                 @if(empty($total))
                 <td><span class="price text-success">$</span></td>
                 @else
