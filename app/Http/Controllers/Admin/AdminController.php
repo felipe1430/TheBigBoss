@@ -1080,6 +1080,19 @@ class AdminController extends Controller
     }
 
 
+    public function CancelarReserva($id_reserva){
+
+      DB::table('reservas')
+                ->where('id_reserva', $id_reserva)
+                ->where('estado_reserva', 'PENDIENTE')
+                ->update(['estado_reserva' => 'CANCELADA']);
+
+
+
+     return back();
+    }
+
+
 
 
 

@@ -80,7 +80,10 @@ Reservas
 
                         <i class="fas fa-info-circle"></i>
                       </a > </center>
+
                       </td>
+
+
                       @if ($item->estado_reserva !='PENDIENTE')
                       <td><button class="btn btn-primary">Pagar</button></td>
                       @else
@@ -93,6 +96,8 @@ Reservas
                       @endif
                       {{-- <td><button type="button" class="btn btn-warning">Cancelar</button></td> --}}
                     </tr>
+
+                    
                     @endforeach
                   </tbody>
                 </table>
