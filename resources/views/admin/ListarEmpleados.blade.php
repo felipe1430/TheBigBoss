@@ -12,7 +12,7 @@ Lista De Trabajadores
       <h1 class="display-4">Lista De Trabajadores
       </h1>
       <hr>
-      <a href="{{route('agregarempleado')}}" type="button" class="btn btn-success">Agregar Usuarios</a>
+      <a href="{{route('agregarempleado')}}" type="button" class="btn btn-success">Agregar Trabajador</a>
       <hr>
       <section class="content">
             <div class="card">
@@ -25,7 +25,9 @@ Lista De Trabajadores
                       <th scope="col">Nombre</th>
                       <th scope="col">Apellido</th>
                       <th scope="col">Email</th>
+                      <th scope="col">Descripcion</th>
                       <th scope="col">Comision</th>
+                      <th scope="col">Direccion</th>
                       <th scope="col">Tipo</th>
                       <th scope="col">Estado</th>
                       <th scope="col">Servicios</th>
@@ -40,7 +42,9 @@ Lista De Trabajadores
                       <td>{{$item->nombre_empleado}}</td>
                       <td>{{$item->apellido_empleado}}</td>
                       <td>{{$item->correo_empleado}}</td>
+                      <td>{{$item->descripcion_empleado}}</td>
                       <td>{{$item->comision_empleado}}%</td>
+                      <td>{{$item->direccion_empleado}}</td>
                       @if ($item->fk_empleado_tipo_user =='1')
                       <td>Administrador</td>
                       @elseif ($item->fk_empleado_tipo_user =='2')
@@ -55,7 +59,7 @@ Lista De Trabajadores
                       @endif
                       <td><a href="{{route('agregarservempleado', $item->id_empleado)}}" class="btn btn-primary">Agregar</a></td>
                       <td><a href="" data-toggle="modal" data-target="#mimodal"
-                        data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' data-fk_empleado_tipo_user='{{$item->fk_empleado_tipo_user}}' class="btn btn-warning">Editar</a></td>
+                        data-id_empleado='{{$item->id_empleado}}' data-nombre_empleado='{{$item->nombre_empleado}}' data-apellido_empleado='{{$item->apellido_empleado}}' data-rut_empleado='{{$item->rut_empleado}}' data-correo_empleado='{{$item->correo_empleado}}'  data-telefono_empleado='{{$item->telefono_empleado}}' data-comision_empleado='{{$item->comision_empleado}}' data-direccion_empleado='{{$item->direccion_empleado}}' data-descripcion_empleado='{{$item->descripcion_empleado}}' data-estado_empleado='{{$item->estado_empleado}}' data-fk_empleado_tipo_user='{{$item->fk_empleado_tipo_user}}' class="btn btn-warning">Editar</a></td>
                         <td><a href="" data-toggle="modal" data-target="#mimodaleliminar"
                             data-id_empleado='{{$item->id_empleado}}' class="btn btn-danger btm-sm">Eliminar</a></td>
                     </tr>
@@ -175,6 +179,21 @@ Lista De Trabajadores
                             </div>
                         </div>
                         <!-- fin comision -->
+                         <!-- Descripcion -->
+                    <div class="form-group row">
+                      <label for="Descripcion" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion') }}</label>
+
+                      <div class="col-md-6">
+                          <input id="descripcion_empleado" type="text" class="form-control @error('Descripcion') is-invalid @enderror" name="Descripcion" value="{{ old('Descripcion') }}" required autocomplete="Descripcion" autofocus>
+
+                          @error('Descripcion')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                  </div>
+                  <!-- Fin Descripcion -->
                         <!-- direccion -->
                     <div class="form-group row">
                             <label for="Direccion" class="col-md-4 col-form-label text-md-right">{{ __('Direccion') }}</label>

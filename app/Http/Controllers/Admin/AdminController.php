@@ -84,6 +84,7 @@ class AdminController extends Controller
             'correo_empleado' => $request->correo_empleado,
             'telefono_empleado' => $request->telefono_empleado,
             'comision_empleado' => $request->comision_empleado,
+            'descripcion_empleado' => $request->descripcion_empleado,
             'direccion_empleado' => $request->direccion_empleado,
             'fk_empleado_tipo_user' => $request->tipo,
 
@@ -112,6 +113,7 @@ class AdminController extends Controller
       $empleado->correo_empleado=$request->get('email');
       $empleado->telefono_empleado=$request->get('telefono');
       $empleado->comision_empleado=$request->get('comision');
+      $empleado->descripcion_empleado=$request->get('Descripcion');
       $empleado->direccion_empleado=$request->get('Direccion');
       $empleado->fk_empleado_tipo_user=$request->get('fk_empleado_tipo_user');
       $empleado->estado_empleado=$request->get('Estado');
