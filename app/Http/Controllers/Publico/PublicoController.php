@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Publico;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\empleados;
 class PublicoController extends Controller
 {
     public function index()
@@ -14,7 +14,11 @@ class PublicoController extends Controller
     $servicios=DB::table('servicios')->get()
     ->where('estado_servicios',1);
 
-    return view('Publico.index',compact('servicios'));
+    $barberos = empleados::where('fk_empleado_tipo_user',2)
+    ->where('estado_empleado',1)
+    ->get(); // el 2 es solo barberos 
+//dd($barberos);
+    return view('Publico.index',compact('servicios','barberos'));
 
     }
 

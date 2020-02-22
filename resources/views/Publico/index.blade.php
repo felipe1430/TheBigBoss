@@ -122,42 +122,18 @@
     <div class="row">
       <div class="col-md-12 ftco-animate">
         <div class="carousel-team owl-carousel">
+
+          @foreach ($barberos as $item)
+                
           <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-1.jpg);"></div>
-              <h2>Danica Lewis</h2>
-              <span class="position">Estilista</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-2.jpg);"></div>
-              <h2>Nicole Simon</h2>
-              <span class="position">Nail Master</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-3.jpg);"></div>
-              <h2>Cloe Meyer</h2>
-              <span class="position">Director</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-4.jpg);"></div>
-              <h2>Rachel Clinton</h2>
-              <span class="position">
-                Estilista</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-5.jpg);"></div>
-              <h2>Dave Buff</h2>
+          <a href="{{route('calendario',$item->id_empleado)}}" class="team text-center">
+          <div class="img" style="background-image: url('{{Storage::url($item->imagen)}}');"></div>
+              <h2>{{$item->nombre_empleado}}</h2>
               <span class="position">Barbero</span>
             </a>
           </div>
+          @endforeach
+          
         </div>
       </div>
     </div>
@@ -326,81 +302,30 @@
             <h2 class="mb-0">The Big Boss</h2>
           </div>
           <div class="carousel-testimony owl-carousel ftco-animate">
+
+            @foreach ($barberos as $item)
             <div class="item">
               <div class="testimony-wrap pb-4">
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4">{{$item->descripcion_empleado}}</p>
                 </div>
                 <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-1.jpg)">
+                  <div class="user-img" style="background-image: url('{{Storage::url($item->imagen)}}')">
                   </div>
                   <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
+                    <p class="name">{{$item->nombre_empleado}}</p>
+                    {{-- <span class="position">Businessman</span> --}}
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-2.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-3.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-4.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-5.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
+           
+
+
+
+
+
           </div>
         </div>
       </div>

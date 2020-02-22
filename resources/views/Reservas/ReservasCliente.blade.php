@@ -25,13 +25,13 @@
                 
             <div class="item">
             <a href="{{route('calendario',$item->id_empleado)}}" class="team text-center">
-                <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-5.jpg);"></div>
+            <div class="img" style="background-image: url('{{Storage::url($item->imagen)}}');"></div>
                 <h2>{{$item->nombre_empleado}}</h2>
                 <span class="position">Barbero</span>
               </a>
             </div>
             @endforeach
-
+{{-- ../assets/thebigboss/images/stylist-5.jpg --}}
 
           </div>
         </div>

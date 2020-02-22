@@ -104,7 +104,9 @@ class AdminController extends Controller
 
     public function actualizarempleados(Request $request)
     {
-      // dd($request->all());
+     //dd($request->file('imagen'));
+
+      
       $empleado = empleados::findOrfail($request->id_empleado);
       $empleado->id_empleado=$request->get('id_empleado');
       $empleado->nombre_empleado=$request->get('nombre_empleado');
@@ -117,6 +119,11 @@ class AdminController extends Controller
       $empleado->direccion_empleado=$request->get('Direccion');
       $empleado->fk_empleado_tipo_user=$request->get('fk_empleado_tipo_user');
       $empleado->estado_empleado=$request->get('Estado');
+    if ($request->hasfile('imagen')) {
+      $empleado->imagen=$request->file('imagen')->store('public');
+    }
+     
+      
       $empleado->update();
       return back();
     }

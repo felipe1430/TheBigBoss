@@ -86,7 +86,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                            <h3>Rerserva Tus Servicios</h3>
+                    <h3>Rerserva Tus Servicios con {{$barberos->nombre_empleado}}</h3>
                             <form action="{{route('cargarDetalle')}}" method="POST" id="form1" >
                                 @csrf
                                 <label style="font-size: 10px" for="">Escriba su nombre</label>
