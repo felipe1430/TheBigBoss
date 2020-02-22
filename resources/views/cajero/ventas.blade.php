@@ -12,7 +12,7 @@
           {{-- <span class="subheading">The Big Boss</span> --}}
           <h2 class="mb-4">The Big Boss</h2>
               <img width="150" height="150" class="img-circle elevation-3"
-               src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}">
+               src="{{asset("assets/$theme2/dist/img/logothebigboss.png")}}">
         </div>
       </div>
       <div class="row justify-content-center">

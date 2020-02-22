@@ -11,7 +11,7 @@
         <h5 class="widget-user-desc text-right"></h5>
       </div>
       <div class="widget-user-image">
-        <img class="img-circle" src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}" alt="User Avatar">
+        <img class="img-circle" src="{{asset("assets/$theme2/dist/img/logothebigboss.png")}}" alt="User Avatar">
       </div>
       <div class="card-footer">
         <div class="row">
