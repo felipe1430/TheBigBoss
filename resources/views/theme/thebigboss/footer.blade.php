@@ -4,9 +4,9 @@
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2 logo">
-              Cuidado del cabello</h2>
+              The Big Boos</h2>
             <p>
-              Muy lejos, detrás de la palabra montañas, lejos de los países Vokalia y Consonantia, viven los textos ciegos.</p>
+              Conoce Nuestras Redes Sociales Y Reserva Con Nosotros.</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
               <li class="ftco-animate"><a href="https://www.facebook.com/pages/category/Barber-Shop/The-Big-Boss-107537437379676/"><span class="icon-facebook"></span></a></li>
@@ -28,12 +28,10 @@
            <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2">Links Enlaces</h2>
             <ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block">Inicio</a></li>
-              <li><a href="#" class="py-2 d-block">Acerca De</a></li>
-              <li><a href="#" class="py-2 d-block">Servicios</a></li>
-              <li><a href="#" class="py-2 d-block">trabajo</a></li>
-              <li><a href="#" class="py-2 d-block">Blog</a></li>
-              <li><a href="#" class="py-2 d-block">Contacto</a></li>
+              <li><a href="{{route('inicio')}}" class="py-2 d-block">Inicio</a></li>
+              <li><a href="{{route('serviciosweb')}}" class="py-2 d-block">Servicios</a></li>
+              <li><a href="{{route('galeria')}}" class="py-2 d-block">Galeria</a></li>
+              <li><a href="{{route('blogsimple')}}" class="py-2 d-block">Conocenos</a></li>
             </ul>
           </div>
         </div>

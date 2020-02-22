@@ -8,7 +8,7 @@
         <div class="col-md-10 heading-section text-center ftco-animate">
           <h2 class="mb-4">Confirmar Pago</h2>
               <img width="150" height="150" class="img-circle elevation-3"
-               src="{{asset("assets/$theme2/dist/img/logobarber.jpg")}}">
+               src="{{asset("assets/$theme2/dist/img/logothebigboss.png")}}">
         </div>
       </div>
       <div class="row justify-content-center">
