@@ -1,12 +1,12 @@
 @extends("theme.$theme.layout")
 @section('contenido')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('../assets/thebigboss/images/bg-1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../assets/thebigboss/images/fotos/fondoo.JPG');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h2 class="mb-0 bread">Gallery</h2>
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-round-forward"></i></a></span> <span>Gallery <i class="ion-ios-arrow-round-forward"></i></span></p>
+          <h2 class="mb-0 bread">Galleria</h2>
+          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Inicio <i class="ion-ios-arrow-round-forward"></i></a></span> <span>Galleria<i class="ion-ios-arrow-round-forward"></i></span></p>
         </div>
       </div>
     </div>
@@ -17,24 +17,24 @@
           <div class="row no-gutters">
               <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="project">
-                      <img src="../assets/thebigboss/images/fotos/tehbigboss (9).jpg" class="img-fluid" alt="Colorlib Template">
+                      <img src="../assets/thebigboss/images/fotos/barba3.jpg" class="img-fluid" alt="Colorlib Template">
                       <div class="text">
                           <span>Stylist</span>
                           <h3><a href="project.html">Beard</a></h3>
                       </div>
-                      <a href="../assets/thebigboss/images/fotos/tehbigboss (9).jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+                      <a href="../assets/thebigboss/images/fotos/barba3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
                           <span class="icon-expand"></span>
                       </a>
                   </div>
               </div>
               <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="project">
-                      <img src="../assets/thebigboss/images/fotos/tehbigboss (57).jpg" class="img-fluid" alt="Colorlib Template">
+                      <img src="../assets/thebigboss/images/fotos/cosa.jpg" class="img-fluid" alt="Colorlib Template">
                       <div class="text">
                           <span>Beauty</span>
                           <h3><a href="project.html">Haircut</a></h3>
                       </div>
-                      <a href="../assets/thebigboss/images/fotos/tehbigboss (57).jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+                      <a href="../assets/thebigboss/images/fotos/cosa.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
                           <span class="icon-expand"></span>
                       </a>
                   </div>
