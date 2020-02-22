@@ -6,13 +6,13 @@
 @section('contenido')
 
 
-<section class="hero-wrap js-fullheight" style="background-image: url(../assets/thebigboss/images/bg-2.jpg);" data-stellar-background-ratio="0.5">
+<section class="hero-wrap js-fullheight" style="background-image: url(../assets/thebigboss/images/fotos/fondo.JPG);" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
       <div class="col-lg-12 ftco-animate d-flex align-items-center">
         <div class="text text-center">
-          <span class="subheading">bienvenidos</span>
+          <span class="subheading">Bienvenidos</span>
           <h1 class="mb-4">The Big Boss Barber Shop</h1>
           <p><a href="{{route('ReservasCliente')}}" class="btn btn-primary btn-outline-primary px-4 py-2">Reservar ahora</a></p>
           </div>
@@ -26,10 +26,10 @@
   <div class="container-fluid px-0">
     <div class="row no-gutters">
       <div class="col-md text-center d-flex align-items-stretch">
-        <div class="services-wrap d-flex align-items-center img" style="background-image: url(../assets/thebigboss/images/formen.jpg);">
+        <div class="services-wrap d-flex align-items-center img" style="background-image: url(../assets/thebigboss/images/fotos/barba2.jpg);">
           <div class="text">
             <h3>Para Hombres</h3>
-            <p><a href="#" class="btn-custom">See pricing <span class="ion-ios-arrow-round-forward"></span></a></p>
+            <p><a href="#" class="btn-custom">Ver Estilos...<span class="ion-ios-arrow-round-forward"></span></a></p>
           </div>
         </div>
       </div>
@@ -39,16 +39,16 @@
             <a href="#"><span class="flaticon-scissors-in-a-hair-salon-badge"></span>The Big Boss</a>
           </h1>
           <h2>
-            Bienvenido a nuestro salon</h2>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          <p class="mt-3"><a href="#" class="btn btn-primary btn-outline-primary">Read more</a></p>
+            Bienvenido A Nuestra Barberia </h2>
+          <p>La imagen personal cobra una especial importancia en una sociedad como la actual, en donde el éxito debe ir acompañado de un look impecable. No se trata únicamente de una cuestión de moda, sino de un imperativo social. </p>
+          <p class="mt-3"><a href="#" class="btn btn-primary btn-outline-primary">Leer Mas...</a></p>
         </div>
       </div>
       <div class="col-md text-center d-flex align-items-stretch">
-        <div class="services-wrap d-flex align-items-center img" style="background-image: url(../assets/thebigboss/images/forwomen.jpg);">
+        <div class="services-wrap d-flex align-items-center img" style="background-image: url(../assets/thebigboss/images/fotos/mujer.jpg);">
           <div class="text">
             <h3>Para Mujeres</h3>
-            <p><a href="#" class="btn-custom">See pricing <span class="ion-ios-arrow-round-forward"></span></a></p>
+            <p><a href="#" class="btn-custom">Ver Estilos...<span class="ion-ios-arrow-round-forward"></span></a></p>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
         <span class="subheading">Servicios</span>
         <h2 class="mb-4">
           MENÚ DE SERVICIOS</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+        <p>Ponemos a Su Disposición Los Servicios Como</p>
       </div>
     </div>
     <div class="row no-gutters d-flex">
@@ -73,7 +73,7 @@
           <div class="media-body">
             <h3 class="heading mb-3">
               Corte de pelo &amp; Estilo</h3>
-            <p>A small river named Duden flows by their place and supplies.</p>
+            <p>Asesoría, corte y lavado de cabello.</p>
           </div>
         </div>    
       </div>
@@ -82,7 +82,7 @@
           <div class="icon"><span class="flaticon-beard"></span></div>
           <div class="media-body">
             <h3 class="heading mb-3">Barba</h3>
-            <p>A small river named Duden flows by their place and supplies.</p>
+            <p>Arreglo De Barba, Asesoria y Limpieza Facial.</p>
           </div>
         </div>      
       </div>
@@ -91,7 +91,7 @@
           <div class="icon"><span class="flaticon-beauty-products"></span></div>
           <div class="media-body">
             <h3 class="heading mb-3">Maquillaje</h3>
-            <p>A small river named Duden flows by their place and supplies.</p>
+            <p>Manicura, limpieza De Cutis, Difuminados, y Posticería. </p>
           </div>
         </div>      
       </div>
@@ -100,8 +100,8 @@
           <div class="icon"><span class="flaticon-healthy-lifestyle-logo"></span></div>
           <div class="media-body">
             <h3 class="heading mb-3">
-              Tratamiento corporal</h3>
-            <p>A small river named Duden flows by their place and supplies.</p>
+              Compromiso Social</h3>
+            <p>En The Big Boss Tenemos la Misión De Entregar Un Servicio De Excelente Calidad a La Comunidad.</p>
           </div>
         </div>      
       </div>
@@ -113,51 +113,27 @@
   <div class="container-fluid px-md-5">
     <div class="row justify-content-center pb-3">
       <div class="col-md-10 heading-section text-center ftco-animate">
-        <span class="subheading">Director artistico</span>
+        <span class="subheading">Estilistas y Barberos</span>
         <h2 class="mb-4">
-          Maquilladora</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          Profesionales</h2>
+        <p>Calidad, Compromiso y Responsabilidad Son Unas De Las Cualidades Que Poseen Nuestros Trabajadores.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 ftco-animate">
         <div class="carousel-team owl-carousel">
+
+          @foreach ($barberos as $item)
+                
           <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-1.jpg);"></div>
-              <h2>Danica Lewis</h2>
-              <span class="position">Estilista</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-2.jpg);"></div>
-              <h2>Nicole Simon</h2>
-              <span class="position">Nail Master</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-3.jpg);"></div>
-              <h2>Cloe Meyer</h2>
-              <span class="position">Director</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-4.jpg);"></div>
-              <h2>Rachel Clinton</h2>
-              <span class="position">
-                Estilista</span>
-            </a>
-          </div>
-          <div class="item">
-            <a href="#" class="team text-center">
-              <div class="img" style="background-image: url(../assets/thebigboss/images/stylist-5.jpg);"></div>
-              <h2>Dave Buff</h2>
+          <a href="{{route('calendario',$item->id_empleado)}}" class="team text-center">
+          <div class="img" style="background-image: url('{{Storage::url($item->imagen)}}');"></div>
+              <h2>{{$item->nombre_empleado}}</h2>
               <span class="position">Barbero</span>
             </a>
           </div>
+          @endforeach
+          
         </div>
       </div>
     </div>
@@ -168,9 +144,9 @@
   <div class="container">
     <div class="row no-gutters justify-content-center mb-5 pb-2">
       <div class="col-md-6 text-center heading-section ftco-animate">
-        <span class="subheading">Gallery</span>
-        <h2 class="mb-4">Our gallery</h2>
-        <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+        <span class="subheading">Trabajos Profecionales</span>
+        <h2 class="mb-4">Galeria De Fotos</h2>
+        <p>Conoce los Trabajos De Nuestros Profecionale y sus Servicios de Corte De Pelo Con Tijera - Navaja, Modelados, Manicura, Limpieza De Cutis, Difuminados, y Posticería. </p>
       </div>
     </div>
   </div>
@@ -284,7 +260,7 @@
           <span class="subheading">Conoce nuestros servicios</span>
           <h2 class="mb-4">
             Servicios</h2>
-          <p>Conseguiremos Sacar El Mayor Partido a Tu Barba</p>
+          <p>Excelente Calidad, Atención Y Precios</p>
         </div>
       </div>
       <div class="row">
@@ -317,90 +293,39 @@
   <div class="container">
     <div class="row ftco-animate justify-content-center">
       <div class="col-md-6 col-lg-5 d-flex">
-        <div class="testimony-img" style="background-image: url(../assets/thebigboss/images/testimony-img.jpg);"></div>
+        <div class="testimony-img" style="background-image: url(../assets/thebigboss/images/fotos/corte.jpg);"></div>
       </div>
       <div class="col-md-6 col-lg-7 py-5 pl-md-5">
         <div class="py-md-5">
           <div class="heading-section ftco-animate">
-            <span class="subheading">Testimony</span>
-            <h2 class="mb-0">Happy Customer</h2>
+            <span class="subheading">Profesionales De Primera Categoria</span>
+            <h2 class="mb-0">The Big Boss</h2>
           </div>
           <div class="carousel-testimony owl-carousel ftco-animate">
+
+            @foreach ($barberos as $item)
             <div class="item">
               <div class="testimony-wrap pb-4">
                 <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                  <p class="mb-4">{{$item->descripcion_empleado}}</p>
                 </div>
                 <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-1.jpg)">
+                  <div class="user-img" style="background-image: url('{{Storage::url($item->imagen)}}')">
                   </div>
                   <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
+                    <p class="name">{{$item->nombre_empleado}}</p>
+                    {{-- <span class="position">Businessman</span> --}}
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-2.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-3.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-4.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap pb-4">
-                <div class="text">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-                <div class="d-flex">
-                  <div class="user-img" style="background-image: url(../assets/thebigboss/images/stylist-5.jpg)">
-                  </div>
-                  <div class="pos ml-3">
-                    <p class="name">Jeff Nucci</p>
-                    <span class="position">Businessman</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
+           
+
+
+
+
+
           </div>
         </div>
       </div>

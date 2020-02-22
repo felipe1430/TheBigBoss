@@ -17,24 +17,24 @@
           <div class="row no-gutters">
               <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="project">
-                      <img src="../assets/thebigboss/images/work-1.jpg" class="img-fluid" alt="Colorlib Template">
+                      <img src="../assets/thebigboss/images/fotos/tehbigboss (9).jpg" class="img-fluid" alt="Colorlib Template">
                       <div class="text">
                           <span>Stylist</span>
                           <h3><a href="project.html">Beard</a></h3>
                       </div>
-                      <a href="../assets/thebigboss/images/work-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+                      <a href="../assets/thebigboss/images/fotos/tehbigboss (9).jpg" class="icon image-popup d-flex justify-content-center align-items-center">
                           <span class="icon-expand"></span>
                       </a>
                   </div>
               </div>
               <div class="col-md-6 col-lg-3 ftco-animate">
                   <div class="project">
-                      <img src="../assets/thebigboss/images/work-2.jpg" class="img-fluid" alt="Colorlib Template">
+                      <img src="../assets/thebigboss/images/fotos/tehbigboss (57).jpg" class="img-fluid" alt="Colorlib Template">
                       <div class="text">
                           <span>Beauty</span>
                           <h3><a href="project.html">Haircut</a></h3>
                       </div>
-                      <a href="../assets/thebigboss/images/work-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+                      <a href="../assets/thebigboss/images/fotos/tehbigboss (57).jpg" class="icon image-popup d-flex justify-content-center align-items-center">
                           <span class="icon-expand"></span>
                       </a>
                   </div>

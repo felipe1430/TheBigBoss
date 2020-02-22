@@ -109,6 +109,21 @@ Agregar Empleados
                             </div>
                         </div>
                         <!-- fin comision -->
+                        <!-- descripcion -->
+                        <div class="form-group row">
+                            <label for="descripcion_empleado" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="descripcion_empleado" type="text" class="form-control @error('descripcion_empleado') is-invalid @enderror" name="descripcion_empleado" value="{{ old('descripcion_empleado') }}" required autocomplete="descripcion_empleado" autofocus>
+
+                                @error('descripcion_empleado')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- fin descripcion -->
                         <!-- direccion -->
                         <div class="form-group row">
                             <label for="direccion_empleado" class="col-md-4 col-form-label text-md-right">{{ __('Direccion ') }}</label>
@@ -130,7 +145,6 @@ Agregar Empleados
 
                         <div class="col-md-6">
                             <select id="tipo" list="tipo" class="form-control" name="tipo" value="" required >
-                                <option value="...">...</option> 
                                 <option value="1">Administrador</option> 
                                 <option value="2">Barbero</option>
                                 <option value="3">Cliente</option> 

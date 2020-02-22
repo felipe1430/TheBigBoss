@@ -128,6 +128,7 @@
         var correo_empleado = button.data('correo_empleado') 
         var telefono_empleado = button.data('telefono_empleado') 
         var comision_empleado = button.data('comision_empleado') 
+        var descripcion_empleado = button.data('descripcion_empleado') 
         var direccion_empleado = button.data('direccion_empleado')
         var fk_empleado_tipo_user = button.data('fk_empleado_tipo_user')
         var estado_empleado = button.data('estado_empleado')
@@ -140,6 +141,7 @@
         modal.find('.modal-body #correo_empleado').val(correo_empleado);
         modal.find('.modal-body #telefono_empleado').val(telefono_empleado);
         modal.find('.modal-body #comision_empleado').val(comision_empleado);
+        modal.find('.modal-body #descripcion_empleado').val(descripcion_empleado);
         modal.find('.modal-body #direccion_empleado').val(direccion_empleado);
         modal.find('.modal-body #fk_empleado_tipo_user').val(fk_empleado_tipo_user);
         modal.find('.modal-body #estado_empleado').val(estado_empleado);

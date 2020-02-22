@@ -20,8 +20,7 @@ class empleados extends Model
      * @var array
      */
     protected $fillable = [
-        'id_empleado','nombre_empleado','apellido_empleado','rut_empleado','correo_empleado','telefono_empleado','comision_empleado','direccion_empleado','created_at','updated_at','fk_empleado_tipo_user','estado_empleado','imagen'
+        'id_empleado','nombre_empleado','apellido_empleado','rut_empleado','descripcion_empleado','correo_empleado','telefono_empleado','comision_empleado','direccion_empleado','created_at','updated_at','fk_empleado_tipo_user','estado_empleado','imagen'
     ];
 }
-
 
