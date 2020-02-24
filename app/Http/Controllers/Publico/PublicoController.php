@@ -16,18 +16,24 @@ class PublicoController extends Controller
 
     $barberos = empleados::where('fk_empleado_tipo_user',2)
     ->where('estado_empleado',1)
-    ->get(); // el 2 es solo barberos 
-//dd($barberos);
+    ->get(); 
+
     return view('Publico.index',compact('servicios','barberos'));
 
     }
 
 
 
+
     public function servicios()
     {
+        $servicios=DB::table('servicios')->get()
+        ->where('estado_servicios',1);
+        // dd($servicios);
+    
+      return view('Publico.servicios',compact('servicios'));
 
-    return view('Publico.servicios');
+
 
     }
 
