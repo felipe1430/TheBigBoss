@@ -6,6 +6,7 @@ use DB;
 use Input;
 use App\empleados;
 use App\User;
+
 use App\reservas;
 use App\DetalleReserva;
 use Session;
@@ -13,6 +14,9 @@ use App\servicios;
 use App\gastos;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -129,6 +133,10 @@ class AdminController extends Controller
      // $file = Input::file('imagen');
      // $image = \Image::make(\Input::file('imagen'));
      // $image->save($path.$file->getClientOriginalName());
+
+     $path = Storage::disk('public')->put('assets/thebigboss/images/barberos',$request->file('imagen'));
+    // dd(asset($path),$request->file('imagen')->getClientOriginalName());
+     $empleado->imagen=$path;
     }
      
       
