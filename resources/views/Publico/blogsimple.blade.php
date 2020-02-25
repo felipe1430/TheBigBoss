@@ -202,7 +202,7 @@
           <div class="sidebar-box bg-light ftco-animate">
             <h3 class="heading-2">Otros</h3>
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(../assets/thebigboss/images/fotos/maquinas.jpg);"></a>
+              <a class="blog-img mr-4" style="background-image: url(../assets/thebigboss/images/fotos/maquinas.JPG);"></a>
               <div class="text">
                 <h3 class="heading-1"><a href="#">Equipamiento y Productos De Primera Calidad.</a></h3>
                 {{-- <div class="meta">
@@ -213,7 +213,7 @@
               </div>
             </div>
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(../assets/thebigboss/images/fotos/unas.jpg);"></a>
+              <a class="blog-img mr-4" style="background-image: url(../assets/thebigboss/images/fotos/unas.JPG);"></a>
               <div class="text">
                 <h3 class="heading-1"><a href="#"> manicura, limpieza de cutis, difuminados, y posticería. </a></h3>
                 {{-- <div class="meta">
@@ -224,7 +224,7 @@
               </div>
             </div>
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(../assets/thebigboss/images/fotos/pelo.jpg);"></a>
+              <a class="blog-img mr-4" style="background-image: url(../assets/thebigboss/images/fotos/pelo.JPG);"></a>
               <div class="text">
                 <h3 class="heading-1"><a href="#">Limpieza del cuero cabelludo y el cabello con Productos De Primera Calidad</a></h3>
                 {{-- <div class="meta">

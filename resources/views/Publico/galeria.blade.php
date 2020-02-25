@@ -28,8 +28,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/barba3.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Stylist</span>
-              <h3><a href="project.html">Beard</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/barba3.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -40,8 +40,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/galeria/cosa.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Haircut</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/galeria/cosa.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -52,8 +52,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/galeria/paramujeres.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Hairstylist</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/galeria/paramujeres.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -62,60 +62,60 @@
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Haircut</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img2.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img2.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Makeup</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img2.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img2.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img3.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img3.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Fashion</span>
-              <h3><a href="project.html">Model</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img3.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img3.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/maquina1.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/maquina1.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Makeup</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/maquina1.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/maquina1.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img4.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img4.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Makeup</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img4.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img4.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
@@ -141,12 +141,12 @@
       <div class="row no-gutters">
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img5.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img5.JPG")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Stylist</span>
-              <h3><a href="project.html">Beard</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img5.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img5.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
@@ -155,8 +155,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/galeria/img6.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Haircut</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/galeria/img6.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -165,12 +165,12 @@
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img8.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img8.JPG")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Hairstylist</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img8.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img8.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
@@ -179,8 +179,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/galeria/img9.JPG")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Haircut</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/galeria/img9.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -191,8 +191,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/galeria/img10.JPG")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Makeup</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/galeria/img10.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -201,12 +201,12 @@
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img11.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img11.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Fashion</span>
-              <h3><a href="project.html">Model</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img11.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img11.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
@@ -215,8 +215,8 @@
           <div class="project">
             <img src="{{asset("assets/$theme/images/fotos/galeria/img12.JPG")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Makeup</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
             <a href="{{asset("assets/$theme/images/fotos/galeria/img12.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
@@ -225,12 +225,12 @@
         </div>
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="project">
-            <img src="{{asset("assets/$theme/images/fotos/galeria/img7.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img7.jpg")}}" class="img-fluid" alt="Colorlib Template">
             <div class="text">
-              <span>Beauty</span>
-              <h3><a href="project.html">Makeup</a></h3>
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
             </div>
-            <a href="{{asset("assets/$theme/images/fotos/galeria/img7.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img7.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
               <span class="icon-expand"></span>
             </a>
           </div>
