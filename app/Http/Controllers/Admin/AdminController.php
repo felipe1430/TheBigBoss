@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
+use Input;
 use App\empleados;
 use App\User;
 use App\reservas;
@@ -104,10 +105,12 @@ class AdminController extends Controller
 
     public function actualizarempleados(Request $request)
     {
-     //dd($request->file('imagen'));
-
+     //dd(($request->file'imagen'));
+     
+     
       
       $empleado = empleados::findOrfail($request->id_empleado);
+
       $empleado->id_empleado=$request->get('id_empleado');
       $empleado->nombre_empleado=$request->get('nombre_empleado');
       $empleado->apellido_empleado=$request->get('Apellido');
@@ -120,7 +123,12 @@ class AdminController extends Controller
       $empleado->fk_empleado_tipo_user=$request->get('fk_empleado_tipo_user');
       $empleado->estado_empleado=$request->get('Estado');
     if ($request->hasfile('imagen')) {
-      $empleado->imagen=$request->file('imagen')->store('public');
+      //$empleado->imagen=$request->file('imagen')->store('public');
+      //$path = base_path().'/../public_html/assets/thebigboss/images/barberos';
+      // dd(public_path(),$path);
+     // $file = Input::file('imagen');
+     // $image = \Image::make(\Input::file('imagen'));
+     // $image->save($path.$file->getClientOriginalName());
     }
      
       
