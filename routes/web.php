@@ -72,6 +72,9 @@ Route::post('/eliminarservicioempleado','AdminController@eliminarservicioemplead
 Route::post('/agregarservicioempleado','AdminController@agregarservicioempleado')->name('agregarservicioempleado');
 
 
+
+
+
 Route::get('/reportetotalesservicios','AdminController@reportetotalesservicios')->name('reportetotalesservicios');
 Route::post('/reportetotalesserviciosfiltrar','AdminController@reportetotalesserviciosfiltrar')->name('reportetotalesserviciosfiltrar');
 

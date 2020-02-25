@@ -13,107 +13,231 @@
   </section>
   
   <section class="ftco-section ftco-no-pt ftco-no-pb">
-          <div class="container-fluid p-0">
-          <div class="row no-gutters">
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/fotos/barba3.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Stylist</span>
-                          <h3><a href="project.html">Beard</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/fotos/barba3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/fotos/cosa.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Beauty</span>
-                          <h3><a href="project.html">Haircut</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/fotos/cosa.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/work-3.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Beauty</span>
-                          <h3><a href="project.html">Hairstylist</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/work-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/work-4.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Beauty</span>
-                          <h3><a href="project.html">Haircut</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/work-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/work-5.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Beauty</span>
-                          <h3><a href="project.html">Makeup</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/work-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/work-6.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Fashion</span>
-                          <h3><a href="project.html">Model</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/work-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/work-7.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Beauty</span>
-                          <h3><a href="project.html">Makeup</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/work-7.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                  <div class="project">
-                      <img src="../assets/thebigboss/images/work-8.jpg" class="img-fluid" alt="Colorlib Template">
-                      <div class="text">
-                          <span>Beauty</span>
-                          <h3><a href="project.html">Makeup</a></h3>
-                      </div>
-                      <a href="../assets/thebigboss/images/work-8.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                          <span class="icon-expand"></span>
-                      </a>
-                  </div>
-              </div>
-          </div>
+    <div class="container">
+      <div class="row no-gutters justify-content-center mb-5 pb-2">
+        <div class="col-md-6 text-center heading-section ftco-animate">
+          <span class="subheading">Trabajos Profecionales</span>
+          <h2 class="mb-4">Galeria De Fotos</h2>
+          <p>Conoce los Trabajos De Nuestros Profecionale y sus Servicios de Corte De Pelo Con Tijera - Navaja, Modelados, Manicura, Limpieza De Cutis, Difuminados, y Posticería. </p>
+        </div>
       </div>
-      </section>
+    </div>
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/barba3.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/barba3.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/cosa.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/cosa.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/paramujeres.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/paramujeres.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img2.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img2.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img3.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img3.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/maquina1.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/maquina1.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img4.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img4.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br>
+  <hr>
+
+  <section class="ftco-section ftco-no-pt ftco-no-pb">
+    {{-- <div class="container">
+      <div class="row no-gutters justify-content-center mb-5 pb-2">
+        <div class="col-md-6 text-center heading-section ftco-animate">
+          <span class="subheading">Trabajos Profecionales</span>
+          <h2 class="mb-4">Galeria De Fotos</h2>
+          <p>Conoce los Trabajos De Nuestros Profecionale y sus Servicios de Corte De Pelo Con Tijera - Navaja, Modelados, Manicura, Limpieza De Cutis, Difuminados, y Posticería. </p>
+        </div>
+      </div>
+    </div> --}}
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img5.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img5.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img6.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img6.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img8.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img8.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img9.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img9.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img10.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img10.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img11.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img11.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img12.JPG")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img12.JPG")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="project">
+            <img src="{{asset("assets/$theme/images/fotos/galeria/img7.jpg")}}" class="img-fluid" alt="Colorlib Template">
+            <div class="text">
+              <span>Barberia</span>
+              <h3><a href="project.html">The Big Boos</a></h3>
+            </div>
+            <a href="{{asset("assets/$theme/images/fotos/galeria/img7.jpg")}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="icon-expand"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
  
