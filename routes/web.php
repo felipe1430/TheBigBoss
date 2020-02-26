@@ -5,6 +5,9 @@ Route::post('/Login','seguridad\LoginController@login')->name('login_post');
 Route::get('/logout','seguridad\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+
+
 //------------------------Rutas Publicas------------------------------------//
 
 Route::get('/','Publico\PublicoController@index')->name('inicio');

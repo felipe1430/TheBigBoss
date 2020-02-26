@@ -127,7 +127,7 @@
                 
           <div class="item">
           <a href="{{route('calendario',$item->id_empleado)}}" class="team text-center">
-          <div class="img" style="background-image: url('{{$item->imagen}}');"></div>
+          <div class="img" style="background-image: url('{{asset("assets/thebigboss/images/barberos/$item->imagen")}}');"></div>
               <h2>{{$item->nombre_empleado}}</h2>
               <span class="position">Barbero</span>
             </a>
@@ -310,7 +310,7 @@
                   <p class="mb-4">{{$item->descripcion_empleado}}</p>
                 </div>
                 <div class="d-flex">
-                  <div class="user-img" style="background-image: url('{{Storage::url($item->imagen)}}')">
+                  <div class="user-img" style="background-image: url('{{asset("assets/thebigboss/images/barberos/$item->imagen")}}')">
                   </div>
                   <div class="pos ml-3">
                     <p class="name">{{$item->nombre_empleado}}</p>

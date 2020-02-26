@@ -134,9 +134,13 @@ class AdminController extends Controller
      // $image = \Image::make(\Input::file('imagen'));
      // $image->save($path.$file->getClientOriginalName());
 
-     $path = Storage::disk('public')->put('assets/thebigboss/images/barberos',$request->file('imagen'));
-    // dd(asset($path),$request->file('imagen')->getClientOriginalName());
-     $empleado->imagen=$path;
+     //$path = Storage::disk('public')->put('assets/thebigboss/images/barberos',$request->file('imagen'));
+     //$file=$request->file('imagen');
+    // $name=time().$file->getClientOriginalName();
+     //dd(public_path().'/assets/thebigboss/images/barberos');
+     //dd(asset($path),$path);
+    //$file->move(public_path().'/assets/thebigboss/images/barberos',$name);
+    // $empleado->imagen=$name;
     }
      
       
