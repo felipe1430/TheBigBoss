@@ -233,14 +233,14 @@ Lista De Trabajadores
                              </select>
                         </div>
                     </div>
-
+{{-- 
                     <div class="form-group row">
                       <label for="imagen" class="col-md-4 col-form-label text-md-right">Imagen</label>
 
                       <div class="col-md-6">
                           <input type="file" name="imagen" class="form-control">
                       </div>
-                  </div>
+                  </div> --}}
                     <!-- Fin Estado -->
                     <div class="modal-footer">
                       <button type="submit" class="btn btn-primary">Editar</button>
